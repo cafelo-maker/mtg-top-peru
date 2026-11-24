@@ -309,14 +309,15 @@ footer{color:var(--muted);font-size:12px;padding-block:22px;border-top:1px solid
 .regrow{gap:8px;padding:8px 10px}.regrow .oin{min-width:0;flex:1 1 0}.regrow .ctl{flex:1.5 1 0;min-width:0}.regrow .oin.pts{flex:0 0 64px}
 .oin{font:inherit;font-size:15px;width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);color:var(--ink);min-height:40px}
 .oreport{white-space:pre-wrap;overflow-wrap:anywhere;font:500 13px/1.55 ui-monospace,Menlo,Consolas,monospace;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0}
-.owarn{color:var(--accent);border-color:#6b5320}
+.oerr.owarn{color:var(--accent);border-color:#6b5320}
 .regmode button{padding:10px 16px;font-size:14px}
 .regshots{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
 .shot{position:relative;width:112px;height:150px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
 .shot img{width:100%;height:100%;object-fit:cover;display:block}
 .shot .btn{position:absolute;top:4px;right:4px;background:rgba(12,14,19,.85)}
 .regrow.cap .ctl{flex:1.6 1 0;margin-left:0}
-label.btn{display:inline-flex;align-items:center;justify-content:center}
+label.btn,a.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+a.btn.wa{background:#25d366;border-color:#25d366;color:#06240f}
 @media (max-width:640px){.regrow.cap .ctl{flex:1 1 calc(100% - 40px)}.regrow.cap>.oin{margin-left:30px;flex:1 1 60%}}
 .oerr{margin-top:12px;padding:12px 14px;border:1px solid #6b2e27;border-radius:12px;color:#ff8b7a}
 @media (max-width:640px){.regrow{flex-wrap:wrap}.regrow .oin:not(.pts){flex:1 1 calc(100% - 40px)}.regrow .ctl{flex:1 1 55%;margin-left:30px}}
@@ -982,7 +983,7 @@ function acInput(inp){
 })();
 
 /* ===== Registrar torneo (borrador guardado en el navegador) ===== */
-const REG_KEY = "mtp-registro";
+const REG_KEY = "mtp-registro", REG_WA = "51939226081";
 const regToday = () => new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
 const regBlank = () => ({modo:"captura", tienda:"", ciudad:"Lima", fecha:regToday(), fmt:"B5", nombre:"", jugadores:"", link:"", contacto:"", rows:Array.from({length:8},()=>({j:"",d:"",p:""}))});
 let REG = null, regOut = null, regArmed = false; try{ REG = JSON.parse(localStorage.getItem(REG_KEY)||"null"); }catch(e){}
@@ -1051,9 +1052,9 @@ function regView(){
       ${regOut&&regOut.errs?`<div class="oerr" role="alert">${regOut.errs.map(esc).join("<br>")}</div>`:""}
       ${regOut&&regOut.warn?`<div class="oerr owarn">${esc(regOut.warn)}</div>`:""}
       ${regOut&&regOut.text?`<pre class="oreport" id="reg-out">${esc(regOut.text)}</pre>
-        <div class="btnrow"><button class="btn pri" data-regact="copy">Copiar reporte</button>${navigator.share?`<button class="btn" data-regact="share">${regCap()&&REGFILES.length?"Compartir reporte y capturas":"Compartir"}</button>`:""}</div>
-        ${regCap()?`<p class="note" style="margin-top:10px">${REGFILES.length?"Si al compartir no se adjuntan las capturas, envíalas en el mismo chat junto con el reporte.":"No olvides enviar las capturas de la tabla junto con el reporte."}</p>`:""}
-        <p class="note" id="reg-msg" style="margin-top:10px" aria-live="polite">Copia o comparte este reporte con el administrador de MTG Top Perú. El torneo aparecerá en el sitio cuando sea revisado.</p>`
+        <div class="btnrow"><a class="btn pri wa" target="_blank" rel="noopener" href="https://wa.me/${REG_WA}?text=${encodeURIComponent(regOut.text)}">Enviar por WhatsApp</a><button class="btn" data-regact="copy">Copiar reporte</button>${navigator.share?`<button class="btn" data-regact="share">${regCap()&&REGFILES.length?"Compartir reporte y capturas":"Compartir"}</button>`:""}</div>
+        ${regCap()?`<p class="note" style="margin-top:10px">El botón de WhatsApp abre el chat con el reporte ya escrito. Las capturas no viajan solas: adjúntalas en ese mismo chat después de enviar el mensaje.</p>`:""}
+        <p class="note" id="reg-msg" style="margin-top:10px" aria-live="polite">El torneo aparecerá en el sitio cuando sea revisado.</p>`
         :`<p class="note" style="margin-top:10px">El formulario se guarda en este dispositivo mientras lo llenas. Un torneo entra al metagame después de ser revisado.</p>`}</section>`;
 }
 (() => { const app = document.getElementById("app");
