@@ -212,6 +212,14 @@ a.rcard:hover{color:var(--ink);border-color:var(--accent)}
 .tcard b{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.01em;line-height:1.1}
 .tcard .win{display:flex;align-items:center;gap:8px;font-size:13.5px;padding-top:8px;border-top:1px solid var(--line);min-width:0}
 .tcard .win .thumbs{margin-right:0}
+/* Puesto en la esquina del arte: medalla para el top 3, número para el resto */
+.rank{position:absolute;top:10px;right:10px;z-index:1;display:grid;place-items:center;min-width:34px;height:34px;padding:0 9px;border-radius:999px;background:rgba(8,10,16,.72);backdrop-filter:blur(4px);color:#fff;font-family:var(--display);font-weight:800;font-size:15px;line-height:1;box-shadow:0 0 0 1px rgba(255,255,255,.18)}
+.rank.medal-svg{background:none;backdrop-filter:none;box-shadow:none;padding:0;min-width:0;height:auto;top:6px;right:8px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
+.rank.medal-svg svg{display:block;width:40px;height:52px}
+.scard .ctop{padding-right:58px}
+.scard .who{display:block;font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.01em;line-height:1.15}
+.scard .deckname{display:block;font-size:13px;font-weight:500;color:#e3e5ec;margin-top:3px;line-height:1.25}
+.scard .pips{margin-top:6px}
 footer{color:var(--muted);font-size:12px;padding-block:22px;border-top:1px solid var(--line)}
 @media (max-width:560px){.toolbar{padding:12px}.ccard{min-height:150px}.banner{min-height:220px}.hero-in{padding:28px 20px 24px}.fmt{min-height:110px}.fmt b{font-size:21px}.pcard .info{padding:8px 10px 10px}.pcard .deck{font-size:12.5px}.bar{grid-template-columns:minmax(0,1fr) 70px 46px}.hide-sm{display:none}.art{width:140px}nav a{font-size:15px;padding:6px 8px}}
 @media (prefers-reduced-motion:no-preference){.fill{transition:width .5s ease}.fmt,.chip{transition:border-color .15s}}
@@ -307,11 +315,25 @@ function gradOf(name){
 }
 const initials = n => String(n).replace(/[^A-Za-zÀ-ÿ +]/g,"").split(/[ +]+/).filter(Boolean).slice(0,2).map(w=>w[0]).join("").toUpperCase();
 const tName = t => `${esc(t.tipo||"Torneo")} @ ${esc(t.tienda)}`;
+const MEDAL = {1:["#ffe9a3","#e2a81f","#8a5a00"],2:["#f4f6fa","#a9b3c2","#4f5a6b"],3:["#f3c39c","#b8703a","#6a3513"]};
+function rankBadge(p){
+  const n = Number(p), m = MEDAL[n];
+  if(!m) return `<span class="rank" aria-label="Puesto ${esc(p)}">${esc(p)}</span>`;
+  return `<span class="rank medal-svg" role="img" aria-label="Puesto ${n}"><svg viewBox="0 0 40 52"><defs><linearGradient id="mg${n}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${m[0]}"/><stop offset="1" stop-color="${m[1]}"/></linearGradient></defs>
+    <path d="M9 0h9l4 17h-9z" fill="#c8452b"/><path d="M31 0h-9l-4 17h9z" fill="#2f6fb3"/>
+    <circle cx="20" cy="33" r="17" fill="url(#mg${n})" stroke="${m[2]}" stroke-width="1.5"/><circle cx="20" cy="33" r="12.5" fill="none" stroke="${m[2]}" stroke-opacity=".45" stroke-width="1"/>
+    <text x="20" y="39.5" text-anchor="middle" font-family="Montserrat,sans-serif" font-weight="800" font-size="18" fill="${m[2]}">${n}</text></svg></span>`;
+}
+function standCards(rs, hasPts){
+  return `<div class="cgrid">${rs.map(r=>`<a class="ccard scard" href="#jugador-${slug(r.jugador)}">${cardArt(r.comandante)}${rankBadge(r.puesto)}
+    <span class="ctop"><span><span class="who">${esc(r.jugador)}</span><span class="deckname">${esc(r.comandante||"Desconocido")}</span>${r.comandante&&r.comandante!=="Desconocido"?pips(r.comandante):""}</span></span>
+    <span class="cbot">${hasPts?`<span>Puntos <b>${r.puntos??"–"}</b></span>`:""}<span>PR <b>${dec(r.pr)}</b></span></span></a>`).join("")}</div>`;
+}
 function podium(rs){
   const top = rs.filter(r=>Number(r.puesto)<=4).slice(0,4);
   if(!top.length) return "";
   return `<div class="podium">${top.map(r=>`<div class="pcard ${Number(r.puesto)===1?"first":""}">
-    <div class="artbox" style="background:${gradOf(r.comandante)}"><span class="ini">${initials(r.comandante||"?")}</span>${artParts(r.comandante).map(p=>bigImg(p)).join("")}<span class="pos">${esc(r.puesto)}</span></div>
+    <div class="artbox" style="background:${gradOf(r.comandante)}"><span class="ini">${initials(r.comandante||"?")}</span>${artParts(r.comandante).map(p=>bigImg(p)).join("")}${rankBadge(r.puesto)}</div>
     <div class="info"><a class="who" href="#jugador-${slug(r.jugador)}">${esc(r.jugador)}</a><span class="deck">${cmdLink(r.comandante)}</span></div></div>`).join("")}</div>`;
 }
 function cmdThumbLink(name){
@@ -462,11 +484,8 @@ const views = {
     const hasPts = rs.some(r=>r.puntos!=null);
     return `<section><div class="kicker">${esc(fmtName(t.bracket))} · ${fdate(t.fecha)}</div><h1>${tName(t)}</h1>
       <p class="sub">${t.jugadores??rs.length} jugadores · ${esc(t.ciudad||"")}${t.link?` · <a href="${esc(t.link)}" target="_blank" rel="noopener">Resultados originales</a>`:""}</p></section>
-      ${podium(rs)}
-      <section><h2>Standings finales</h2><div class="tbl"><table><thead><tr><th>#</th><th>Jugador</th><th>${unitLabel(t.bracket)}</th>${hasPts?`<th class="n hide-sm">Pts</th>`:""}<th class="n">PR</th></tr></thead><tbody>
-      ${rs.map(r=>`<tr><td class="place ${Number(r.puesto)===1?"p1":""}">${esc(r.puesto)}</td><td><a href="#jugador-${slug(r.jugador)}">${esc(r.jugador)}</a></td>
-        <td>${cmdThumbLink(r.comandante)}${r.lista?` · <a href="${esc(r.lista)}" target="_blank" rel="noopener">lista</a>`:""}</td>${hasPts?`<td class="n hide-sm">${r.puntos??"–"}</td>`:""}<td class="n">${dec(r.pr)}</td></tr>`).join("")}
-      </tbody></table></div>${hasPts?`<p class="note">Los puntos son los de la tienda y no se usan para el tier: cada tienda puntúa distinto.</p>`:""}</section>`;
+      <section><h2>Standings finales</h2>${standCards(rs,hasPts)}
+      ${hasPts?`<p class="note">Los puntos son los de la tienda y no se usan para el tier: cada tienda puntúa distinto.</p>`:""}</section>`;
   },
   cmd(id){
     const name = [...new Set(DB.resultados.map(r=>r.comandante))].find(n => slug(n)===id); if(!name) return notFound();
