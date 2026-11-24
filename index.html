@@ -498,7 +498,7 @@ function colorChips(){
 function cardArt(name){ return `<span class="cart" style="background:${gradOf(name)}">${artParts(name).map(p=>bigImg(p)).join("")}</span>`; }
 function deckCards(rows){
   if(!rows.length) return `<div class="empty">Aún no hay resultados con estos filtros.</div>`;
-  return `<div class="cgrid">${rows.map((s,i)=>`<a class="ccard rcardk" href="#cmd-${slug(s.name)}">${cardArt(s.name)}${rankBadge(i+1)}
+  return `<div class="cgrid">${rows.map((s,i)=>`<a class="ccard rcardk" href="#cmd-${slug(s.name)}">${cardArt(s.name)}<span class="rank" aria-label="Puesto ${i+1}">${i+1}</span>
     <span class="ctop">${tierBadge(s.tier)}<span><b>${esc(s.name)}</b>${pips(s.name)}${(s.pilot||(s.pres>=0.15&&s.n>=4))?`<span class="flags">${s.pilot?`<span class="flag">1 piloto</span>`:""}${s.pres>=0.15&&s.n>=4?`<span class="flag">Dominante</span>`:""}</span>`:""}</span></span>
     <span class="cbot"><span>Presencia <b>${pct(s.pres)}</b></span><span>Entradas <b>${s.n}</b></span><span>PR ajust. <b>${dec(s.prAdj)}</b></span></span></a>`).join("")}</div>`;
 }
