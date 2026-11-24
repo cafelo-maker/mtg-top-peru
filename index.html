@@ -305,6 +305,10 @@ footer{color:var(--muted);font-size:12px;padding-block:22px;border-top:1px solid
 /* Organizar torneo */
 .otbl td.w{min-width:120px}
 .otbl td,.otbl th{padding-inline:10px}
+.seed{font-size:11px;font-weight:700;color:var(--muted);margin:0 6px;vertical-align:middle}
+.ochamp{margin-top:12px;padding:12px 14px;border:1px solid var(--accent);border-radius:12px;font-size:16px}
+.ochamp b{color:var(--accent)}
+.ocut{margin-top:16px}
 .btn{font:inherit;font-family:var(--body);font-weight:600;font-size:14px;padding:10px 16px;border-radius:10px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer;min-height:42px}
 .btn.pri{background:var(--accent);border-color:var(--accent);color:#14110a}
 .btn.ghost{background:none}
@@ -750,32 +754,77 @@ function orgSuggested(t){ const n = t.players.filter(p=>!p.drop).length;
   if(t.pods) return n<=16?2:n<=28?3:n<=56?4:5;
   return n<=2?1:n<=4?2:n<=8?3:n<=16?4:n<=32?5:n<=64?6:7; }
 const orgDone = r => r.tables.every(tb => tb.r!=null);
+/* Top cut */
+const orgSeed = (t,id) => t.cut.seeds.indexOf(id);
+const orgCutLast = t => t.cut.rounds[t.cut.rounds.length-1];
+const orgCutIsFinal = t => orgCutLast(t).tables.length===1;
+const orgCutOver = t => !!t.cut && orgCutIsFinal(t) && orgDone(orgCutLast(t));
+function orgCutWinner(t, tb){
+  if(tb.r==null) return null;
+  if(t.pods) return tb.r==="draw" ? [...tb.p].sort((a,b)=>orgSeed(t,a)-orgSeed(t,b))[0] : tb.r;
+  return tb.r[0]>tb.r[1] ? tb.p[0] : tb.p[1];
+}
+function orgCutName(t, i){ const n = t.cut.rounds[i].tables.length;
+  return t.pods ? (n===1?"Mesa final":"Semifinales") : ({1:"Final",2:"Semifinales",4:"Cuartos de final",8:"Octavos de final"}[n]||"Eliminatoria"); }
+function orgCutOptions(t){ const n = t.players.filter(p=>!p.drop).length;
+  return (t.pods ? [[4,"Mesa final (top 4)"],[10,"Top 10: semifinales y mesa final"],[13,"Top 13: semifinales y mesa final"],[16,"Top 16: semifinales y mesa final"]]
+                 : [[2,"Final (top 2)"],[4,"Top 4"],[8,"Top 8"],[16,"Top 16"]]).filter(o=>o[0]<=n); }
+function orgCutStart(t, size){
+  const seeds = orgStats(t).list.filter(s=>!s.p.drop).slice(0,size).map(s=>s.id); if(seeds.length<size) return;
+  let tables, byes = [];
+  if(t.pods){ const k = (size-4)/3;
+    if(k<1) tables = [{p:seeds.slice(0,4), r:null}];
+    else { byes = seeds.slice(0,4-k); const rest = seeds.slice(4-k), pods = Array.from({length:k},()=>[]);
+      rest.forEach((id,i) => { const row = Math.floor(i/k), col = i%k; pods[row%2 ? k-1-col : col].push(id); });
+      tables = pods.map(p=>({p, r:null})); } }
+  else { let o = [0]; while(o.length<size){ const m = o.length*2; o = o.flatMap(x=>[x,m-1-x]); }
+    tables = []; for(let i=0;i<size;i+=2) tables.push({p:[seeds[o[i]],seeds[o[i+1]]], r:null}); }
+  t.cut = {size, seeds, byes, rounds:[{tables, byes:[]}]};
+}
+function orgCutNext(t){
+  const last = orgCutLast(t); if(!orgDone(last) || last.tables.length===1) return;
+  const w = last.tables.map(tb=>orgCutWinner(t,tb));
+  if(t.pods){ const p = [...t.cut.byes, ...w].sort((a,b)=>orgSeed(t,a)-orgSeed(t,b)); t.cut.rounds.push({tables:[{p, r:null}], byes:[]}); }
+  else { const tables = []; for(let i=0;i<w.length;i+=2) tables.push({p:[w[i],w[i+1]], r:null}); t.cut.rounds.push({tables, byes:[]}); }
+}
+function orgFinal(t){
+  const st = orgStats(t); let list = st.list;
+  if(orgCutOver(t)){ const stage = {};
+    t.cut.rounds.forEach((r,i) => r.tables.forEach(tb => tb.p.forEach(id => stage[id] = i)));
+    stage[orgCutWinner(t, orgCutLast(t).tables[0])]++;
+    const cutIds = t.cut.seeds.filter(id=>st.by[id]).sort((a,b)=>stage[b]-stage[a] || orgSeed(t,a)-orgSeed(t,b));
+    list = [...cutIds.map(id=>st.by[id]), ...st.list.filter(s=>!t.cut.seeds.includes(s.id))]; }
+  list.forEach((s,i) => s.frank = i+1);
+  return list;
+}
 function orgStandingsText(t){
-  const st = orgStats(t), n = t.players.length;
-  return [`${t.nombre} · ${fmtName(t.fmt)}${t.tienda?` @ ${t.tienda}`:""} · ${fdate(t.fecha)} · ${n} jugadores`,
-    ...st.list.map(s => `${s.rank}. ${s.p.n}${s.p.deck?` · ${s.p.deck}`:""} · ${s.mp} pts (${s.w}-${s.l}-${s.d})${s.p.drop?" · retirado":""}`)].join("\n");
+  const list = orgFinal(t), n = t.players.length;
+  return [`${t.nombre} · ${fmtName(t.fmt)}${t.tienda?` @ ${t.tienda}`:""} · ${fdate(t.fecha)} · ${n} jugadores · ${t.rounds.length} rondas${orgCutOver(t)?` + top ${t.cut.size}`:""}`,
+    ...list.map(s => `${s.frank}. ${s.p.n}${s.p.deck?` · ${s.p.deck}`:""} · ${s.mp} pts (${s.w}-${s.l}-${s.d})${s.p.drop?" · retirado":""}`)].join("\n");
 }
 function orgStandings(t, final){
-  const st = orgStats(t);
+  const st = {list: orgFinal(t)};
   const pc = x => (x*100).toFixed(0)+"%";
   return `<div class="tbl otbl"><table><thead><tr><th class="n">#</th><th>Jugador</th><th class="n">Pts</th><th class="n">V-D-E</th>
     <th class="n hide-sm">${t.pods?"% rivales":"OMW"}</th>${t.pods?"":`<th class="n hide-sm">GW</th><th class="n hide-sm">OGW</th>`}${final?"":"<th></th>"}</tr></thead><tbody>
-    ${st.list.map(s=>`<tr><td class="n">${s.rank}</td><td class="w"><b style="${s.p.drop?"text-decoration:line-through;color:var(--muted)":""}">${esc(s.p.n)}</b>${s.p.deck?`<br><span style="color:var(--muted);font-size:12.5px">${esc(s.p.deck)}</span>`:""}</td>
+    ${st.list.map(s=>`<tr><td class="n">${s.frank}</td><td class="w"><b style="${s.p.drop?"text-decoration:line-through;color:var(--muted)":""}">${esc(s.p.n)}</b>${s.p.deck?`<br><span style="color:var(--muted);font-size:12.5px">${esc(s.p.deck)}</span>`:""}</td>
       <td class="n"><b>${s.mp}</b></td><td class="n">${s.w}-${s.l}-${s.d}</td><td class="n hide-sm">${s.opps.length?pc(s.omw):"–"}</td>${t.pods?"":`<td class="n hide-sm">${pc(s.gwp)}</td><td class="n hide-sm">${pc(s.ogw)}</td>`}
       ${final?"":`<td class="n"><button class="btn sm ghost" data-org="drop" data-id="${s.id}">${s.p.drop?"Reincorporar":"Retirar"}</button></td>`}</tr>`).join("")}
     </tbody></table></div>`;
 }
 function orgRound(t, ri, locked){
-  const r = t.rounds[ri], dis = locked ? "disabled" : "";
+  const cut = String(ri)[0]==="c", r = cut ? t.cut.rounds[+String(ri).slice(1)] : t.rounds[ri], dis = locked ? "disabled" : "";
+  const sd = id => cut ? `<small class="seed">${orgSeed(t,id)+1}</small>` : "";
+  const opts = cut ? ["2-0","2-1","1-0","0-1","1-2","0-2"] : ["2-0","2-1","1-0","1-1","0-1","1-2","0-2"];
   const tables = r.tables.map((tb,ti) => {
     const head = `<div class="ohead"><span class="kicker">Mesa ${ti+1}</span>${tb.r!=null?`<span class="ostate">Listo</span>`:""}</div>`;
     if(t.pods) return `<div class="otable ${tb.r!=null?"done":""}">${head}
-      ${tb.p.map((id,k)=>`<div class="oseat ${tb.r===id?"win":""}"><span class="seat">${k+1}</span><b>${esc(orgName(t,id))}</b><button ${dis} class="${tb.r===id?"on":""}" data-org="res" data-r="${ri}" data-t="${ti}" data-v="${id}">Ganó</button></div>`).join("")}
-      <button ${dis} class="btn sm odraw ${tb.r==="draw"?"on":""}" data-org="res" data-r="${ri}" data-t="${ti}" data-v="draw">Empate</button></div>`;
+      ${tb.p.map((id,k)=>`<div class="oseat ${tb.r===id?"win":""}"><span class="seat">${k+1}</span><b>${esc(orgName(t,id))}${sd(id)}</b><button ${dis} class="${tb.r===id?"on":""}" data-org="res" data-r="${ri}" data-t="${ti}" data-v="${id}">Ganó</button></div>`).join("")}
+      <button ${dis} class="btn sm odraw ${tb.r==="draw"?"on":""}" data-org="res" data-r="${ri}" data-t="${ti}" data-v="draw">${cut?"Empate: avanza el mejor sembrado":"Empate"}</button></div>`;
     const cur = tb.r ? tb.r.join("-") : "", [a,b] = tb.p, wa = tb.r&&tb.r[0]>tb.r[1], wb = tb.r&&tb.r[1]>tb.r[0];
     return `<div class="otable ${tb.r!=null?"done":""}">${head}
-      <div class="oversus"><b class="${wa?"win":""}">${esc(orgName(t,a))}</b><span>vs</span><b class="${wb?"win":""}">${esc(orgName(t,b))}</b></div>
-      <div class="ores">${["2-0","2-1","1-0","1-1","0-1","1-2","0-2"].map(v=>`<button ${dis} class="${cur===v?"on":""}" data-org="res" data-r="${ri}" data-t="${ti}" data-v="${v}" aria-label="${esc(orgName(t,a))} ${v} ${esc(orgName(t,b))}">${v==="1-1"?"Emp.":v}</button>`).join("")}</div></div>`;
+      <div class="oversus"><b class="${wa?"win":""}">${esc(orgName(t,a))}${sd(a)}</b><span>vs</span><b class="${wb?"win":""}">${sd(b)}${esc(orgName(t,b))}</b></div>
+      <div class="ores" style="grid-template-columns:repeat(${opts.length},1fr)">${opts.map(v=>`<button ${dis} class="${cur===v?"on":""}" data-org="res" data-r="${ri}" data-t="${ti}" data-v="${v}" aria-label="${esc(orgName(t,a))} ${v} ${esc(orgName(t,b))}">${v==="1-1"?"Emp.":v}</button>`).join("")}</div></div>`;
   }).join("");
   return `<div class="otables">${tables}</div>${(r.byes||[]).length?`<p class="obye">Bye (cuenta como victoria): <b>${r.byes.map(id=>esc(orgName(t,id))).join(", ")}</b></p>`:""}`;
 }
@@ -817,18 +866,36 @@ function orgView(id){
     <section><div class="btnrow"><button class="btn pri" data-org="pair" ${t.players.length<orgMinPlayers(t)?"disabled":""}>Emparejar ronda 1</button>
       <span class="note">${t.players.length<orgMinPlayers(t)?`Se necesitan al menos ${orgMinPlayers(t)} jugadores.`:`Rondas sugeridas para ${t.players.length} jugadores: ${orgSuggested(t)}.`}</span></div></section>`;
   const done = orgDone(cur), any = cur.tables.some(tb=>tb.r!=null);
-  const prev = t.rounds.slice(0,-1).map((r,i)=>`<details class="oround"><summary>Ronda ${i+1}</summary>${orgRound(t,i,t.fin)}</details>`).reverse().join("");
-  if(t.fin) return head + `<section><div class="secthead"><h2>Standings finales</h2><span class="ostate">Terminado · ${R} rondas</span></div>${orgStandings(t,true)}
+  const prev = t.rounds.slice(0,-1).map((r,i)=>`<details class="oround"><summary>Ronda ${i+1}</summary>${orgRound(t,i,t.fin||!!t.cut)}</details>`).reverse().join("");
+  const cutRounds = from => t.cut ? t.cut.rounds.map((r,i)=>i>=from?"":`<details class="oround"><summary>Top cut · ${orgCutName(t,i)}</summary>${orgRound(t,"c"+i,true)}</details>`).reverse().join("") : "";
+  const swissAll = `<details class="oround"><summary>Ronda ${R}</summary>${orgRound(t,R-1,true)}</details>${prev}`;
+  if(t.cut && !t.fin){ const ci = t.cut.rounds.length-1, cr = t.cut.rounds[ci], cdone = orgDone(cr), fin = cr.tables.length===1;
+    const champ = fin && cdone ? orgCutWinner(t, cr.tables[0]) : null;
+    return head + `<section><div class="secthead"><h2>Top ${t.cut.size} · ${orgCutName(t,ci)}</h2><span class="ostate live">${cr.tables.filter(tb=>tb.r!=null).length} de ${cr.tables.length} mesas listas</span></div>
+      ${orgRound(t,"c"+ci,false)}
+      ${t.pods&&ci===0&&t.cut.byes.length?`<p class="obye">Pasan directo a la mesa final: <b>${t.cut.byes.map(id=>esc(orgName(t,id))).join(", ")}</b></p>`:""}
+      ${champ?`<p class="ochamp">Campeón: <b>${esc(orgName(t,champ))}</b></p>`:""}
+      <div class="btnrow" style="margin-top:14px">${fin?`<button class="btn pri" data-org="finish" ${cdone?"":"disabled"}>${orgArmed==="finish"?"¿Terminar ahora?":"Terminar torneo"}</button>`
+        :`<button class="btn pri" data-org="cutnext" ${cdone?"":"disabled"}>Avanzar a ${t.pods?"la mesa final":(cr.tables.length===2?"la final":"semifinales")}</button>`}
+        <button class="btn danger" data-org="cutundo">${orgArmed==="cutundo"?"¿Seguro? Se pierde esta fase":(ci?"Borrar esta fase":"Cancelar top cut")}</button></div>
+      <p class="note" style="margin-top:10px">El número junto a cada nombre es su puesto en la fase suiza.${t.pods?" En la mesa los asientos van por ese orden.":""}</p></section>
+    ${ci?`<section><h2>Fases anteriores</h2><div class="olist">${cutRounds(ci)}</div></section>`:""}
+    <section><h2>Clasificación suiza</h2>${orgStandings(t,true)}</section>
+    <section><h2>Rondas suizas</h2><div class="olist">${swissAll}</div></section>`; }
+  if(t.fin) return head + `<section><div class="secthead"><h2>Standings finales</h2><span class="ostate">Terminado · ${R} rondas${t.cut?` + top ${t.cut.size}`:""}</span></div>${orgStandings(t,true)}
       <div class="btnrow" style="margin-top:14px"><button class="btn pri" data-org="copy">Copiar standings</button><button class="btn" data-org="csv">Descargar CSV</button><button class="btn ghost" data-org="reopen">Reabrir torneo</button></div>
       <p class="note" id="o-msg" style="margin-top:10px" aria-live="polite"></p></section>
-    <section><h2>Rondas</h2><div class="olist"><details class="oround"><summary>Ronda ${R}</summary>${orgRound(t,R-1,true)}</details>${prev}</div></section>`;
+    <section><h2>Rondas</h2><div class="olist">${cutRounds(99)}${swissAll}</div></section>`;
   return head + `<section><div class="secthead"><h2>Ronda ${R}</h2><span class="ostate live">${cur.tables.filter(tb=>tb.r!=null).length} de ${cur.tables.length} mesas listas</span></div>
       ${orgRound(t,R-1,false)}
       <div class="btnrow" style="margin-top:14px"><button class="btn pri" data-org="pair" ${done&&nAct>=orgMinPlayers(t)?"":"disabled"}>Emparejar ronda ${R+1}</button>
         <button class="btn" data-org="finish" ${done?"":"disabled"}>${orgArmed==="finish"?"¿Terminar ahora?":"Terminar torneo"}</button>
         ${any?"":`<button class="btn ghost" data-org="repair">Volver a sortear</button>`}
         <button class="btn danger" data-org="undo">${orgArmed==="undo"?"¿Seguro? Se pierde la ronda":`Borrar ronda ${R}`}</button></div>
-      <p class="note" style="margin-top:10px">${done?`Rondas sugeridas para ${nAct} jugadores: ${orgSuggested(t)}.`:"Marca el resultado de cada mesa para poder continuar."}</p></section>
+      <p class="note" style="margin-top:10px">${done?`Rondas sugeridas para ${nAct} jugadores: ${orgSuggested(t)}.`:"Marca el resultado de cada mesa para poder continuar."}</p>
+      ${done&&orgCutOptions(t).length?`<div class="oform ocut"><div class="ctl"><label for="o-cut">Top cut (eliminatorias)</label><select id="o-cut">${orgCutOptions(t).map(o=>`<option value="${o[0]}">${o[1]}</option>`).join("")}</select></div>
+        <button class="btn" data-org="cutstart">Iniciar top cut</button></div>
+        <p class="note" style="margin-top:10px">Al iniciar el top cut se cierran las rondas suizas y clasifican los primeros de la tabla.</p>`:""}</section>
     <section><h2>Standings</h2>${orgStandings(t,false)}<p class="note" style="margin-top:10px">${t.pods?"Desempate: porcentaje de puntos de los rivales y luego victorias.":"Desempates: OMW (rendimiento de rivales), GW (partidas ganadas) y OGW."} Un jugador retirado ya no entra en las siguientes rondas.</p></section>
     <section><h2>Agregar jugador tarde</h2>${orgAddForm(t)}</section>
     ${prev?`<section><h2>Rondas anteriores</h2><div class="olist">${prev}</div></section>`:""}`;
@@ -843,7 +910,7 @@ function orgClick(e){
     orgSave(); location.hash = "#organizar-"+id; return; }
   if(a==="del"){ if(!arm("del"+b.dataset.id)) return; ORG = ORG.filter(x=>x.id!==b.dataset.id); orgSave(); route(); return; }
   if(!t) return;
-  if(a!=="finish" && a!=="undo") orgArmed = "";
+  if(a!=="finish" && a!=="undo" && a!=="cutundo") orgArmed = "";
   if(a==="addp"){ const n = val("o-pn"); if(!n) { const i=document.getElementById("o-pn"); if(i) i.focus(); return; }
     t.players.push({id:"p"+(t.seq++), n, deck: val("o-pd"), drop:false}); orgFocus = "o-pn"; }
   else if(a==="rmp") t.players = t.players.filter(p=>p.id!==b.dataset.id);
@@ -853,7 +920,10 @@ function orgClick(e){
   else if(a==="undo"){ if(!arm("undo")) return; t.rounds.pop(); }
   else if(a==="finish"){ if(!arm("finish")) return; t.fin = true; }
   else if(a==="reopen") t.fin = false;
-  else if(a==="res"){ const tb = t.rounds[+b.dataset.r].tables[+b.dataset.t], v = b.dataset.v;
+  else if(a==="cutstart") orgCutStart(t, Number(val("o-cut")));
+  else if(a==="cutnext") orgCutNext(t);
+  else if(a==="cutundo"){ if(!arm("cutundo")) return; if(t.cut.rounds.length>1) t.cut.rounds.pop(); else delete t.cut; }
+  else if(a==="res"){ const rr = b.dataset.r, tb = (rr[0]==="c" ? t.cut.rounds[+rr.slice(1)] : t.rounds[+rr]).tables[+b.dataset.t], v = b.dataset.v;
     const nv = t.pods ? v : v.split("-").map(Number), same = t.pods ? tb.r===v : (tb.r && tb.r.join("-")===v);
     tb.r = same ? null : nv; }
   else if(a==="copy"){ const txt = orgStandingsText(t), msg = document.getElementById("o-msg");
@@ -861,7 +931,7 @@ function orgClick(e){
     const fb = () => { const ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); ok(); }catch(e){} ta.remove(); };
     if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok, fb); else fb(); return; }
   else if(a==="csv"){ const st = orgStats(t), q = s => `"${String(s??"").replace(/"/g,'""')}"`;
-    const csv = ["Puesto,Jugador,Mazo,Puntos,Victorias,Derrotas,Empates,Retirado", ...st.list.map(s=>[s.rank,q(s.p.n),q(s.p.deck),s.mp,s.w,s.l,s.d,s.p.drop?"si":"no"].join(","))].join("\n");
+    const csv = ["Puesto,Jugador,Mazo,Puntos,Victorias,Derrotas,Empates,Retirado", ...orgFinal(t).map(s=>[s.frank,q(s.p.n),q(s.p.deck),s.mp,s.w,s.l,s.d,s.p.drop?"si":"no"].join(","))].join("\n");
     const u = URL.createObjectURL(new Blob(["﻿"+csv],{type:"text/csv"})), l = document.createElement("a"); l.href = u; l.download = slug(t.nombre||"torneo")+"-standings.csv"; document.body.appendChild(l); l.click(); l.remove(); setTimeout(()=>URL.revokeObjectURL(u),2000); return; }
   orgSave(); route();
 }
