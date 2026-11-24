@@ -543,7 +543,7 @@ function stats(code, p){
 function tierTable(rows, compact, code){
   if(!rows.length) return `<div class="empty">Aún no hay resultados en este periodo.</div>`;
   return `<div class="tbl"><table><thead><tr><th>Tier</th><th>${unitLabel(code)}</th><th class="n">Entradas</th>
-    <th class="n">Presencia</th><th class="n">PR ajust.</th>${compact?"":`<th class="n hide-sm">PR prom.</th><th class="n hide-sm">Top 25%</th><th class="n hide-sm">Conv. ajust.</th>`}<th class="n">Ganados</th></tr></thead><tbody>
+    <th class="n">Presencia</th><th class="n">PR ajust.</th>${compact?"":`<th class="n hide-sm">PR prom.</th><th class="n hide-sm">Conversiones</th><th class="n hide-sm">Conversión</th>`}<th class="n">Ganados</th></tr></thead><tbody>
     ${rows.map(s=>`<tr><td>${tierBadge(s.tier)}</td><td class="w">${cmdThumbLink(s.name)}${s.pilot?`<span class="flag" title="Más de la mitad de sus entradas son de un solo jugador">1 piloto</span>`:""}${s.pres>=0.15&&s.n>=4?`<span class="flag">Dominante</span>`:""}</td>
       <td class="n">${s.n}</td><td class="n">${pct(s.pres)}</td><td class="n"><b>${dec(s.prAdj)}</b></td>
       ${compact?"":`<td class="n hide-sm">${dec(s.pr)}</td><td class="n hide-sm">${s.top}</td><td class="n hide-sm">${pct(s.convAdj)}</td>`}<td class="n">${s.wins}</td></tr>`).join("")}
@@ -577,7 +577,7 @@ function deckCards(rows){
   if(!rows.length) return `<div class="empty">Aún no hay resultados con estos filtros.</div>`;
   return `<div class="cgrid">${rows.map((s,i)=>`<a class="ccard rcardk" href="#cmd-${slug(s.name)}">${cardArt(s.name)}
     <span class="ctop">${tierBadge(s.tier)}<span><b>${esc(s.name)}</b>${pips(s.name)}${(s.pilot||(s.pres>=0.15&&s.n>=4))?`<span class="flags">${s.pilot?`<span class="flag">1 piloto</span>`:""}${s.pres>=0.15&&s.n>=4?`<span class="flag">Dominante</span>`:""}</span>`:""}</span></span>
-    <span class="cbot"><span>Presencia <b>${pct(s.pres)}</b></span><span>Entradas <b>${s.n}</b></span><span>PR ajust. <b>${dec(s.prAdj)}</b></span></span></a>`).join("")}</div>`;
+    <span class="cbot"><span>Presencia <b>${pct(s.pres)}</b></span><span>Conversión <b>${pct(s.convAdj)}</b></span><span>Entradas <b>${s.n}</b></span></span></a>`).join("")}</div>`;
 }
 const medal = p => `<span class="medal ${["","m1","m2","m3"][Number(p)]||""}">${esc(p)}</span>`;
 function winnerOf(t){ return DB.resultados.find(r=>r.torneo===t.id && Number(r.puesto)===1); }
@@ -636,7 +636,7 @@ const views = {
         <div class="ctl"><span class="lbl">Vista</span><div class="seg"><button data-view="cards" class="${viewMode==="cards"?"on":""}">Tarjetas</button><button data-view="table" class="${viewMode==="table"?"on":""}">Tabla</button></div></div>
       </div>
       <section>${viewMode==="table"?tierTable(rows,false,b.code):deckCards(rows)}${LEGEND}
-      <p class="note">Top 25% = terminó en el primer cuarto de la tabla. Un mazo recibe tier con 4 entradas en 2 torneos o más; antes queda en observación.</p></section>
+      <p class="note">Presencia = porcentaje de las entradas del formato que usan ese mazo. Conversión = qué tan seguido termina en el primer cuarto de la tabla, suavizado para no exagerar con pocos torneos. PR = puesto relativo: 1 es primer lugar y 0 el último. Un mazo recibe tier con 4 entradas en 2 torneos o más; antes queda en observación.</p></section>
       ${allT.length>3?`<section><h2>Todos los torneos</h2>${tourCards(allT)}</section>`:""}`;
   },
   torneo(id){
@@ -653,7 +653,7 @@ const views = {
     const rs = DB.resultados.filter(r=>r.comandante===name).sort((a,b)=>Number(a.puesto)/(a.t.jugadores||1)-Number(b.puesto)/(b.t.jugadores||1) || (b.fecha||"").localeCompare(a.fecha||""));
     const brs = [...new Set(rs.map(r=>r.bracket))];
     const chips = brs.map(code => { const s = stats(code, "todo").rows.find(x=>x.name===name); if(!s) return "";
-      return `<span><b>${s.n}</b> entradas</span><span><b>${pct(s.pres)}</b> del meta</span><span>PR ajust. <b>${dec(s.prAdj)}</b></span><span><b>${s.top}</b> en top 25%</span><span><b>${s.wins}</b> ganados</span><span><b>${TIERNAME[s.tier]}</b></span>`; }).join("");
+      return `<span><b>${s.n}</b> entradas</span><span><b>${pct(s.pres)}</b> del meta</span><span>Conversión <b>${pct(s.convAdj)}</b></span><span><b>${s.top}</b> ${s.top===1?"conversión":"conversiones"}</span><span>PR ajust. <b>${dec(s.prAdj)}</b></span><span><b>${s.wins}</b> ganados</span><span><b>${TIERNAME[s.tier]}</b></span>`; }).join("");
     return `<section class="banner">${cardArt(name)}<div><div class="kicker" style="color:#c9cdda">${esc(brs.map(fmtName).join(" · "))}</div><h1>${esc(name)}</h1>${pips(name)}<div class="chips">${chips}</div></div></section>
       <section><h2>Resultados en torneos</h2><div class="rgrid">${rs.map(r=>`<a class="rcard" href="#torneo-${slug(r.torneo)}">
         <span class="top">${medal(r.puesto)}<b>${esc(r.jugador)}</b></span>
