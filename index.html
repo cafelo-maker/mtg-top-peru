@@ -144,7 +144,6 @@ td.w .cmd{display:inline}
 .chip .pips{margin-right:6px}
 .note{font-size:13px;color:var(--muted);max-width:72ch}
 .empty{padding:28px;text-align:center;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:8px}
-input[type=search]{font:inherit;font-size:17px;width:100%;max-width:560px;padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:32px}
 .grid2>*{min-width:0}
 .kv{display:flex;gap:12px 36px;flex-wrap:wrap;align-items:flex-end}
@@ -386,7 +385,6 @@ a.orow{color:var(--ink)}a.orow:hover{border-color:var(--accent)}
     <div class="navgroup rest"><span class="glabel">Explorar</span><div class="gitems">
       <a href="#inicio" data-r="inicio" class="dup">Inicio</a>
       <a href="#torneos" data-r="torneos">Torneos</a>
-      <a href="#buscar" data-r="buscar">Buscar</a>
     </div></div>
     <div class="navgroup tools"><span class="glabel">Tu torneo</span><div class="gitems">
       <a href="#organizar" data-r="organizar">Organizar<span class="long"> torneo</span></a>
@@ -676,24 +674,9 @@ const views = {
     const ts = [...DB.torneos].sort((a,b)=>(b.fecha||"").localeCompare(a.fecha||""));
     return `<section class="pagehead"><div class="kicker">Todos los formatos</div><h1>Torneos</h1><p class="sub">${ts.length} ${ts.length===1?"torneo registrado":"torneos registrados"}, del más reciente al más antiguo.</p></section>
       <section>${tourCards(ts)}</section>`;
-  },
-  buscar(){
-    return `<section><div class="kicker">Buscar</div><h1>Mazos, jugadores y tiendas</h1></section>
-      <input type="search" id="q" placeholder="Escribe un nombre: Kinnan, Necro, Inti…" aria-label="Buscar">
-      <div id="res"></div>`;
   }
 };
 function notFound(){ return `<div class="empty">No encontramos esa página. <a href="#inicio">Volver al inicio</a></div>`; }
-function search(q){
-  q = slug(q); const out = document.getElementById("res"); if(!q){ out.innerHTML=""; return; }
-  const cmds = [...new Set(DB.resultados.map(r=>r.comandante))].filter(n=>n!=="Desconocido" && slug(n).includes(q));
-  const plys = [...new Set(DB.resultados.map(r=>r.jugador))].filter(n=>slug(n).includes(q));
-  const tns = DB.torneos.filter(t=>slug(t.tienda+" "+(t.tipo||"")+" "+t.id).includes(q));
-  const sec = (title, items) => items.length ? `<section><h2>${title}</h2><div class="tbl"><table><tbody>${items.join("")}</tbody></table></div></section>` : "";
-  out.innerHTML = (sec("Mazos", cmds.map(n=>`<tr><td>${cmdLink(n)}</td></tr>`)) +
-    sec("Jugadores", plys.map(n=>`<tr><td><a href="#jugador-${slug(n)}">${esc(n)}</a></td></tr>`)) +
-    sec("Torneos", tns.map(t=>`<tr><td>${fdate(t.fecha)}</td><td><a href="#torneo-${slug(t.id)}">${esc(t.tipo||"Torneo")} @ ${esc(t.tienda)}</a></td></tr>`))) || `<div class="empty">Sin resultados.</div>`;
-}
 
 /* ===== Organizar torneo (se guarda en el navegador del organizador) ===== */
 const ORG_KEY = "mtp-organizador";
@@ -1112,7 +1095,6 @@ function route(){
   else if(h.startsWith("torneo-")) { html = views.torneo(h.slice(7)); nav=""; }
   else if(h.startsWith("cmd-")) { html = views.cmd(h.slice(4)); nav=""; }
   else if(h.startsWith("jugador-")) { html = views.jugador(h.slice(8)); nav=""; }
-  else if(h==="buscar") html = views.buscar();
   else if(h==="torneos") html = views.torneos();
   else if(h==="organizar") html = orgList();
   else if(h==="registrar") html = regView();
@@ -1131,7 +1113,6 @@ function route(){
   const fp = document.getElementById("f-period"); if(fp) fp.onchange = () => { period=fp.value; route(); };
   const fm = document.getElementById("f-min"); if(fm) fm.onchange = () => { minN=Number(fm.value); route(); };
   if(orgFocus){ const f = document.getElementById(orgFocus); orgFocus = ""; if(f) f.focus(); }
-  const q = document.getElementById("q"); if(q){ q.oninput = () => search(q.value); q.focus(); }
 }
 fetch("data.json").then(r=>r.json()).then(d=>{
   DB = d; enrich();
