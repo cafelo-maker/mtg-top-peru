@@ -216,7 +216,8 @@ a.rcard:hover{color:var(--ink);border-color:var(--accent)}
 .rank{position:absolute;top:10px;right:10px;z-index:1;display:grid;place-items:center;min-width:34px;height:34px;padding:0 9px;border-radius:999px;background:rgba(8,10,16,.72);backdrop-filter:blur(4px);color:#fff;font-family:var(--display);font-weight:800;font-size:15px;line-height:1;box-shadow:0 0 0 1px rgba(255,255,255,.18)}
 .rank.medal-svg{background:none;backdrop-filter:none;box-shadow:none;padding:0;min-width:0;height:auto;top:6px;right:8px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
 .rank.medal-svg svg{display:block;width:40px;height:52px}
-.scard .ctop{padding-right:58px}
+.scard .ctop,.rcardk .ctop{padding-right:58px}
+.rcardk .ctop{flex-wrap:wrap}
 .scard .who{display:block;font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.01em;line-height:1.15}
 .scard .deckname{display:block;font-size:13px;font-weight:500;color:#e3e5ec;margin-top:3px;line-height:1.25}
 .scard .pips{margin-top:6px}
@@ -417,7 +418,7 @@ function colorChips(){
 function cardArt(name){ return `<span class="cart" style="background:${gradOf(name)}">${artParts(name).map(p=>bigImg(p)).join("")}</span>`; }
 function deckCards(rows){
   if(!rows.length) return `<div class="empty">Aún no hay resultados con estos filtros.</div>`;
-  return `<div class="cgrid">${rows.map(s=>`<a class="ccard" href="#cmd-${slug(s.name)}">${cardArt(s.name)}
+  return `<div class="cgrid">${rows.map((s,i)=>`<a class="ccard rcardk" href="#cmd-${slug(s.name)}">${cardArt(s.name)}${rankBadge(i+1)}
     <span class="ctop">${tierBadge(s.tier)}<span><b>${esc(s.name)}</b>${pips(s.name)}${(s.pilot||(s.pres>=0.15&&s.n>=4))?`<span class="flags">${s.pilot?`<span class="flag">1 piloto</span>`:""}${s.pres>=0.15&&s.n>=4?`<span class="flag">Dominante</span>`:""}</span>`:""}</span></span>
     <span class="cbot"><span>Presencia <b>${pct(s.pres)}</b></span><span>Entradas <b>${s.n}</b></span><span>PR ajust. <b>${dec(s.prAdj)}</b></span></span></a>`).join("")}</div>`;
 }
