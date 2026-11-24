@@ -1,0 +1,182 @@
+{
+ "imagenes": [
+  "etali-primal-conqueror",
+  "kinnan-bonder-prodigy",
+  "ob-nixilis-captive-kingpin",
+  "scientist-supreme-of-a-i-m",
+  "sisay-weatherlight-captain",
+  "sythis-harvest-s-hand",
+  "thrasios-triton-hero",
+  "tymna-the-weaver",
+  "winota-joiner-of-forces"
+ ],
+ "generado": "2026-11-24",
+ "torneos": [
+  {
+   "id": "2026-11-22-INTILINCE-B5",
+   "fecha": "2026-11-22",
+   "bracket": "B5",
+   "tienda": "Inti Lince",
+   "ciudad": "Lima",
+   "jugadores": 8,
+   "tipo": "cEDH",
+   "link": null
+  }
+ ],
+ "comandantes": [
+  {
+   "nombre": "Sythis, Harvest's Hand",
+   "bracket": "B5",
+   "colores": "GW",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Kinnan, Bonder Prodigy",
+   "bracket": "B5",
+   "colores": "UG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Winota, Joiner of Forces",
+   "bracket": "B5",
+   "colores": "RW",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Etali, Primal Conqueror",
+   "bracket": "B5",
+   "colores": "RG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Sisay, Weatherlight Captain",
+   "bracket": "B5",
+   "colores": "WUBRG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Scientist Supreme of A.I.M.",
+   "bracket": "B5",
+   "colores": "UB",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Thrasios, Triton Hero + Tymna the Weaver",
+   "bracket": "B5",
+   "colores": "WUBG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Ob Nixilis, Captive Kingpin",
+   "bracket": "B5",
+   "colores": "BR",
+   "estrategia": null,
+   "carta": null
+  }
+ ],
+ "resultados": [
+  {
+   "torneo": "2026-11-22-INTILINCE-B5",
+   "jugador": "Necro",
+   "comandante": "Thrasios, Triton Hero + Tymna the Weaver",
+   "estrategia": null,
+   "puesto": 1,
+   "puntos": 8,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B5",
+   "jugador": "Kevin",
+   "comandante": "Scientist Supreme of A.I.M.",
+   "estrategia": null,
+   "puesto": 2,
+   "puntos": 5,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B5",
+   "jugador": "Cafelo",
+   "comandante": "Sythis, Harvest's Hand",
+   "estrategia": null,
+   "puesto": 3,
+   "puntos": 5,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B5",
+   "jugador": "Stefano",
+   "comandante": "Ob Nixilis, Captive Kingpin",
+   "estrategia": null,
+   "puesto": 4,
+   "puntos": 4,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B5",
+   "jugador": "Antonio",
+   "comandante": "Kinnan, Bonder Prodigy",
+   "estrategia": null,
+   "puesto": 5,
+   "puntos": 1,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B5",
+   "jugador": "Jairo",
+   "comandante": "Winota, Joiner of Forces",
+   "estrategia": null,
+   "puesto": 6,
+   "puntos": 1,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B5",
+   "jugador": "Uber",
+   "comandante": "Etali, Primal Conqueror",
+   "estrategia": null,
+   "puesto": 7,
+   "puntos": 0,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B5",
+   "jugador": "Julio",
+   "comandante": "Sisay, Weatherlight Captain",
+   "estrategia": null,
+   "puesto": 8,
+   "puntos": 0,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  }
+ ]
+}

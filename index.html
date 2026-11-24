@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Meta Commander Perú</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: barra de tienda oscura fija; portada con mosaico de arte; columna de 1120px; tiers como rarezas de carta (mítica, rara, infrecuente, común) */
+:root{
+  --bg:#eceef3; --surface:#ffffff; --surface2:#f5f6f9; --ink:#121522; --muted:#5a6072; --line:#dadde6;
+  --accent:#2a4fd6; --accent-soft:#e3e8fb;
+  --bar:#0e111b; --bar-ink:#f1f2f6; --bar-muted:#9aa0b4;
+  --tS1:#ff8a3d; --tS2:#c4321d; --tA1:#f2cf6b; --tA2:#a8780f; --tB1:#b9c7d8; --tB2:#5b7088; --tC1:#7c8294; --tC2:#3c4152;
+  --gold:#a8780f;
+  --mW:#f3ecd0; --mU:#2f6fb3; --mB:#2b2a2e; --mR:#c8452b; --mG:#2f7d4a; --mC:#b9b6ad;
+  --display:"Big Shoulders Display","Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0b0d14; --surface:#141824; --surface2:#1a1f2e; --ink:#e9ebf2; --muted:#9298ad; --line:#262c3d;
+  --accent:#8ea7ff; --accent-soft:#1d2645; --gold:#e6c25a; --tC1:#8a90a3; --tC2:#4a5063;
+  --mW:#e9e1bf; --mB:#8b8790; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b0d14; --surface:#141824; --surface2:#1a1f2e; --ink:#e9ebf2; --muted:#9298ad; --line:#262c3d;
+  --accent:#8ea7ff; --accent-soft:#1d2645; --gold:#e6c25a; --tC1:#8a90a3; --tC2:#4a5063;
+  --mW:#e9e1bf; --mB:#8b8790; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bar)}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bar);color:var(--bar-ink)}
+header .wrap{display:flex;align-items:center;gap:8px 24px;flex-wrap:wrap;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:25px;font-weight:800;letter-spacing:.03em;color:var(--bar-ink);text-transform:uppercase;line-height:1}
+.brand:hover{text-decoration:none}
+.brand svg{flex:none}
+.brand small{color:var(--bar-muted);font-weight:700}
+nav{display:flex;gap:2px;flex-wrap:wrap}
+nav a{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:.05em;text-transform:uppercase;color:var(--bar-muted);padding:6px 10px;border-radius:3px;line-height:1}
+nav a.on{color:var(--bar);background:var(--bar-ink)}
+nav a:hover{text-decoration:none;color:var(--bar-ink)}
+nav a.on:hover{color:var(--bar)}
+main{padding-block:28px 64px;display:grid;grid-template-columns:minmax(0,1fr);gap:40px}
+main>*{min-width:0}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,6vw,60px);line-height:.95;margin:0;text-wrap:balance;letter-spacing:.005em;text-transform:uppercase}
+h2{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:.04em;text-transform:uppercase;margin:0 0 12px;line-height:1}
+h2 a{color:inherit}
+.sub{color:var(--muted);margin:8px 0 0;max-width:62ch}
+.kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.secthead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.secthead h2{margin:0}
+.stats{display:flex;gap:12px 36px;flex-wrap:wrap;margin-top:18px}
+.stat b{display:block;font-family:var(--display);font-weight:800;font-size:38px;line-height:1}
+.stat span{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+/* Portada: mosaico de arte detrás del título */
+.hero{position:relative;overflow:hidden;border-radius:10px;background:var(--bar);color:var(--bar-ink);isolation:isolate}
+.mosaic{position:absolute;inset:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));grid-auto-rows:110px;z-index:-2;opacity:.55}
+.mosaic img{width:100%;height:100%;object-fit:cover;filter:saturate(1.1)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--bar) 18%,rgba(14,17,27,.82) 55%,rgba(14,17,27,.35))}
+.hero-in{padding:44px 32px 36px;max-width:640px;display:grid;gap:12px}
+.hero-in .sub,.hero-in .stats{margin-top:0}
+.hero .kicker,.hero .sub,.hero .stat span{color:var(--bar-muted)}
+.hero .sub{color:#c9cdda}
+.hero .stat b{color:var(--bar-ink)}
+.manarow{display:inline-flex;gap:4px;margin-right:8px;vertical-align:-2px}
+/* Tarjetas de formato */
+.formats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:12px}
+.fmt{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:130px;padding:14px;border-radius:8px;overflow:hidden;background:var(--surface);border:1px solid var(--line);color:var(--ink);isolation:isolate}
+.fmt:hover{text-decoration:none;border-color:var(--accent)}
+.fmt .bgart{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.fmt.has{color:#fff;border-color:transparent}
+.fmt.has::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,12,20,.1),rgba(10,12,20,.88) 70%)}
+.fmt .code{position:absolute;top:12px;left:14px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;padding:2px 6px;border-radius:3px;background:var(--surface2);color:var(--muted)}
+.fmt.has .code{background:rgba(0,0,0,.45);color:#fff}
+.fmt b{font-family:var(--display);font-weight:800;font-size:26px;text-transform:uppercase;line-height:1}
+.fmt span{font-size:13px;opacity:.85}
+.fmt.none span{color:var(--muted);opacity:1}
+/* Podio */
+.podium{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:12px}
+.pcard{position:relative;border-radius:8px;overflow:hidden;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column}
+.pcard .artbox{position:relative;aspect-ratio:16/10;max-width:100%;display:flex;overflow:hidden;background:var(--surface2)}
+.pcard .artbox img{position:relative;flex:1 1 0;min-width:0;height:100%;object-fit:cover}
+.pcard .artbox .ini{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:34px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.pcard .pos{position:absolute;top:8px;left:8px;min-width:40px;height:40px;padding:0 8px;display:grid;place-items:center;border-radius:6px;font-family:var(--display);font-weight:800;font-size:26px;background:rgba(10,12,20,.78);color:#fff;line-height:1}
+.pcard.first .pos{background:linear-gradient(135deg,var(--tA1),var(--tA2));color:#1d1503}
+.pcard .info{padding:10px 12px 12px;display:grid;gap:2px;min-width:0}
+.pcard .who{font-weight:600}
+.pcard .deck{font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* Tablas */
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:500;padding:10px 14px;border-bottom:1px solid var(--line);white-space:nowrap;background:var(--surface2)}
+td{white-space:nowrap;padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+tbody tr:hover td{background:var(--surface2)}
+tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right;white-space:nowrap}
+td.n b{font-weight:700}
+td.w{white-space:normal;min-width:260px}
+td.w .cmd{display:inline}
+.place{font-family:var(--display);font-weight:800;font-size:24px;width:52px;line-height:1}
+.place.p1{color:var(--gold)}
+/* Tiers como rarezas */
+.tier{display:inline-block;white-space:nowrap;padding:4px 9px 3px;border-radius:4px;font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:.05em;text-transform:uppercase;color:#fff;line-height:1}
+.tier.S{background:linear-gradient(160deg,var(--tS1),var(--tS2))}
+.tier.A{background:linear-gradient(160deg,var(--tA1),var(--tA2));color:#1d1503}
+.tier.B{background:linear-gradient(160deg,var(--tB1),var(--tB2))}
+.tier.C{background:linear-gradient(160deg,var(--tC1),var(--tC2))}
+.tier.obs{white-space:nowrap;background:transparent;color:var(--muted);border:1px dashed var(--muted);border-radius:3px;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.04em;padding:3px 6px;text-transform:uppercase}
+.legend{display:flex;gap:10px 22px;flex-wrap:wrap;align-items:center;margin-top:14px;font-size:13px;color:var(--muted)}
+.legend>span{display:inline-flex;align-items:center;gap:8px}
+.legend .tier{font-size:14px}
+.pips{display:inline-flex;gap:2px;margin-right:8px;vertical-align:-1px}
+.pip{width:15px;height:15px;flex:none;border-radius:50%;box-shadow:0 1px 0 rgba(0,0,0,.35)}
+.cmd{display:inline-flex;align-items:center;font-weight:600}
+.thumbs{display:inline-flex;gap:2px;width:56px;margin-right:12px;flex:none;vertical-align:middle}
+.th{position:relative;width:56px;height:40px;border-radius:4px;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.thumbs.two .th{width:27px}
+.cmdrow .pips{width:84px;flex:none}
+.th .ini{font-family:var(--display);font-weight:800;font-size:15px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6);letter-spacing:.04em}
+.th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cmdrow{display:inline-flex;align-items:center;min-width:0}
+.flag{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-left:8px;padding:2px 5px;border:1px solid var(--line);border-radius:3px}
+/* Barras de presencia */
+.bars{display:grid;gap:8px}
+.bar{display:grid;grid-template-columns:minmax(0,1fr) 140px 52px;gap:12px;align-items:center;font-size:14px}
+.bar .lab{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar .lab .cmd{display:inline}
+.bar .track{height:12px;background:var(--surface2);border-radius:0 4px 4px 0;overflow:hidden;box-shadow:inset 0 0 0 1px var(--line)}
+.bar .fill{height:100%;background:var(--accent);border-radius:0 4px 4px 0}
+.bar .pct{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;min-width:0}
+.chip{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;display:inline-flex;align-items:center}
+.chip:hover{border-color:var(--accent)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip .pips{margin-right:6px}
+.note{font-size:13px;color:var(--muted);max-width:72ch}
+.empty{padding:28px;text-align:center;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:8px}
+input[type=search]{font:inherit;font-size:17px;width:100%;max-width:560px;padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:32px}
+.grid2>*{min-width:0}
+.kv{display:flex;gap:12px 36px;flex-wrap:wrap;align-items:flex-end}
+.pagehead{display:grid;gap:6px}
+.strip{display:flex;gap:4px;margin-top:16px;overflow:hidden;border-radius:6px;max-width:100%}
+.strip .ph{width:72px;height:52px;flex:none;border-radius:3px;overflow:hidden}
+.strip img{width:100%;height:100%;object-fit:cover}
+.hero-cmd{position:relative;overflow:hidden;border-radius:10px;background:var(--bar);color:var(--bar-ink);display:flex;gap:20px;align-items:flex-end;flex-wrap:wrap;padding:24px;isolation:isolate}
+.hero-cmd .blur{position:absolute;inset:-30px;width:calc(100% + 60px);height:calc(100% + 60px);object-fit:cover;filter:blur(24px) saturate(1.2);opacity:.55;z-index:-1;max-width:none}
+.hero-cmd .arts{display:flex;gap:6px;flex-wrap:wrap}
+.art{width:220px;aspect-ratio:4/3;max-width:100%;border-radius:6px;object-fit:cover;background:var(--surface2);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.hero-cmd .kicker{color:#c9cdda}
+/* Tarjetas de mazo estilo galería */
+.toolbar{display:flex;gap:14px 22px;flex-wrap:wrap;align-items:flex-end;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.ctl{display:grid;gap:4px}
+.ctl label,.ctl .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+select{font:inherit;font-size:14px;padding:7px 30px 7px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface2);color:var(--ink);appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 15px) 52%,calc(100% - 10px) 52%;background-size:5px 5px;background-repeat:no-repeat;cursor:pointer}
+.manabtns{display:flex;gap:6px}
+.mb{width:36px;height:36px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:1px;opacity:1;background:transparent;transition:opacity .15s,transform .15s;display:grid;place-items:center}
+.mb svg{width:100%;height:100%;display:block;filter:drop-shadow(0 1px 0 rgba(0,0,0,.35))}
+.mb:hover{transform:translateY(-1px)}
+.manabtns.sel .mb{opacity:.35}
+.manabtns.sel .mb.on{opacity:1;border-color:var(--ink)}
+.mb:hover{opacity:.85}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;padding:7px 12px;border:0;background:var(--surface2);color:var(--muted);cursor:pointer}
+.seg button.on{background:var(--ink);color:var(--bg)}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:14px}
+.ccard{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:176px;border-radius:10px;overflow:hidden;color:#fff;isolation:isolate;background:var(--bar)}
+.ccard:hover{text-decoration:none}
+.ccard .cart{position:absolute;inset:0;display:flex;z-index:-2}
+.ccard .cart img{flex:1 1 0;min-width:0;height:100%;object-fit:cover;transition:transform .4s ease}
+.ccard:hover .cart img{transform:scale(1.04)}
+.ccard::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(8,10,16,.78) 0%,rgba(8,10,16,.15) 42%,rgba(8,10,16,.15) 58%,rgba(8,10,16,.85) 100%)}
+.ccard .ctop{display:flex;gap:10px;align-items:flex-start;padding:12px 14px}
+.ccard .ctop b{display:block;font-size:17px;font-weight:700;line-height:1.2;text-wrap:balance}
+.ccard .ctop .pips{margin-top:6px}
+.ccard .ctop .tier{flex:none;font-size:15px}
+.ccard .ctop .tier.obs{color:#d6d9e3;border-color:#d6d9e3;font-size:9.5px;padding:2px 5px}
+.ccard .cbot{display:flex;gap:4px 14px;flex-wrap:wrap;padding:9px 14px;font-size:13px;background:rgba(8,10,16,.55);backdrop-filter:blur(4px);font-variant-numeric:tabular-nums}
+.ccard .cbot span{color:#c3c7d4}
+.ccard .cbot b{color:#fff;font-weight:600}
+.ccard .flags{display:flex;gap:6px;margin-top:6px}
+.ccard .flag{margin:0;color:#e9ebf2;border-color:rgba(255,255,255,.35)}
+/* Banner de comandante */
+.banner{position:relative;overflow:hidden;border-radius:10px;min-height:280px;display:grid;place-items:center;text-align:center;color:#fff;isolation:isolate;background:var(--bar);padding:40px 20px}
+.banner .cart{position:absolute;inset:0;display:flex;z-index:-2}
+.banner .cart img{flex:1 1 0;min-width:0;height:100%;object-fit:cover}
+.banner::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at center,rgba(8,10,16,.55),rgba(8,10,16,.85))}
+.banner h1{color:#fff;font-size:clamp(34px,6vw,64px)}
+.banner .pips{margin:10px 0 0}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.chips span{font-size:13px;padding:5px 10px;border-radius:6px;background:rgba(8,10,16,.6);color:#e9ebf2;font-variant-numeric:tabular-nums}
+.chips b{color:#fff}
+/* Tarjetas de resultado y de torneo */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:12px}
+.rcard{display:grid;gap:6px;padding:14px;border-radius:8px;background:var(--surface);border:1px solid var(--line);color:var(--ink);min-width:0}
+a.rcard:hover{text-decoration:none;border-color:var(--accent)}
+.rcard .top{display:flex;align-items:center;gap:10px;min-width:0}
+.rcard .top b{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rcard .meta{font-size:13px;color:var(--muted)}
+.rcard .line{display:flex;gap:4px 14px;flex-wrap:wrap;font-size:13px;padding-top:8px;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}
+.rcard .line span{color:var(--muted)}
+.medal{flex:none;display:grid;place-items:center;min-width:30px;height:30px;padding:0 6px;border-radius:50%;font-family:var(--body);font-weight:700;font-size:14px;background:var(--surface2);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.medal.m1{background:linear-gradient(160deg,var(--tA1),var(--tA2));color:#1d1503;box-shadow:none}
+.medal.m2{background:linear-gradient(160deg,#e4e8ef,#8d97a7);color:#14181f;box-shadow:none}
+.medal.m3{background:linear-gradient(160deg,#e0a47a,#8a4f2a);color:#fff;box-shadow:none}
+.tcard{position:relative;display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:8px;background:var(--surface);border:1px solid var(--line);color:var(--ink);min-width:0}
+.tcard:hover{text-decoration:none;border-color:var(--accent)}
+.tcard .code{align-self:flex-start;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;padding:2px 6px;border-radius:3px;background:var(--surface2);color:var(--muted)}
+.tcard b{font-family:var(--display);font-weight:800;font-size:24px;text-transform:uppercase;line-height:1}
+.tcard .win{display:flex;align-items:center;gap:8px;font-size:13.5px;padding-top:8px;border-top:1px solid var(--line);min-width:0}
+.tcard .win .thumbs{margin-right:0}
+footer{color:var(--muted);font-size:12px;padding-block:22px;border-top:1px solid var(--line)}
+@media (max-width:560px){.toolbar{padding:12px}.ccard{min-height:150px}.banner{min-height:220px}.hero-in{padding:28px 20px 24px}.fmt{min-height:110px}.fmt b{font-size:21px}.pcard .info{padding:8px 10px 10px}.pcard .deck{font-size:12.5px}.bar{grid-template-columns:minmax(0,1fr) 70px 46px}.hide-sm{display:none}.art{width:140px}nav a{font-size:15px;padding:6px 8px}}
+@media (prefers-reduced-motion:no-preference){.fill{transition:width .5s ease}.fmt,.chip{transition:border-color .15s}}
+</style>
+
+<!-- Símbolos de maná: glifos de Mana font (Andrew Gioia, licencia MIT) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ms-W" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#f0f2c0"/><path fill="#111" transform="translate(16 16) scale(.72) translate(-16 -16)" d="M31.915 18.358c-2.189-1.234-3.593-1.852-4.21-1.852-0.448 0-0.799 0.344-1.052 1.032s-0.758 1.031-1.515 1.031c-0.309 0-0.94-0.112-1.895-0.336-0.533 0.814-0.8 1.334-0.8 1.558 0 0.309 0.23 0.673 0.689 1.095s0.846 0.631 1.162 0.631c0.201 0 0.473-0.042 0.817-0.127 0.344-0.083 0.574-0.126 0.689-0.126 0.345 0 0.516 0.632 0.516 1.895 0 1.207-0.28 3.059-0.842 5.558-0.73-2.863-1.502-4.295-2.315-4.295-0.113 0-0.344 0.084-0.695 0.254-0.351 0.168-0.611 0.252-0.779 0.252-0.814 0-1.543-0.743-2.189-2.232-1.291 0.197-1.937 0.857-1.937 1.98 0 0.562 0.259 1.010 0.779 1.347 0.518 0.336 0.779 0.576 0.779 0.716 0 0.759-1.109 1.924-3.327 3.495-1.178 0.842-1.993 1.431-2.441 1.768 0.392-0.505 0.785-1.164 1.179-1.978 0.448-0.926 0.673-1.642 0.673-2.148 0-0.28-0.323-0.674-0.968-1.179s-0.968-1.038-0.968-1.599c0-0.477 0.168-1.066 0.505-1.768-0.365-0.421-0.799-0.632-1.305-0.632-1.123 0-1.684 0.366-1.684 1.095 0-0.505 0-0.127 0 1.137 0.027 0.926-0.674 1.39-2.106 1.39-1.094 0-2.934-0.253-5.515-0.758 2.919-0.73 4.379-1.572 4.379-2.526 0 0.112-0.056-0.224-0.168-1.011-0.113-0.869 0.505-1.656 1.852-2.357-0.253-1.291-0.925-1.938-2.021-1.938-0.168 0-0.478 0.295-0.926 0.883-0.449 0.591-0.87 0.885-1.262 0.885-0.674 0-1.545-0.73-2.61-2.19-0.506-0.729-1.278-1.81-2.316-3.242 0.645 0.338 1.291 0.674 1.937 1.011 0.842 0.392 1.515 0.589 2.021 0.589 0.393 0 0.779-0.344 1.158-1.032s0.877-1.032 1.495-1.032c0.085 0 0.646 0.168 1.684 0.506 0.533-0.814 0.8-1.418 0.8-1.811 0-0.337-0.204-0.723-0.611-1.158s-0.779-0.652-1.116-0.652c-0.141 0-0.358 0.042-0.653 0.126-0.294 0.084-0.512 0.127-0.652 0.127-0.506 0-0.758-0.632-0.758-1.895 0-0.337 0.323-2.259 0.969-5.768-0.029 0.42 0.154 1.207 0.547 2.357 0.477 1.404 1.038 2.105 1.685 2.105 0.111 0 0.336-0.084 0.673-0.253s0.603-0.252 0.8-0.252c0.645 0 1.178 0.365 1.6 1.094l0.632 1.137c0.589 0 1.081-0.21 1.473-0.631s0.59-0.927 0.59-1.516c0-0.617-0.259-1.088-0.779-1.411s-0.78-0.568-0.78-0.737c0-0.59 0.927-1.586 2.779-2.989 1.487-1.122 2.456-1.782 2.906-1.979-1.207 1.628-1.811 2.82-1.811 3.579 0 0.393 0.238 0.815 0.716 1.263 0.589 0.533 0.926 0.912 1.010 1.137 0.28 0.647 0.252 1.53-0.084 2.653 0.758 0.534 1.333 0.8 1.727 0.8 0.813 0 1.221-0.422 1.221-1.263 0-0.084-0.035-0.351-0.105-0.8-0.071-0.449-0.091-0.702-0.064-0.758 0.112-0.393 0.884-0.59 2.316-0.59 0.898 0 2.764 0.253 5.6 0.758-0.618 0.168-1.544 0.42-2.779 0.758-1.123 0.337-1.685 0.716-1.685 1.137 0 0.197 0.070 0.533 0.211 1.010s0.211 0.828 0.211 1.053c0 0.392-0.253 0.758-0.758 1.094l-1.432 1.011c0.337 0.618 0.561 0.983 0.674 1.094 0.28 0.336 0.659 0.505 1.137 0.505 0.337 0 0.645-0.295 0.926-0.884s0.73-0.884 1.347-0.884c0.758 0 1.614 0.702 2.569 2.106 0.532 0.788 1.36 1.98 2.483 3.58zM22.569 15.917c0-1.796-0.66-3.354-1.98-4.674s-2.877-1.979-4.673-1.979c-1.825 0-3.397 0.653-4.716 1.959s-1.993 2.87-2.021 4.694c-0.029 1.796 0.638 3.347 2 4.651 1.362 1.305 2.94 1.959 4.736 1.959 1.909 0 3.501-0.625 4.778-1.874 1.278-1.248 1.902-2.827 1.875-4.736zM21.937 15.917c0 1.712-0.576 3.131-1.727 4.252-1.152 1.124-2.583 1.685-4.295 1.685-1.656 0-3.074-0.575-4.252-1.727-1.178-1.15-1.768-2.554-1.768-4.21 0-1.627 0.596-3.025 1.788-4.189 1.194-1.165 2.604-1.748 4.232-1.748s3.038 0.589 4.232 1.769c1.193 1.179 1.79 2.568 1.79 4.168z"/></symbol><symbol id="ms-U" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#b5cde3"/><path fill="#111" transform="translate(16 16) scale(.72) translate(-16 -16)" d="M23.11 29.095c-1.903 1.937-4.248 2.905-7.033 2.905-3.126 0-5.605-1.070-7.439-3.21-1.733-2.038-2.599-4.637-2.599-7.795 0-3.397 1.478-7.271 4.433-11.62 2.411-3.566 5.248-6.692 8.509-9.375-0.476 2.175-0.713 3.72-0.713 4.637 0 2.107 0.662 4.162 1.986 6.166 1.631 2.378 2.87 4.145 3.72 5.299 1.325 2.005 1.987 3.958 1.987 5.859 0.001 2.82-0.951 5.198-2.852 7.133zM23.058 18.216c-0.509-1.138-1.104-1.893-1.784-2.268 0.102 0.204 0.153 0.493 0.153 0.867 0 0.714-0.204 1.732-0.612 3.057l-0.662 2.038c0 1.189 0.593 1.784 1.783 1.784 1.256 0 1.885-0.833 1.885-2.497 0-0.848-0.254-1.842-0.764-2.981z"/></symbol><symbol id="ms-B" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#aca29a"/><path fill="#111" transform="translate(16 16) scale(.72) translate(-16 -16)" d="M31.406 15.477c0 2.089-0.76 3.513-2.279 4.273-0.444 0.222-1.836 0.522-4.178 0.902-1.519 0.254-2.278 0.839-2.278 1.756v3.845c0 0.16 0.047 0.649 0.142 1.472l0.143 1.52c0 0.475-0.111 1.251-0.333 2.327-0.601 0.126-1.298 0.268-2.089 0.428-0.254-0.951-0.38-1.599-0.38-1.948 0-0.157 0.040-0.396 0.119-0.712 0.078-0.316 0.12-0.553 0.12-0.713 0-0.22-0.197-0.838-0.59-1.85h-0.736c-0.098 0.158-0.13 0.364-0.098 0.617 0.126 0.538 0.174 0.997 0.143 1.377-0.538 0.38-1.282 0.886-2.232 1.519-0.222-0.063-0.3-0.095-0.238-0.095v-3.371c-0.062-0.157-0.221-0.22-0.475-0.19h-0.569l-0.569 4.462c-0.444 0.032-0.981 0.032-1.614 0-0.223-1.044-0.617-2.594-1.187-4.652h-0.38c-0.349 1.109-0.538 1.711-0.57 1.805 0 0.126 0.039 0.371 0.119 0.735 0.078 0.364 0.118 0.609 0.118 0.736 0 0.095-0.032 0.332-0.095 0.712l-0.143 1.139c-0.064 0.063-0.143 0.095-0.237 0.095-0.949 0-1.583-0.237-1.899-0.711-0.316-0.475-0.444-1.14-0.38-1.995l0.38-5.696c0-0.095 0.031-0.222 0.095-0.38 0.062-0.158 0.095-0.269 0.095-0.332 0-0.254-0.269-0.76-0.807-1.52-0.094-0.031-0.586-0.143-1.471-0.333-0.539-0.126-1.599-0.348-3.181-0.665-2.185-0.41-3.276-2.167-3.276-5.269 0-4.621 1.9-8.466 5.698-11.536 0.157 0.855 0.427 1.993 0.806 3.418 0.285 0.064 0.903 0.206 1.852 0.427 0.191 0.064 1.156 0.412 2.897 1.045-0.887-0.538-2.042-1.408-3.466-2.611-0.538-0.633-0.807-1.692-0.807-3.18 0-0.348 0.602-0.76 1.805-1.236 1.075-0.443 1.883-0.695 2.421-0.759 1.709-0.22 3.022-0.333 3.941-0.333 3.955 0 7.151 1.014 9.588 3.039-0.79 0.918-2.152 1.898-4.082 2.942 0.76 0.032 1.868-0.268 3.323-0.902 1.455-0.632 2.073-0.949 1.852-0.949 0.253 0 0.76 0.507 1.52 1.519 0.569 0.759 1.028 1.441 1.377 2.041 1.012 1.805 1.692 3.751 2.042 5.839 0 0.729 0.015 1.251 0.047 1.567v0.38h0.001zM13.224 16.332c0-1.361-0.594-2.651-1.78-3.87s-2.461-1.827-3.822-1.827c-1.203 0-2.263 0.51-3.181 1.529s-1.377 2.151-1.377 3.393c0 1.082 0.522 1.784 1.567 2.102 0.665 0.192 1.597 0.303 2.801 0.334h2.611c2.119 0.032 3.181-0.522 3.181-1.661zM18.398 22.219v-1.472c-0.221-0.411-0.443-0.838-0.664-1.282-0.19-0.634-0.538-1.52-1.045-2.659l-0.523 5.555c0 0.444-0.095 0.665-0.285 0.665-0.126 0-0.221-0.031-0.285-0.094-0.222-3.355-0.333-4.811-0.333-4.369v-1.661c-0.064-0.096-0.142-0.143-0.237-0.143-1.077 1.109-1.614 2.897-1.614 5.365 0 1.361 0.125 2.2 0.379 2.517 0.254-0.063 0.538-0.174 0.855-0.332 0.126-0.064 0.49-0.095 1.093-0.095 0.6 0 1.329 0.19 2.183 0.569 0.316 0 0.475-0.854 0.475-2.562zM29.127 15.604c0-1.275-0.475-2.413-1.424-3.416s-2.042-1.505-3.275-1.505c-1.329 0-2.572 0.608-3.727 1.827s-1.733 2.492-1.733 3.822c0 1.108 0.538 1.661 1.614 1.661h5.459c2.057-0.031 3.086-0.828 3.086-2.389z"/></symbol><symbol id="ms-R" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#db8664"/><path fill="#111" transform="translate(16 16) scale(.72) translate(-16 -16)" d="M30.857 22.306c-1.393 3.322-4.16 4.983-8.304 4.983-0.759 0-1.583 0.095-2.468 0.284-1.329 0.285-1.993 0.681-1.993 1.188 0 0.158 0.11 0.339 0.332 0.545 0.221 0.206 0.412 0.308 0.569 0.308-0.791 0-0.253 0.024 1.613 0.071s3.038 0.071 3.512 0.071c-2.752 1.613-7.356 2.356-13.81 2.23-2.12-0.031-3.939-0.965-5.457-2.8-1.488-1.741-2.231-3.686-2.231-5.837 0-2.277 0.767-4.216 2.302-5.814 1.533-1.596 3.441-2.396 5.718-2.396 0.506 0 1.178 0.111 2.017 0.332s1.4 0.332 1.684 0.332c1.17 0 2.626-0.482 4.367-1.448s2.563-1.448 2.468-1.448c-0.317 3.322-1.424 5.553-3.323 6.691-1.36 0.791-2.040 1.566-2.040 2.325 0 0.475 0.285 0.855 0.854 1.14 0.443 0.222 0.933 0.333 1.471 0.333 0.823 0 1.63-0.506 2.421-1.518 0.79-1.013 1.139-1.93 1.044-2.753-0.095-0.949-0.031-2.089 0.19-3.416 0.063-0.38 0.292-0.846 0.687-1.399s0.752-0.894 1.068-1.021c0 0.284-0.103 0.759-0.309 1.423s-0.308 1.156-0.308 1.471c0 0.696 0.189 1.234 0.569 1.613 0.569-0.221 1.075-0.933 1.519-2.136 0.379-0.917 0.6-1.803 0.664-2.657-1.329-0.063-2.603-0.664-3.82-1.804s-1.827-2.373-1.827-3.701c0-0.221 0.031-0.443 0.095-0.665 0.189 0.285 0.474 0.728 0.853 1.329 0.538 0.791 0.95 1.186 1.235 1.186 0.379 0 0.569-0.396 0.569-1.186 0-1.012-0.27-1.93-0.807-2.752-0.601-0.981-1.377-1.471-2.326-1.471-0.443 0-1.108 0.238-1.992 0.712-0.887 0.474-1.694 0.712-2.42 0.712-0.222 0-1.204-0.286-2.943-0.855 3.068-0.505 4.603-0.964 4.603-1.376 0-1.075-2.104-1.804-6.311-2.183-0.412-0.031-1.171-0.095-2.278-0.19 0.126-0.158 1.028-0.332 2.706-0.522 1.423-0.157 2.42-0.237 2.989-0.237 7.529 0 12.307 3.655 14.332 10.963 0.348-0.288 0.523-0.77 0.523-1.443 0-0.866-0.253-1.957-0.759-3.272-0.191-0.513-0.491-1.283-0.902-2.309 2.594 3.306 3.892 6.438 3.892 9.394 0 1.558-0.365 2.972-1.092 4.243-0.474 0.859-1.361 1.955-2.657 3.29-1.297 1.335-2.183 2.368-2.658 3.099 1.74-0.474 2.88-0.838 3.418-1.092 1.201-0.537 2.293-1.344 3.274-2.42 0 0.412-0.174 1.030-0.522 1.852zM10.166 3.656c0 0.569-0.317 0.933-0.949 1.091l-1.234 0.19c-0.443 0.221-1.092 1.092-1.946 2.61-0.095-0.474-0.237-1.138-0.427-1.993-0.285 0.032-0.759 0.285-1.423 0.759-0.285 0.221-0.744 0.553-1.377 0.996 0.191-1.139 0.823-2.292 1.899-3.464 1.139-1.296 2.246-1.945 3.322-1.945 1.423 0 2.135 0.586 2.135 1.756zM18.424 8.022c0 0.538-0.293 0.989-0.878 1.353s-1.163 0.546-1.732 0.546c-0.759 0-1.44-0.427-2.040-1.282-0.729-1.044-1.472-1.724-2.231-2.042 0.158-0.157 0.348-0.237 0.57-0.237 0.285 0 0.766 0.221 1.447 0.664s1.115 0.665 1.306 0.665c0.158 0 0.419-0.221 0.783-0.665s0.767-0.664 1.21-0.664c1.044 0 1.566 0.554 1.566 1.661z"/></symbol><symbol id="ms-G" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#93b483"/><path fill="#111" transform="translate(16 16) scale(.72) translate(-16 -16)" d="M31.729 17.957c0 0.601-0.232 1.14-0.698 1.621s-0.998 0.72-1.598 0.72c-0.959 0-1.666-0.45-2.115-1.35l-2.115-0.090c-0.451 0-1.336 0.196-2.656 0.585-1.41 0.39-2.221 0.705-2.431 0.945-0.33 0.36-0.599 1.2-0.81 2.521-0.181 1.080-0.27 1.875-0.27 2.386 0 0.809 0.127 1.403 0.382 1.778s0.78 0.69 1.575 0.945c0.794 0.255 1.283 0.398 1.463 0.428 0.12 0 0.314-0.015 0.585-0.045h0.54c0.389 0 0.794 0.061 1.215 0.18 0.6 0.18 0.856 0.42 0.766 0.721-0.421-0.060-1.155 0.030-2.205 0.27l1.26 0.63c0 0.36-0.51 0.54-1.53 0.54-0.271 0-0.638-0.060-1.104-0.179-0.465-0.121-0.773-0.18-0.922-0.18h-0.585c-0.030 0.3-0.12 0.749-0.27 1.35-0.511-0.030-1.11-0.331-1.8-0.9s-1.125-0.855-1.305-0.855c-0.181 0-0.436 0.286-0.766 0.855-0.331 0.569-0.495 0.96-0.495 1.17-0.39-0.21-0.719-0.601-0.991-1.17-0.12-0.391-0.255-0.78-0.404-1.17-0.3 0.030-0.856 0.661-1.665 1.891h-0.226c-0.060-0.091-0.286-0.721-0.675-1.891-0.93-0.3-1.8-0.45-2.611-0.45-0.39 0-0.99 0.090-1.8 0.27l-1.26-0.089c0.179-0.18 0.704-0.525 1.575-1.035 1.020-0.6 1.8-0.901 2.34-0.901 0.089 0 0.208 0.015 0.36 0.045 0.149 0.031 0.27 0.045 0.36 0.045 0.208 0 0.547-0.112 1.012-0.338 0.465-0.224 0.735-0.427 0.809-0.607 0.076-0.182 0.114-0.646 0.114-1.396 0-1.71-0.45-2.985-1.351-3.825-0.781-0.75-2.070-1.29-3.871-1.621-0.48 1.71-1.83 2.566-4.050 2.566-0.721 0-1.441-0.435-2.16-1.305s-1.079-1.666-1.079-2.386c0-1.11 0.464-2.025 1.394-2.747-0.749-0.779-1.125-1.574-1.125-2.384 0-0.751 0.232-1.41 0.698-1.982 0.465-0.569 1.073-0.899 1.823-0.99-0.060-0.959 0.255-1.62 0.945-1.98-0.33-0.329-0.495-0.914-0.495-1.754 0-0.99 0.33-1.816 0.99-2.476s1.485-0.991 2.475-0.991c1.081 0 1.966 0.377 2.656 1.126 0.87-2.97 2.746-4.456 5.625-4.456 1.5 0 2.82 0.6 3.961 1.801 0.42 0.45 0.63 0.69 0.63 0.719-0.36 0-0.179-0.068 0.54-0.202s1.244-0.203 1.576-0.203c1.169 0 2.205 0.435 3.105 1.305 0.78 0.78 1.32 1.77 1.621 2.97 0.209 0.030 0.54 0.12 0.99 0.269 0.659 0.332 0.99 0.9 0.99 1.711 0 0.151-0.121 0.436-0.36 0.855 1.92 1.080 2.88 2.58 2.88 4.501 0 0.54-0.21 1.291-0.63 2.251 0.78 0.449 1.17 1.11 1.17 1.98zM13.186 19.937v-0.585c0-0.69-0.337-1.32-1.012-1.89s-1.358-0.855-2.048-0.855c-0.841 0-1.62 0.195-2.341 0.584 1.59-0.089 3.391 0.826 5.4 2.746zM12.377 14.357c-0.45-0.511-0.84-1.036-1.171-1.576-1.26 0.33-1.89 0.705-1.89 1.124 0.36-0.029 0.885 0.038 1.575 0.203s1.186 0.248 1.486 0.248zM15.123 12.961v-1.98c-0.721-0.12-1.157-0.18-1.305-0.18v0.675l1.305 1.486zM20.973 11.701c-0.36-0.15-1.036-0.45-2.025-0.9v3.87c1.41-0.811 2.084-1.801 2.025-2.97zM23.447 17.012l-0.989-1.215c-0.6 0.42-1.208 0.848-1.823 1.283s-1.148 0.923-1.597 1.463c1.35-0.721 2.821-1.23 4.41-1.531z"/></symbol><symbol id="ms-C" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#beb9b2"/><path fill="#111" transform="translate(16 16) scale(.72) translate(-16 -16)" d="M13.407 5.933c1.013-1.434 1.676-3.071 2.587-4.569 0.88 1.447 1.519 3.030 2.483 4.426 2.052 3.033 4.694 5.67 7.727 7.722 1.401 0.967 2.987 1.608 4.434 2.495-1.456 0.868-3.038 1.512-4.436 2.478-3.081 2.085-5.76 4.771-7.821 7.869-0.919 1.357-1.536 2.886-2.389 4.279-0.882-1.444-1.521-3.028-2.486-4.424-2.054-3.030-4.687-5.678-7.725-7.724-1.396-0.962-2.977-1.603-4.419-2.493 1.5-0.899 3.129-1.569 4.564-2.575 2.924-2.006 5.47-4.566 7.481-7.486zM7.373 15.999c3.358 2.334 6.29 5.258 8.617 8.621 2.339-3.356 5.256-6.3 8.631-8.617-3.366-2.334-6.295-5.263-8.631-8.624-2.334 3.356-5.256 6.288-8.617 8.619z"/></symbol></svg>
+<header><div class="wrap">
+  <a class="brand" href="#inicio"><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><use href="#ms-W" x="11" y="0" width="10" height="10"/><use href="#ms-U" x="21.5" y="7.6" width="10" height="10"/><use href="#ms-B" x="17.5" y="20" width="10" height="10"/><use href="#ms-R" x="4.5" y="20" width="10" height="10"/><use href="#ms-G" x="0.5" y="7.6" width="10" height="10"/></svg><span>Meta Commander <small>Perú</small></span></a>
+  <nav id="nav">
+    <a href="#inicio" data-r="inicio">Inicio</a>
+    <a href="#cedh" data-r="cedh">cEDH</a>
+    <a href="#b2" data-r="b2">B2</a>
+    <a href="#duel" data-r="duel">Duel Commander</a>
+    <a href="#standard" data-r="standard">Standard</a>
+    <a href="#pauper" data-r="pauper">Pauper</a>
+    <a href="#torneos" data-r="torneos">Torneos</a>
+    <a href="#buscar" data-r="buscar">Buscar</a>
+  </nav>
+</div></header>
+<main class="wrap" id="app"><div class="empty">Cargando resultados…</div></main>
+<footer><div class="wrap" id="foot">Metagame local de Magic en Perú, armado con los standings finales de cada torneo.</div></footer>
+
+<script>
+const BR = {
+  cedh:{code:"B5",name:"cEDH (B5)",cmd:true}, b2:{code:"B2",name:"Commander B2",cmd:true},
+  duel:{code:"DC",name:"Duel Commander",cmd:true}, standard:{code:"STD",name:"Standard",cmd:false},
+  pauper:{code:"PAU",name:"Pauper",cmd:false}};
+const BYCODE = Object.fromEntries(Object.entries(BR).map(([k,v])=>[v.code,{...v,key:k}]));
+const fmtName = c => (BYCODE[c]||{name:c||"–"}).name;
+const isCmdName = n => { const c = DB.cmdIndex[n]; return !c || !BYCODE[c.bracket] || BYCODE[c.bracket].cmd; };
+const unitLabel = code => (BYCODE[code]&&!BYCODE[code].cmd) ? "Arquetipo" : "Comandante";
+const PERIODS = [["todo","Todo"],["12m","12 meses"],["3m","3 meses"],["1m","1 mes"]];
+let DB = null, period = "todo", colorFilter = "", sortBy = "tier", minN = 0, viewMode = "cards";
+try{ viewMode = localStorage.getItem("vista") || "cards"; }catch(e){}
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const slug = s => String(s).normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const pct = x => x==null||isNaN(x) ? "–" : (x*100).toFixed(1).replace(".",",")+"%";
+const dec = x => x==null||isNaN(x) ? "–" : x.toFixed(2).replace(".",",");
+const fdate = s => { if(!s) return "–"; const [y,m,d]=s.split("-"); return `${d}/${m}/${y}`; };
+
+function sinceDate(p){
+  if(p==="todo") return "0000";
+  const d = new Date(); d.setMonth(d.getMonth() - ({"12m":12,"3m":3,"1m":1})[p]);
+  return d.toISOString().slice(0,10);
+}
+function colorsOf(name){
+  const c = DB.cmdIndex[name]; return c && c.colores ? c.colores.toUpperCase().replace(/[^WUBRG]/g,"") : "";
+}
+const manaIcon = (c, cls) => `<svg class="${cls}" viewBox="0 0 32 32" aria-hidden="true"><use href="#ms-${c}"/></svg>`;
+function pips(name){
+  const cs = colorsOf(name);
+  const list = cs ? cs.split("") : ["X"];
+  return `<span class="pips" role="img" aria-label="Colores: ${cs||"incoloro"}">${list.map(c=>manaIcon(c==="X"?"C":c,"pip")).join("")}</span>`;
+}
+function cmdLink(name){
+  if(name==="Desconocido") return `<span class="cmd" style="color:var(--muted)">Desconocido</span>`;
+  return `<a class="cmd" href="#cmd-${slug(name)}">${pips(name)}${esc(name)}</a>`;
+}
+const MANA = {W:"#e9dfb4",U:"#2f6fb3",B:"#3a3740",R:"#c8452b",G:"#2f7d4a"};
+function scry(p){ return "https://api.scryfall.com/cards/named?exact="+encodeURIComponent(p)+"&format=image&version=art_crop"; }
+function imgFail(el){ if(el.dataset.f!=="1" && el.dataset.alt){ el.dataset.f="1"; el.src=el.dataset.alt; } else el.remove(); }
+function thumb(name){
+  if(!name || name==="Desconocido") return `<span class="thumbs"><span class="th" style="background:var(--line)"><span class="ini" style="color:var(--muted);text-shadow:none">?</span></span></span>`;
+  const cmd = isCmdName(name), card = (DB.cmdIndex[name]||{}).carta;
+  const parts = cmd ? name.split(" + ") : [name];
+  const cs = (colorsOf(name)||"").split("").map(c=>MANA[c]).filter(Boolean);
+  const bg = cs.length>1 ? `linear-gradient(135deg,${cs.join(",")})` : (cs[0]||"#8a918d");
+  return `<span class="thumbs ${parts.length>1?"two":""}">${parts.map(p=>{
+    const ini = p.replace(/[^A-Za-zÀ-ÿ ]/g,"").split(" ").filter(Boolean).slice(0,2).map(w=>w[0]).join("").toUpperCase();
+    const imgName = cmd ? p : card;
+    if(!imgName) return `<span class="th" style="background:${bg}"><span class="ini">${ini}</span></span>`;
+    const local = (DB.imagenes||[]).includes(slug(imgName));
+    const src = local ? `img/${slug(imgName)}.jpg` : scry(imgName);
+    return `<span class="th" style="background:${bg}"><span class="ini">${ini}</span><img alt="" loading="lazy" src="${src}" ${local?`data-alt="${scry(p)}"`:""} onerror="imgFail(this)"></span>`;
+  }).join("")}</span>`;
+}
+const HD = !document.querySelector('meta[name$="viewport-fit-sides"]'); /* en el sitio publicado se pide el arte grande a Scryfall */
+const localSrc = n => (DB.imagenes||[]).includes(slug(n)) ? `img/${slug(n)}.jpg` : "";
+function bigImg(n, cls){
+  const loc = localSrc(n), first = HD ? scry(n) : (loc || scry(n)), alt = HD ? loc : (loc ? scry(n) : "");
+  return `<img class="${cls||""}" alt="" loading="lazy" src="${first}" ${alt?`data-alt="${alt}"`:""} onerror="imgFail(this)">`;
+}
+function artParts(name){
+  if(!name || name==="Desconocido") return [];
+  if(isCmdName(name)) return name.split(" + ");
+  const c = (DB.cmdIndex[name]||{}).carta; return c ? [c] : [];
+}
+function gradOf(name){
+  const cs = (colorsOf(name)||"").split("").map(c=>MANA[c]).filter(Boolean);
+  return cs.length>1 ? `linear-gradient(135deg,${cs.join(",")})` : (cs[0]||"#4a5063");
+}
+const initials = n => String(n).replace(/[^A-Za-zÀ-ÿ +]/g,"").split(/[ +]+/).filter(Boolean).slice(0,2).map(w=>w[0]).join("").toUpperCase();
+const tName = t => `${esc(t.tipo||"Torneo")} @ ${esc(t.tienda)}`;
+function podium(rs){
+  const top = rs.filter(r=>Number(r.puesto)<=4).slice(0,4);
+  if(!top.length) return "";
+  return `<div class="podium">${top.map(r=>`<div class="pcard ${Number(r.puesto)===1?"first":""}">
+    <div class="artbox" style="background:${gradOf(r.comandante)}"><span class="ini">${initials(r.comandante||"?")}</span>${artParts(r.comandante).map(p=>bigImg(p)).join("")}<span class="pos">${esc(r.puesto)}</span></div>
+    <div class="info"><a class="who" href="#jugador-${slug(r.jugador)}">${esc(r.jugador)}</a><span class="deck">${cmdLink(r.comandante)}</span></div></div>`).join("")}</div>`;
+}
+function cmdThumbLink(name){
+  if(name==="Desconocido") return `<span class="cmdrow">${thumb(name)}<span style="color:var(--muted)">Desconocido</span></span>`;
+  return `<span class="cmdrow">${thumb(name)}<a class="cmd" href="#cmd-${slug(name)}">${pips(name)}${esc(name)}</a></span>`;
+}
+const TIERNAME = {S:"Tier S",A:"Tier 1",B:"Tier 2",C:"Tier 3",obs:"En observación"};
+function tierBadge(t){ return t==="obs" ? `<span class="tier obs">En observación</span>` : `<span class="tier ${t}">${TIERNAME[t]}</span>`; }
+
+/* Métricas: mismas fórmulas que la hoja Estadísticas */
+function enrich(){
+  const tmap = {}; DB.torneos.forEach(t => tmap[t.id] = t);
+  DB.tmap = tmap; DB.cmdIndex = {}; DB.comandantes.forEach(c => DB.cmdIndex[c.nombre] = c);
+  DB.resultados.forEach(r => {
+    const t = tmap[r.torneo] || {}; r.t = t; r.bracket = t.bracket; r.fecha = t.fecha;
+    const n = t.jugadores, p = Number(r.puesto);
+    r.pr = (n>1 && p) ? 1 - (p-1)/(n-1) : null;
+    r.top = (n && p) ? (p <= Math.ceil(n/4) ? 1 : 0) : null;
+    r.win = p === 1 ? 1 : 0;
+  });
+}
+function stats(code, p){
+  const since = sinceDate(p);
+  const rs = DB.resultados.filter(r => r.bracket===code && (r.fecha||"") >= since);
+  const known = rs.filter(r => r.comandante && r.comandante!=="Desconocido");
+  const by = {};
+  known.forEach(r => { (by[r.comandante] ||= []).push(r); });
+  const rows = Object.entries(by).map(([name, list]) => {
+    const n = list.length, torneos = new Set(list.map(r=>r.torneo)).size;
+    const prs = list.filter(r=>r.pr!=null).map(r=>r.pr);
+    const sum = prs.reduce((a,b)=>a+b,0);
+    const top = list.reduce((a,r)=>a+(r.top||0),0), wins = list.reduce((a,r)=>a+r.win,0);
+    const pilots = {}; list.forEach(r => pilots[r.jugador]=(pilots[r.jugador]||0)+1);
+    const maxPilot = Math.max(...Object.values(pilots));
+    const s = { name, n, torneos, pr: prs.length? sum/prs.length : null, prAdj:(sum+1.5)/(prs.length+3),
+      top, convAdj:(top+1)/(n+4), wins, pres: n/known.length, pilot: n>=2 && maxPilot/n>0.5 };
+    s.tier = (n<4 || torneos<2) ? "obs" :
+      (s.prAdj>=0.65 && s.pres>=0.08) ? "S" :
+      (s.prAdj>=0.65 || (s.prAdj>=0.58 && (s.pres>=0.05 || s.convAdj>=0.4))) ? "A" :
+      s.prAdj>=0.45 ? "B" : "C";
+    return s;
+  });
+  const order = {S:0,A:1,B:2,C:3,obs:4};
+  rows.sort((a,b)=> order[a.tier]-order[b.tier] || b.prAdj-a.prAdj || b.convAdj-a.convAdj || b.wins-a.wins);
+  const torneos = DB.torneos.filter(t => t.bracket===code && (t.fecha||"") >= since).sort((a,b)=>(b.fecha||"").localeCompare(a.fecha||""));
+  return { rows, torneos, entries: rs.length, unknown: rs.length-known.length };
+}
+
+function tierTable(rows, compact, code){
+  if(!rows.length) return `<div class="empty">Aún no hay resultados en este periodo.</div>`;
+  return `<div class="tbl"><table><thead><tr><th>Tier</th><th>${unitLabel(code)}</th><th class="n">Entradas</th>
+    <th class="n">Presencia</th><th class="n">PR ajust.</th>${compact?"":`<th class="n hide-sm">PR prom.</th><th class="n hide-sm">Top 25%</th><th class="n hide-sm">Conv. ajust.</th>`}<th class="n">Ganados</th></tr></thead><tbody>
+    ${rows.map(s=>`<tr><td>${tierBadge(s.tier)}</td><td class="w">${cmdThumbLink(s.name)}${s.pilot?`<span class="flag" title="Más de la mitad de sus entradas son de un solo jugador">1 piloto</span>`:""}${s.pres>=0.15&&s.n>=4?`<span class="flag">Dominante</span>`:""}</td>
+      <td class="n">${s.n}</td><td class="n">${pct(s.pres)}</td><td class="n"><b>${dec(s.prAdj)}</b></td>
+      ${compact?"":`<td class="n hide-sm">${dec(s.pr)}</td><td class="n hide-sm">${s.top}</td><td class="n hide-sm">${pct(s.convAdj)}</td>`}<td class="n">${s.wins}</td></tr>`).join("")}
+    </tbody></table></div>`;
+}
+function eventsTable(ts){
+  if(!ts.length) return `<div class="empty">Aún no hay torneos registrados.</div>`;
+  return `<div class="tbl"><table><thead><tr><th>Fecha</th><th>Torneo</th><th class="hide-sm">Formato</th><th class="n">Jugadores</th><th>Ganador</th></tr></thead><tbody>
+    ${ts.map(t=>{ const w = DB.resultados.find(r=>r.torneo===t.id && Number(r.puesto)===1);
+      return `<tr><td>${fdate(t.fecha)}</td><td><a href="#torneo-${slug(t.id)}">${tName(t)}</a></td>
+      <td class="hide-sm">${esc(fmtName(t.bracket))}</td><td class="n">${t.jugadores??"–"}</td><td>${w?cmdLink(w.comandante):"–"}</td></tr>`}).join("")}
+    </tbody></table></div>`;
+}
+function presenceBars(rows, unknown, total){
+  if(!rows.length) return "";
+  const top = [...rows].sort((a,b)=>b.n-a.n).slice(0,12);
+  const max = Math.max(...top.map(r=>r.pres));
+  return `<div class="bars">${top.map(r=>`<div class="bar"><div class="lab">${cmdLink(r.name)}</div>
+    <div class="track"><div class="fill" style="width:${(r.pres/max*100).toFixed(1)}%"></div></div><div class="pct">${pct(r.pres)}</div></div>`).join("")}</div>
+    ${unknown?`<p class="note">${unknown} de ${total} entradas sin mazo conocido no cuentan en la presencia.</p>`:""}`;
+}
+function periodChips(){
+  return `<div class="filters"><span class="kicker">Periodo</span>${PERIODS.map(([k,l])=>`<button class="chip ${period===k?"on":""}" data-period="${k}">${l}</button>`).join("")}</div>`;
+}
+function colorChips(){
+  return `<div class="filters"><span class="kicker">Colores</span>${["","W","U","B","R","G"].map(c=>`<button class="chip ${colorFilter===c?"on":""}" data-color="${c}">${c?`<span class="pips"><span class="pip ${c}"></span></span>${c}`:"Todos"}</button>`).join("")}</div>`;
+}
+
+function cardArt(name){ return `<span class="cart" style="background:${gradOf(name)}">${artParts(name).map(p=>bigImg(p)).join("")}</span>`; }
+function deckCards(rows){
+  if(!rows.length) return `<div class="empty">Aún no hay resultados con estos filtros.</div>`;
+  return `<div class="cgrid">${rows.map(s=>`<a class="ccard" href="#cmd-${slug(s.name)}">${cardArt(s.name)}
+    <span class="ctop">${tierBadge(s.tier)}<span><b>${esc(s.name)}</b>${pips(s.name)}${(s.pilot||(s.pres>=0.15&&s.n>=4))?`<span class="flags">${s.pilot?`<span class="flag">1 piloto</span>`:""}${s.pres>=0.15&&s.n>=4?`<span class="flag">Dominante</span>`:""}</span>`:""}</span></span>
+    <span class="cbot"><span>Presencia <b>${pct(s.pres)}</b></span><span>Entradas <b>${s.n}</b></span><span>PR ajust. <b>${dec(s.prAdj)}</b></span></span></a>`).join("")}</div>`;
+}
+const medal = p => `<span class="medal ${["","m1","m2","m3"][Number(p)]||""}">${esc(p)}</span>`;
+function winnerOf(t){ return DB.resultados.find(r=>r.torneo===t.id && Number(r.puesto)===1); }
+function tourCards(ts){
+  if(!ts.length) return `<div class="empty">Aún no hay torneos registrados.</div>`;
+  return `<div class="rgrid">${ts.map(t=>{ const w = winnerOf(t);
+    return `<a class="tcard" href="#torneo-${slug(t.id)}"><span class="code">${esc(fmtName(t.bracket))}</span><b>${esc(t.tienda)}</b>
+      <span class="meta" style="color:var(--muted);font-size:13px">${fdate(t.fecha)} · ${t.jugadores??"–"} jugadores${t.ciudad?` · ${esc(t.ciudad)}`:""}</span>
+      ${w?`<span class="win">${thumb(w.comandante)}<span style="min-width:0"><span style="color:var(--muted)">Ganó ${esc(w.jugador)}</span><br>${esc(w.comandante)}</span></span>`:""}</a>`; }).join("")}</div>`;
+}
+const LEGEND = `<div class="legend"><span>${tierBadge("S")}PR ajustado ≥ 0,65 y presencia ≥ 8%</span><span>${tierBadge("A")}PR ajustado ≥ 0,65, o ≥ 0,58 con presencia ≥ 5% o conversión ≥ 40%</span><span>${tierBadge("B")}PR ajustado ≥ 0,45</span><span>${tierBadge("C")}menos de 0,45</span></div>`;
+const views = {
+  inicio(){
+    const nT = DB.torneos.length, nR = DB.resultados.length;
+    const nC = new Set(DB.resultados.filter(r=>r.comandante!=="Desconocido").map(r=>r.bracket+r.comandante)).size;
+    const sorted = [...DB.torneos].sort((a,b)=>(b.fecha||"").localeCompare(a.fecha||""));
+    const last = sorted.slice(0,10), lt = sorted[0];
+    const active = Object.entries(BR).filter(([k,b]) => DB.torneos.some(t=>t.bracket===b.code));
+    const pool = [...new Set(DB.resultados.flatMap(r=>artParts(r.comandante)))].filter(p=>HD||localSrc(p));
+    const mos = pool.length ? Array.from({length:24},(_,i)=>pool[i%pool.length]) : [];
+    const tiles = Object.entries(BR).map(([k,b])=>{
+      const st = stats(b.code,"todo"), topRow = st.rows[0], part = topRow && artParts(topRow.name)[0];
+      return `<a class="fmt ${st.torneos.length?"has":"none"}" href="#${k}">${st.torneos.length&&part?bigImg(part,"bgart"):""}<span class="code">${b.code}</span>
+        <b>${b.name}</b><span>${st.torneos.length?`${st.torneos.length} ${st.torneos.length===1?"torneo":"torneos"} · ${st.entries} mazos`:"Sin torneos aún"}</span></a>`;
+    }).join("");
+    const lrs = lt ? DB.resultados.filter(r=>r.torneo===lt.id).sort((a,b)=>Number(a.puesto)-Number(b.puesto)) : [];
+    return `<section class="hero"><div class="mosaic" aria-hidden="true">${mos.map(p=>bigImg(p)).join("")}</div>
+      <div class="hero-in"><div class="kicker">Metagame local · Lima, Perú</div><h1>Qué se juega y qué gana en las mesas de Lima</h1>
+      <p class="sub">Tier list por formato, armada con los standings finales de cada torneo de las tiendas locales.</p>
+      <div class="stats"><div class="stat"><b>${nT}</b><span>Torneos</span></div><div class="stat"><b>${nR}</b><span>Mazos registrados</span></div><div class="stat"><b>${nC}</b><span>Mazos distintos</span></div></div></div></section>
+      <section><h2>Formatos</h2><div class="formats">${tiles}</div></section>
+      ${lt?`<section><div class="secthead"><h2>Último torneo</h2><a class="kicker" href="#torneo-${slug(lt.id)}">${tName(lt)} · ${fdate(lt.fecha)} · ${esc(fmtName(lt.bracket))} →</a></div>${podium(lrs)}</section>`:""}
+      <section><div class="secthead"><h2>Últimos torneos</h2><a class="kicker" href="#torneos">Ver todos →</a></div>${tourCards(last.slice(0,6))}</section>
+      ${active.map(([k,b])=>`<section><div class="secthead"><h2><a href="#${k}">${b.name}</a></h2><a class="kicker" href="#${k}">Ver todos los mazos →</a></div>${deckCards(stats(b.code,"todo").rows.slice(0,6))}</section>`).join("")}
+      <p class="note">PR = puesto relativo: 1 es primer lugar, 0,5 mitad de tabla, 0 último. El ajustado suma 3 entradas imaginarias en mitad de tabla para no exagerar resultados sueltos. Un mazo recibe tier con 4 entradas en 2 torneos o más.</p>`;
+  },
+  bracket(key){
+    const b = BR[key], s = stats(b.code, period);
+    let rows = s.rows.filter(r => r.n >= minN);
+    if(colorFilter) rows = rows.filter(r => colorFilter.split("").every(c => colorsOf(r.name).includes(c)));
+    const order = {S:0,A:1,B:2,C:3,obs:4};
+    if(sortBy==="pres") rows.sort((x,y)=>y.n-x.n || y.prAdj-x.prAdj);
+    else if(sortBy==="pr") rows.sort((x,y)=>y.prAdj-x.prAdj || y.n-x.n);
+    else if(sortBy==="wins") rows.sort((x,y)=>y.wins-x.wins || y.top-x.top || y.prAdj-x.prAdj);
+    const opt = (v,l,cur) => `<option value="${v}" ${cur===v?"selected":""}>${l}</option>`;
+    return `<section class="pagehead"><div class="kicker">Metagame · ${b.cmd?"Commander":"Construido"} · ${b.code}</div><h1>${b.name}</h1>
+      <p class="sub">${s.torneos.length} ${s.torneos.length===1?"torneo":"torneos"} · ${s.entries} entradas en el periodo${s.unknown?` · ${s.unknown} sin mazo conocido`:""}</p></section>
+      <div class="toolbar">
+        <div class="ctl"><span class="lbl">Colores</span><div class="manabtns ${colorFilter?"sel":""}">${["W","U","B","R","G"].map(c=>`<button class="mb ${c} ${colorFilter.includes(c)?"on":""}" data-mana="${c}" aria-pressed="${colorFilter.includes(c)}" aria-label="Color ${c}" title="${({W:"Blanco",U:"Azul",B:"Negro",R:"Rojo",G:"Verde"})[c]}">${manaIcon(c,"")}</button>`).join("")}</div></div>
+        <div class="ctl"><label for="f-sort">Ordenar por</label><select id="f-sort">${opt("tier","Tier",sortBy)}${opt("pres","Popularidad",sortBy)}${opt("pr","Resultados (PR)",sortBy)}${opt("wins","Torneos ganados",sortBy)}</select></div>
+        <div class="ctl"><label for="f-period">Periodo</label><select id="f-period">${PERIODS.map(([k,l])=>opt(k,l,period)).join("")}</select></div>
+        <div class="ctl"><label for="f-min">Mín. entradas</label><select id="f-min">${[0,2,4,8].map(n=>`<option value="${n}" ${minN===n?"selected":""}>${n?n+"+ entradas":"Todas"}</option>`).join("")}</select></div>
+        <div class="ctl"><span class="lbl">Vista</span><div class="seg"><button data-view="cards" class="${viewMode==="cards"?"on":""}">Tarjetas</button><button data-view="table" class="${viewMode==="table"?"on":""}">Tabla</button></div></div>
+      </div>
+      <section>${viewMode==="table"?tierTable(rows,false,b.code):deckCards(rows)}${LEGEND}
+      <p class="note">Top 25% = terminó en el primer cuarto de la tabla. Un mazo recibe tier con 4 entradas en 2 torneos o más; antes queda en observación.</p></section>
+      <section><h2>Torneos</h2>${tourCards(s.torneos)}</section>`;
+  },
+  torneo(id){
+    const t = DB.torneos.find(x => slug(x.id)===id); if(!t) return notFound();
+    const rs = DB.resultados.filter(r=>r.torneo===t.id).sort((a,b)=>Number(a.puesto)-Number(b.puesto));
+    const hasPts = rs.some(r=>r.puntos!=null);
+    return `<section><div class="kicker">${esc(fmtName(t.bracket))} · ${fdate(t.fecha)}</div><h1>${tName(t)}</h1>
+      <p class="sub">${t.jugadores??rs.length} jugadores · ${esc(t.ciudad||"")}${t.link?` · <a href="${esc(t.link)}" target="_blank" rel="noopener">Resultados originales</a>`:""}</p></section>
+      ${podium(rs)}
+      <section><h2>Standings finales</h2><div class="tbl"><table><thead><tr><th>#</th><th>Jugador</th><th>${unitLabel(t.bracket)}</th>${hasPts?`<th class="n hide-sm">Pts</th>`:""}<th class="n">PR</th></tr></thead><tbody>
+      ${rs.map(r=>`<tr><td class="place ${Number(r.puesto)===1?"p1":""}">${esc(r.puesto)}</td><td><a href="#jugador-${slug(r.jugador)}">${esc(r.jugador)}</a></td>
+        <td>${cmdThumbLink(r.comandante)}${r.lista?` · <a href="${esc(r.lista)}" target="_blank" rel="noopener">lista</a>`:""}</td>${hasPts?`<td class="n hide-sm">${r.puntos??"–"}</td>`:""}<td class="n">${dec(r.pr)}</td></tr>`).join("")}
+      </tbody></table></div>${hasPts?`<p class="note">Los puntos son los de la tienda y no se usan para el tier: cada tienda puntúa distinto.</p>`:""}</section>`;
+  },
+  cmd(id){
+    const name = [...new Set(DB.resultados.map(r=>r.comandante))].find(n => slug(n)===id); if(!name) return notFound();
+    const rs = DB.resultados.filter(r=>r.comandante===name).sort((a,b)=>Number(a.puesto)/(a.t.jugadores||1)-Number(b.puesto)/(b.t.jugadores||1) || (b.fecha||"").localeCompare(a.fecha||""));
+    const brs = [...new Set(rs.map(r=>r.bracket))];
+    const chips = brs.map(code => { const s = stats(code, "todo").rows.find(x=>x.name===name); if(!s) return "";
+      return `<span><b>${s.n}</b> entradas</span><span><b>${pct(s.pres)}</b> del meta</span><span>PR ajust. <b>${dec(s.prAdj)}</b></span><span><b>${s.top}</b> en top 25%</span><span><b>${s.wins}</b> ganados</span><span><b>${TIERNAME[s.tier]}</b></span>`; }).join("");
+    return `<section class="banner">${cardArt(name)}<div><div class="kicker" style="color:#c9cdda">${esc(brs.map(fmtName).join(" · "))}</div><h1>${esc(name)}</h1>${pips(name)}<div class="chips">${chips}</div></div></section>
+      <section><h2>Resultados en torneos</h2><div class="rgrid">${rs.map(r=>`<a class="rcard" href="#torneo-${slug(r.torneo)}">
+        <span class="top">${medal(r.puesto)}<b>${esc(r.jugador)}</b></span>
+        <span>${esc(r.t.tipo||"Torneo")} @ ${esc(r.t.tienda)}</span><span class="meta">${fdate(r.fecha)}</span>
+        <span class="line"><span>Puesto <b style="color:var(--ink)">${esc(r.puesto)} / ${r.t.jugadores??"–"}</b></span><span>PR <b style="color:var(--ink)">${dec(r.pr)}</b></span></span></a>`).join("")}</div></section>`;
+  },
+  jugador(id){
+    const rs = DB.resultados.filter(r=>slug(r.jugador)===id).sort((a,b)=>(b.fecha||"").localeCompare(a.fecha||""));
+    if(!rs.length) return notFound();
+    const prs = rs.filter(r=>r.pr!=null).map(r=>r.pr);
+    return `<section><div class="kicker">Jugador</div><h1>${esc(rs[0].jugador)}</h1>
+      <div class="stats"><div class="stat"><b>${rs.length}</b><span>Torneos</span></div><div class="stat"><b>${rs.filter(r=>r.win).length}</b><span>Ganados</span></div>
+      <div class="stat"><b>${dec(prs.reduce((a,b)=>a+b,0)/(prs.length||1))}</b><span>PR promedio</span></div></div></section>
+      <section><h2>Historial</h2><div class="tbl"><table><thead><tr><th>Fecha</th><th>Torneo</th><th>Mazo</th><th class="n">Puesto</th></tr></thead><tbody>
+      ${rs.map(r=>`<tr><td>${fdate(r.fecha)}</td><td><a href="#torneo-${slug(r.torneo)}">${esc(r.t.tipo||"Torneo")} @ ${esc(r.t.tienda)}</a></td><td>${cmdLink(r.comandante)}</td><td class="n">${esc(r.puesto)} / ${r.t.jugadores??"–"}</td></tr>`).join("")}
+      </tbody></table></div></section>`;
+  },
+  torneos(){
+    const ts = [...DB.torneos].sort((a,b)=>(b.fecha||"").localeCompare(a.fecha||""));
+    return `<section class="pagehead"><div class="kicker">Todos los formatos</div><h1>Torneos</h1><p class="sub">${ts.length} ${ts.length===1?"torneo registrado":"torneos registrados"}, del más reciente al más antiguo.</p></section>
+      <section>${tourCards(ts)}</section>`;
+  },
+  buscar(){
+    return `<section><div class="kicker">Buscar</div><h1>Mazos, jugadores y tiendas</h1></section>
+      <input type="search" id="q" placeholder="Escribe un nombre: Kinnan, Necro, Inti…" aria-label="Buscar">
+      <div id="res"></div>`;
+  }
+};
+function notFound(){ return `<div class="empty">No encontramos esa página. <a href="#inicio">Volver al inicio</a></div>`; }
+function search(q){
+  q = slug(q); const out = document.getElementById("res"); if(!q){ out.innerHTML=""; return; }
+  const cmds = [...new Set(DB.resultados.map(r=>r.comandante))].filter(n=>n!=="Desconocido" && slug(n).includes(q));
+  const plys = [...new Set(DB.resultados.map(r=>r.jugador))].filter(n=>slug(n).includes(q));
+  const tns = DB.torneos.filter(t=>slug(t.tienda+" "+(t.tipo||"")+" "+t.id).includes(q));
+  const sec = (title, items) => items.length ? `<section><h2>${title}</h2><div class="tbl"><table><tbody>${items.join("")}</tbody></table></div></section>` : "";
+  out.innerHTML = (sec("Mazos", cmds.map(n=>`<tr><td>${cmdLink(n)}</td></tr>`)) +
+    sec("Jugadores", plys.map(n=>`<tr><td><a href="#jugador-${slug(n)}">${esc(n)}</a></td></tr>`)) +
+    sec("Torneos", tns.map(t=>`<tr><td>${fdate(t.fecha)}</td><td><a href="#torneo-${slug(t.id)}">${esc(t.tipo||"Torneo")} @ ${esc(t.tienda)}</a></td></tr>`))) || `<div class="empty">Sin resultados.</div>`;
+}
+
+function route(){
+  const h = (location.hash||"#inicio").slice(1) || "inicio";
+  let html, nav = h;
+  if(BR[h]) html = views.bracket(h);
+  else if(h.startsWith("torneo-")) { html = views.torneo(h.slice(7)); nav=""; }
+  else if(h.startsWith("cmd-")) { html = views.cmd(h.slice(4)); nav=""; }
+  else if(h.startsWith("jugador-")) { html = views.jugador(h.slice(8)); nav=""; }
+  else if(h==="buscar") html = views.buscar();
+  else if(h==="torneos") html = views.torneos();
+  else { html = views.inicio(); nav="inicio"; }
+  const app = document.getElementById("app"); app.innerHTML = html;
+  document.querySelectorAll("#nav a").forEach(a => a.classList.toggle("on", a.dataset.r===nav));
+  app.querySelectorAll("[data-period]").forEach(b => b.onclick = () => { period=b.dataset.period; route(); });
+  app.querySelectorAll("[data-color]").forEach(b => b.onclick = () => { colorFilter=b.dataset.color; route(); });
+  app.querySelectorAll("[data-mana]").forEach(b => b.onclick = () => { const c=b.dataset.mana; colorFilter = colorFilter.includes(c) ? colorFilter.replace(c,"") : colorFilter+c; route(); });
+  app.querySelectorAll("[data-view]").forEach(b => b.onclick = () => { viewMode=b.dataset.view; try{localStorage.setItem("vista",viewMode)}catch(e){} route(); });
+  const fs = document.getElementById("f-sort"); if(fs) fs.onchange = () => { sortBy=fs.value; route(); };
+  const fp = document.getElementById("f-period"); if(fp) fp.onchange = () => { period=fp.value; route(); };
+  const fm = document.getElementById("f-min"); if(fm) fm.onchange = () => { minN=Number(fm.value); route(); };
+  const q = document.getElementById("q"); if(q){ q.oninput = () => search(q.value); q.focus(); }
+}
+fetch("data.json").then(r=>r.json()).then(d=>{
+  DB = d; enrich();
+  document.getElementById("foot").textContent = `Metagame local de Magic en Perú, armado con los standings finales de cada torneo. Datos actualizados al ${fdate(d.generado)}.`;
+  route(); addEventListener("hashchange", () => { route(); scrollTo(0,0); });
+}).catch(()=>{ document.getElementById("app").innerHTML = `<div class="empty">No se pudo cargar data.json. Abre la página desde un servidor (GitHub Pages o similar), no como archivo local.</div>`; });
+</script>
+</body>
+</html>
