@@ -621,8 +621,9 @@ const views = {
       <section><h2>Formatos</h2><div class="formats">${tiles}</div></section>
       ${lt?`<section><div class="secthead"><h2>Último torneo</h2><a class="kicker" href="#torneo-${slug(lt.id)}">${tName(lt)} · ${fdate(lt.fecha)} · ${esc(fmtName(lt.bracket))} →</a></div>${podium(lrs)}</section>`:""}
       <section><div class="secthead"><h2>Últimos torneos</h2><a class="kicker" href="#torneos">Ver todos →</a></div>${tourCards(last.slice(0,6))}</section>
-      ${active.map(([k,b])=>`<section><div class="secthead"><h2><a href="#${k}">${b.name}</a></h2><a class="kicker" href="#${k}">Ver todos los mazos →</a></div>${deckCards(stats(b.code,"todo").rows.slice(0,6))}</section>`).join("")}
-      <p class="note">PR = puesto relativo: 1 es primer lugar, 0,5 mitad de tabla, 0 último. El ajustado suma 3 entradas imaginarias en mitad de tabla para no exagerar resultados sueltos. Un mazo recibe tier con 4 entradas en 2 torneos o más.</p>`;
+      <section><div class="secthead"><h2>Próximos torneos</h2></div>${(DB.proximos||[]).length?`<div class="rgrid">${DB.proximos.map(t=>`<div class="tcard"><span class="code">${esc(fmtName(t.bracket))}</span><b>${esc(t.tienda)}</b>
+        <span class="meta" style="color:var(--muted);font-size:13px">${fdate(t.fecha)}${t.hora?` · ${esc(t.hora)}`:""}${t.ciudad?` · ${esc(t.ciudad)}`:""}</span>${t.nota?`<span style="font-size:13.5px">${esc(t.nota)}</span>`:""}</div>`).join("")}</div>`
+        :`<div class="empty">Aún no hay torneos anunciados. Cuando una tienda anuncie uno, aparecerá aquí.</div>`}</section>`;
   },
   bracket(key){
     const b = BR[key], s = stats(b.code, period);
