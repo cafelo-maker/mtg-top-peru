@@ -201,6 +201,7 @@ select{font:inherit;font-size:14px;padding:7px 30px 7px 12px;border:1px solid va
 .chips b{color:#fff}
 /* Tarjetas de resultado y de torneo */
 .rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:12px}
+.decks-h{margin:0 0 -22px}
 .rcard{display:grid;gap:6px;padding:14px;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:var(--ink);min-width:0}
 a.rcard:hover{color:var(--ink);border-color:var(--accent)}
 .rcard .top{display:flex;align-items:center;gap:10px;min-width:0}
@@ -289,6 +290,10 @@ footer{color:var(--muted);font-size:12px;padding-block:22px;border-top:1px solid
   .rank{top:8px;right:8px;min-width:30px;height:30px;font-size:13px}
   .rank.medal-svg svg{width:40px;height:40px}
   .rgrid{gap:10px}
+  .rgrid.tstrip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:0 16px 4px;scrollbar-width:none}
+  .rgrid.tstrip::-webkit-scrollbar{display:none}
+  .rgrid.tstrip>.tcard{flex:0 0 82%;scroll-snap-align:center}
+  .rgrid.tstrip>.tcard:only-child{flex-basis:100%}
   .banner{min-height:190px;padding:26px 14px;border-radius:14px}
   .banner h1{font-size:24px}
   .chips{gap:6px;margin-top:12px}.chips span{font-size:12px;padding:4px 8px}
@@ -504,15 +509,15 @@ function colorChips(){
 function cardArt(name){ return `<span class="cart" style="background:${gradOf(name)}">${artParts(name).map(p=>bigImg(p)).join("")}</span>`; }
 function deckCards(rows){
   if(!rows.length) return `<div class="empty">Aún no hay resultados con estos filtros.</div>`;
-  return `<div class="cgrid">${rows.map((s,i)=>`<a class="ccard rcardk" href="#cmd-${slug(s.name)}">${cardArt(s.name)}<span class="rank" aria-label="Puesto ${i+1}">${i+1}</span>
+  return `<div class="cgrid">${rows.map((s,i)=>`<a class="ccard rcardk" href="#cmd-${slug(s.name)}">${cardArt(s.name)}
     <span class="ctop">${tierBadge(s.tier)}<span><b>${esc(s.name)}</b>${pips(s.name)}${(s.pilot||(s.pres>=0.15&&s.n>=4))?`<span class="flags">${s.pilot?`<span class="flag">1 piloto</span>`:""}${s.pres>=0.15&&s.n>=4?`<span class="flag">Dominante</span>`:""}</span>`:""}</span></span>
     <span class="cbot"><span>Presencia <b>${pct(s.pres)}</b></span><span>Entradas <b>${s.n}</b></span><span>PR ajust. <b>${dec(s.prAdj)}</b></span></span></a>`).join("")}</div>`;
 }
 const medal = p => `<span class="medal ${["","m1","m2","m3"][Number(p)]||""}">${esc(p)}</span>`;
 function winnerOf(t){ return DB.resultados.find(r=>r.torneo===t.id && Number(r.puesto)===1); }
-function tourCards(ts){
+function tourCards(ts, strip){
   if(!ts.length) return `<div class="empty">Aún no hay torneos registrados.</div>`;
-  return `<div class="rgrid">${ts.map(t=>{ const w = winnerOf(t);
+  return `<div class="rgrid${strip?" tstrip":""}">${ts.map(t=>{ const w = winnerOf(t);
     return `<a class="tcard" href="#torneo-${slug(t.id)}"><span class="code">${esc(fmtName(t.bracket))}</span><b>${esc(t.tienda)}</b>
       <span class="meta" style="color:var(--muted);font-size:13px">${fdate(t.fecha)} · ${t.jugadores??"–"} jugadores${t.ciudad?` · ${esc(t.ciudad)}`:""}</span>
       ${w?`<span class="win">${thumb(w.comandante)}<span style="min-width:0"><span style="color:var(--muted)">Ganó ${esc(w.jugador)}</span><br>${esc(w.comandante)}</span></span>`:""}</a>`; }).join("")}</div>`;
@@ -552,8 +557,11 @@ const views = {
     else if(sortBy==="pr") rows.sort((x,y)=>y.prAdj-x.prAdj || y.n-x.n);
     else if(sortBy==="wins") rows.sort((x,y)=>y.wins-x.wins || y.top-x.top || y.prAdj-x.prAdj);
     const opt = (v,l,cur) => `<option value="${v}" ${cur===v?"selected":""}>${l}</option>`;
+    const allT = [...s.torneos].sort((x,y)=>(y.fecha||"").localeCompare(x.fecha||"")), lastT = allT.slice(0,3);
     return `<section class="pagehead"><div class="kicker">Metagame · ${b.cmd?"Commander":"Construido"} · ${b.code}</div><h1>${b.name}</h1>
       <p class="sub">${s.torneos.length} ${s.torneos.length===1?"torneo":"torneos"} · ${s.entries} entradas en el periodo${s.unknown?` · ${s.unknown} sin mazo conocido`:""}</p></section>
+      ${lastT.length?`<section class="toptours"><div class="secthead"><h2>Últimos torneos</h2>${allT.length>3?`<a class="kicker" href="#torneos">Ver todos →</a>`:""}</div>${tourCards(lastT,true)}</section>`:""}
+      <div class="secthead decks-h"><h2>Mazos</h2></div>
       <div class="toolbar">
         <div class="ctl"><span class="lbl">Colores</span><div class="manabtns ${colorFilter?"sel":""}">${["W","U","B","R","G"].map(c=>`<button class="mb ${c} ${colorFilter.includes(c)?"on":""}" data-mana="${c}" aria-pressed="${colorFilter.includes(c)}" aria-label="Color ${c}" title="${({W:"Blanco",U:"Azul",B:"Negro",R:"Rojo",G:"Verde"})[c]}">${manaIcon(c,"")}</button>`).join("")}</div></div>
         <div class="ctl"><label for="f-sort">Ordenar por</label><select id="f-sort">${opt("tier","Tier",sortBy)}${opt("pres","Popularidad",sortBy)}${opt("pr","Resultados (PR)",sortBy)}${opt("wins","Torneos ganados",sortBy)}</select></div>
@@ -563,7 +571,7 @@ const views = {
       </div>
       <section>${viewMode==="table"?tierTable(rows,false,b.code):deckCards(rows)}${LEGEND}
       <p class="note">Top 25% = terminó en el primer cuarto de la tabla. Un mazo recibe tier con 4 entradas en 2 torneos o más; antes queda en observación.</p></section>
-      <section><h2>Torneos</h2>${tourCards(s.torneos)}</section>`;
+      ${allT.length>3?`<section><h2>Todos los torneos</h2>${tourCards(allT)}</section>`:""}`;
   },
   torneo(id){
     const t = DB.torneos.find(x => slug(x.id)===id); if(!t) return notFound();
