@@ -172,7 +172,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": null
   },
   {
    "torneo": "2026-11-22-INTILINCE-B5",
@@ -184,7 +185,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": null
   },
   {
    "torneo": "2026-11-22-INTILINCE-B5",
@@ -196,7 +198,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": null
   },
   {
    "torneo": "2026-11-22-INTILINCE-B5",
@@ -208,7 +211,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": null
   },
   {
    "torneo": "2026-11-22-INTILINCE-B5",
@@ -220,7 +224,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": null
   },
   {
    "torneo": "2026-11-22-INTILINCE-B5",
@@ -232,7 +237,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": null
   },
   {
    "torneo": "2026-11-22-INTILINCE-B5",
@@ -244,7 +250,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": null
   },
   {
    "torneo": "2026-11-22-INTILINCE-B5",
@@ -256,7 +263,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": null
   },
   {
    "torneo": "2026-11-22-INTILINCE-B2",
@@ -268,7 +276,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": 38.57
   },
   {
    "torneo": "2026-11-22-INTILINCE-B2",
@@ -280,7 +289,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": 41.56
   },
   {
    "torneo": "2026-11-22-INTILINCE-B2",
@@ -292,7 +302,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": 41.04
   },
   {
    "torneo": "2026-11-22-INTILINCE-B2",
@@ -304,7 +315,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": 38.75
   },
   {
    "torneo": "2026-11-22-INTILINCE-B2",
@@ -316,7 +328,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": 43.04
   },
   {
    "torneo": "2026-11-22-INTILINCE-B2",
@@ -328,7 +341,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": 46.04
   },
   {
    "torneo": "2026-11-22-INTILINCE-B2",
@@ -340,7 +354,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": 47.08
   },
   {
    "torneo": "2026-11-22-INTILINCE-B2",
@@ -352,7 +367,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": 44.17
   },
   {
    "torneo": "2026-11-22-INTILINCE-B2",
@@ -364,7 +380,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": 40.94
   },
   {
    "torneo": "2026-11-22-INTILINCE-B2",
@@ -376,7 +393,8 @@
    "v": null,
    "e": null,
    "dr": null,
-   "lista": null
+   "lista": null,
+   "vpo": 38.57
   }
  ]
 }
