@@ -322,6 +322,7 @@ a.btn.wa{background:#25d366;border-color:#25d366;color:#06240f}
 .oerr{margin-top:12px;padding:12px 14px;border:1px solid #6b2e27;border-radius:12px;color:#ff8b7a}
 @media (max-width:640px){.regrow{flex-wrap:wrap}.regrow .oin:not(.pts){flex:1 1 calc(100% - 40px)}.regrow .ctl{flex:1 1 55%;margin-left:30px}}
 .otbl td.w{min-width:120px}
+@media (max-width:640px){.stbl td,.stbl th{padding-inline:7px}.stbl td.w{min-width:170px;font-size:13.5px}.stbl .pips{display:none}}
 .otbl td,.otbl th{padding-inline:10px}
 .seed{font-size:11px;font-weight:700;color:var(--muted);margin:0 6px;vertical-align:middle}
 .ochamp{margin-top:12px;padding:12px 14px;border:1px solid var(--accent);border-radius:12px;font-size:16px}
@@ -487,6 +488,12 @@ function standCards(rs, hasPts){
     <span class="ctop"><span><span class="who">${esc(r.jugador)}</span><span class="deckname">${esc(r.comandante||"Desconocido")}</span>${r.comandante&&r.comandante!=="Desconocido"?pips(r.comandante):""}</span></span>
     <span class="cbot">${hasPts?`<span>Puntos <b>${r.puntos??"–"}</b></span>`:""}<span>PR <b>${dec(r.pr)}</b></span></span></a>`).join("")}</div>`;
 }
+function standTable(rs, hasPts, code){
+  return `<div class="tbl otbl stbl"><table><thead><tr><th class="n">#</th><th>Jugador</th><th>${unitLabel(code)}</th>${hasPts?`<th class="n">Puntos</th>`:""}<th class="n ${hasPts?"hide-sm":""}">PR</th></tr></thead><tbody>
+    ${rs.map(r=>`<tr><td class="n"><b>${esc(r.puesto)}</b></td><td><a href="#jugador-${slug(r.jugador)}">${esc(r.jugador)}</a></td>
+      <td class="w">${r.comandante&&r.comandante!=="Desconocido"?cmdThumbLink(r.comandante):`<span style="color:var(--muted)">Desconocido</span>`}</td>
+      ${hasPts?`<td class="n">${r.puntos??"–"}</td>`:""}<td class="n ${hasPts?"hide-sm":""}">${dec(r.pr)}</td></tr>`).join("")}</tbody></table></div>`;
+}
 function podium(rs){
   const top = rs.filter(r=>Number(r.puesto)<=4).slice(0,4);
   if(!top.length) return "";
@@ -645,7 +652,8 @@ const views = {
     const hasPts = rs.some(r=>r.puntos!=null);
     return `<section><div class="kicker">${esc(fmtName(t.bracket))} · ${fdate(t.fecha)}</div><h1>${tName(t)}</h1>
       <p class="sub">${t.jugadores??rs.length} jugadores · ${esc(t.ciudad||"")}${t.link?` · <a href="${esc(t.link)}" target="_blank" rel="noopener">Resultados originales</a>`:""}</p></section>
-      <section><h2>Standings finales</h2>${standCards(rs,hasPts)}
+      <section><div class="secthead"><h2>Standings finales</h2><div class="seg"><button data-view="cards" class="${viewMode==="cards"?"on":""}">Tarjetas</button><button data-view="table" class="${viewMode==="table"?"on":""}">Tabla</button></div></div>
+      ${viewMode==="table"?standTable(rs,hasPts,t.bracket):standCards(rs,hasPts)}
       ${hasPts?`<p class="note">Los puntos son los de la tienda y no se usan para el tier: cada tienda puntúa distinto.</p>`:""}</section>`;
   },
   cmd(id){
