@@ -959,7 +959,8 @@ function acLocal(term, cmd){ const q = slug(term), idx = DB.cmdIndex||{};
   const names = Object.keys(idx).filter(n => { const b = BYCODE[(idx[n]||{}).bracket]; return cmd ? (!b || b.cmd) : (b && !b.cmd); });
   return [...new Set(cmd ? names.flatMap(n=>n.split(" + ")) : names)].filter(n => slug(n).includes(q)); }
 function acMerge(term, a, b){ const q = slug(term), all = [...new Set([...a, ...b])];
-  return [...all.filter(n=>slug(n).startsWith(q)), ...all.filter(n=>!slug(n).startsWith(q))].slice(0,8); }
+  const tier = n => { const g = slug(n); return g.startsWith(q) ? 0 : g.split("-").some(w=>w.startsWith(q.split("-")[0])) ? 1 : 2; };
+  return all.map((n,i)=>[tier(n),i,n]).sort((x,y)=>x[0]-y[0]||x[1]-y[1]).slice(0,8).map(x=>x[2]); }
 function acHide(){ if(AC.box) AC.box.remove(); AC.box = null; }
 function acShow(inp, names){ acHide(); if(!names.length || document.activeElement!==inp) return;
   const box = document.createElement("div"); box.className = "osug"; box.setAttribute("role","listbox");
@@ -974,7 +975,7 @@ function acInput(inp){
     const words = key.replace(/[^a-z0-9áéíóúñü' -]/gi," ").split(/\s+/).filter(Boolean).map(w=>`name:"${w}"`).join(" ");
     if(!words) return;
     fetch("https://api.scryfall.com/cards/search?order=edhrec&unique=cards&q="+encodeURIComponent("is:commander "+words))
-      .then(r => r.ok ? r.json() : {data:[]}).then(d => { AC.cache[key] = (d.data||[]).slice(0,12).map(c=>c.name);
+      .then(r => r.ok ? r.json() : {data:[]}).then(d => { AC.cache[key] = (d.data||[]).map(c=>c.name);
         if(my===AC.seq) acShow(inp, acMerge(term, local, AC.cache[key])); }).catch(()=>{});
   }, 250);
 }
