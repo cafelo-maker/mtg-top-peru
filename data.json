@@ -21,6 +21,16 @@
    "jugadores": 8,
    "tipo": "cEDH",
    "link": null
+  },
+  {
+   "id": "2026-11-22-INTILINCE-B2",
+   "fecha": "2026-11-22",
+   "bracket": "B2",
+   "tienda": "Inti Lince",
+   "ciudad": "Lima",
+   "jugadores": 10,
+   "tipo": "Commander B2",
+   "link": null
   }
  ],
  "comandantes": [
@@ -76,6 +86,76 @@
   {
    "nombre": "Ob Nixilis, Captive Kingpin",
    "bracket": "B5",
+   "colores": "BR",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Sergeant John Benton",
+   "bracket": "B2",
+   "colores": "GW",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Abomination of Llanowar",
+   "bracket": "B2",
+   "colores": "BG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Evelyn, the Covetous",
+   "bracket": "B2",
+   "colores": "UBR",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Ghalta, Primal Hunger",
+   "bracket": "B2",
+   "colores": "G",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Ellivere of the Wild Court",
+   "bracket": "B2",
+   "colores": "GW",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Pavel Chekov, First Posting",
+   "bracket": "B2",
+   "colores": "UG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Ureni of the Unwritten",
+   "bracket": "B2",
+   "colores": "URG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Hakbal of the Surging Soul",
+   "bracket": "B2",
+   "colores": "UG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Sen Triplets",
+   "bracket": "B2",
+   "colores": "WUB",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Valgavoth, Harrower of Souls",
+   "bracket": "B2",
    "colores": "BR",
    "estrategia": null,
    "carta": null
@@ -172,6 +252,126 @@
    "comandante": "Sisay, Weatherlight Captain",
    "estrategia": null,
    "puesto": 8,
+   "puntos": 0,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B2",
+   "jugador": "Royalito",
+   "comandante": "Sergeant John Benton",
+   "estrategia": null,
+   "puesto": 1,
+   "puntos": 10,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B2",
+   "jugador": "Vash",
+   "comandante": "Abomination of Llanowar",
+   "estrategia": null,
+   "puesto": 2,
+   "puntos": 9,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B2",
+   "jugador": "Rick",
+   "comandante": "Evelyn, the Covetous",
+   "estrategia": null,
+   "puesto": 3,
+   "puntos": 9,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B2",
+   "jugador": "Gunther",
+   "comandante": "Ghalta, Primal Hunger",
+   "estrategia": null,
+   "puesto": 4,
+   "puntos": 9,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B2",
+   "jugador": "Geraldine",
+   "comandante": "Ellivere of the Wild Court",
+   "estrategia": null,
+   "puesto": 5,
+   "puntos": 8,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B2",
+   "jugador": "Moisés",
+   "comandante": "Pavel Chekov, First Posting",
+   "estrategia": null,
+   "puesto": 6,
+   "puntos": 6,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B2",
+   "jugador": "Spencer",
+   "comandante": "Ureni of the Unwritten",
+   "estrategia": null,
+   "puesto": 7,
+   "puntos": 4,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B2",
+   "jugador": "Tefo",
+   "comandante": "Hakbal of the Surging Soul",
+   "estrategia": null,
+   "puesto": 8,
+   "puntos": 4,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B2",
+   "jugador": "Pedro",
+   "comandante": "Sen Triplets",
+   "estrategia": null,
+   "puesto": 9,
+   "puntos": 1,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null
+  },
+  {
+   "torneo": "2026-11-22-INTILINCE-B2",
+   "jugador": "Jorge",
+   "comandante": "Valgavoth, Harrower of Souls",
+   "estrategia": null,
+   "puesto": 10,
    "puntos": 0,
    "v": null,
    "e": null,
