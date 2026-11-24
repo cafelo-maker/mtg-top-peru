@@ -310,6 +310,15 @@ footer{color:var(--muted);font-size:12px;padding-block:22px;border-top:1px solid
 .regrow{gap:8px;padding:8px 10px}.regrow .oin{min-width:0;flex:1 1 0}.regrow .ctl{flex:1.5 1 0;min-width:0}.regrow .oin.pts{flex:0 0 64px}
 .oin{font:inherit;font-size:15px;width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);color:var(--ink);min-height:40px}
 .oreport{white-space:pre-wrap;overflow-wrap:anywhere;font:500 13px/1.55 ui-monospace,Menlo,Consolas,monospace;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0}
+.owarn{color:var(--accent);border-color:#6b5320}
+.regmode button{padding:10px 16px;font-size:14px}
+.regshots{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+.shot{position:relative;width:112px;height:150px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot .btn{position:absolute;top:4px;right:4px;background:rgba(12,14,19,.85)}
+.regrow.cap .ctl{flex:1.6 1 0;margin-left:0}
+label.btn{display:inline-flex;align-items:center;justify-content:center}
+@media (max-width:640px){.regrow.cap .ctl{flex:1 1 calc(100% - 40px)}.regrow.cap>.oin{margin-left:30px;flex:1 1 60%}}
 .oerr{margin-top:12px;padding:12px 14px;border:1px solid #6b2e27;border-radius:12px;color:#ff8b7a}
 @media (max-width:640px){.regrow{flex-wrap:wrap}.regrow .oin:not(.pts){flex:1 1 calc(100% - 40px)}.regrow .ctl{flex:1 1 55%;margin-left:30px}}
 .otbl td.w{min-width:120px}
@@ -992,17 +1001,28 @@ function acInput(inp){
 /* ===== Registrar torneo (borrador guardado en el navegador) ===== */
 const REG_KEY = "mtp-registro";
 const regToday = () => new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
-const regBlank = () => ({tienda:"", ciudad:"Lima", fecha:regToday(), fmt:"B5", nombre:"", jugadores:"", link:"", contacto:"", rows:Array.from({length:8},()=>({j:"",d:"",p:""}))});
+const regBlank = () => ({modo:"captura", tienda:"", ciudad:"Lima", fecha:regToday(), fmt:"B5", nombre:"", jugadores:"", link:"", contacto:"", rows:Array.from({length:8},()=>({j:"",d:"",p:""}))});
 let REG = null, regOut = null, regArmed = false; try{ REG = JSON.parse(localStorage.getItem(REG_KEY)||"null"); }catch(e){}
 if(!REG || !Array.isArray(REG.rows)) REG = regBlank();
+if(!REG.modo) REG.modo = "captura";
+let REGFILES = [];
+const regCap = () => REG.modo==="captura";
 const regSave = () => { try{ localStorage.setItem(REG_KEY, JSON.stringify(REG)); }catch(e){} };
 const regCmd = () => (BYCODE[REG.fmt]||{cmd:true}).cmd;
 function regReport(){
-  const rows = REG.rows.filter(r=>r.j.trim()), errs = [];
+  const cap = regCap(), rows = REG.rows.filter(r => cap ? r.d.trim() : r.j.trim()), errs = [];
   if(!REG.tienda.trim()) errs.push("Falta el nombre de la tienda.");
   if(!REG.fecha) errs.push("Falta la fecha.");
-  if(rows.length<2) errs.push("Escribe al menos 2 jugadores en los standings.");
+  if(!cap && rows.length<2) errs.push("Escribe al menos 2 jugadores en los standings.");
+  if(cap && !Number(REG.jugadores)) errs.push("Indica cuántos jugadores tuvo el torneo.");
+  if(cap && !rows.length) errs.push(`Escribe al menos el ${regCmd()?"comandante":"mazo"} del primer puesto.`);
   const n = Number(REG.jugadores) || rows.length;
+  if(cap && !errs.length){ const top = Math.min(8, n), got = REG.rows.slice(0,top).filter(r=>r.d.trim()).length;
+    const lines = REG.rows.map((r,i) => r.d.trim() ? `${i+1}. ${r.d.trim()}${r.j.trim()?` (${r.j.trim()})`:""}` : null).filter(Boolean);
+    return {warn: got<top ? `Faltan ${top-got} mazos del top ${top}. Puedes enviarlo así, pero el top ${top} completo es lo que más ayuda.` : "",
+      text: ["REGISTRO DE TORNEO · MTG Top Perú", `Formato: ${fmtName(REG.fmt)}`, `Tienda: ${REG.tienda.trim()}${REG.ciudad.trim()?` · ${REG.ciudad.trim()}`:""}`,
+        `Fecha: ${fdate(REG.fecha)}`, `Jugadores: ${n}`, REG.link.trim()?`Enlace: ${REG.link.trim()}`:null, REG.contacto.trim()?`Contacto: ${REG.contacto.trim()}`:null, "",
+        `Standings finales: en las capturas adjuntas${REGFILES.length?` (${REGFILES.length})`:""}.`, `${regCmd()?"Comandantes":"Mazos"} por puesto (${got} de ${top} del top ${top}):`, ...lines].filter(x=>x!==null).join("\n")}; }
   if(n<rows.length) errs.push("El número de jugadores es menor que las filas llenadas.");
   if(errs.length) return {errs};
   let pos = 0; const lines = REG.rows.map(r => { if(!r.j.trim()) return null; pos++;
@@ -1011,6 +1031,22 @@ function regReport(){
     `Fecha: ${fdate(REG.fecha)}`, REG.nombre.trim()?`Torneo: ${REG.nombre.trim()}`:null, `Jugadores: ${n}`, REG.link.trim()?`Enlace: ${REG.link.trim()}`:null,
     REG.contacto.trim()?`Contacto: ${REG.contacto.trim()}`:null, "", `Standings finales (jugador | ${regCmd()?"comandante":"mazo"}):`, ...lines].filter(x=>x!==null).join("\n")};
 }
+function regCapSections(unit){ return `    <section><h2>2. Capturas de los standings</h2><p class="note" style="margin-bottom:10px">La tabla final completa, de topdeck.gg, Companion o una foto clara. Pueden ser varias.</p>
+      ${REGFILES.length?`<div class="regshots">${REGFILES.map((f,i)=>`<div class="shot"><img src="${f.url}" alt="Captura ${i+1}"><button class="btn sm" data-regact="rmfile" data-i="${i}" aria-label="Quitar captura ${i+1}">✕</button></div>`).join("")}</div>`:""}
+      <div class="btnrow"><label class="btn" for="r-files">${REGFILES.length?"Agregar otra captura":"Elegir capturas"}</label><input id="r-files" type="file" accept="image/*" multiple hidden></div></section>
+    <section><h2>3. ${unit==="Comandante"?"Comandantes":"Mazos"} por puesto</h2><p class="note" style="margin-bottom:10px">Lo más importante es el top 8. Si conoces más puestos, agrega filas. El nombre del jugador es opcional porque ya está en la captura.</p>
+      <div class="olist">${REG.rows.map((r,i)=>`<div class="orow regrow cap"><span class="num">${i+1}</span>
+        <span class="ctl"><input class="oin" data-regrow="${i}" data-k="d" data-ac="${regCmd()?"cmd":"deck"}" value="${esc(r.d)}" placeholder="${unit} del puesto ${i+1}" maxlength="80" aria-label="${unit} del puesto ${i+1}" autocomplete="off"></span>
+        <input class="oin" data-regrow="${i}" data-k="j" value="${esc(r.j)}" placeholder="Jugador (opcional)" maxlength="40" aria-label="Jugador del puesto ${i+1}" autocomplete="off">
+        ${i>=8?`<button class="btn sm ghost" data-regact="rmrow" data-i="${i}" aria-label="Quitar fila ${i+1}">✕</button>`:""}</div>`).join("")}</div>
+      <div class="btnrow" style="margin-top:12px"><button class="btn" data-regact="addrow">Agregar puesto</button><button class="btn danger" data-regact="clear">${regArmed?"¿Seguro? Se borra todo":"Limpiar formulario"}</button></div></section>`; }
+function regManualSections(unit){ return `    <section><h2>2. Standings finales</h2><p class="note" style="margin-bottom:10px">En orden, del primer puesto al último. Si no sabes el ${unit.toLowerCase()} de alguien, déjalo vacío.</p>
+      <div class="olist">${REG.rows.map((r,i)=>`<div class="orow regrow"><span class="num">${i+1}</span>
+        <input class="oin" data-regrow="${i}" data-k="j" value="${esc(r.j)}" placeholder="Jugador" maxlength="40" aria-label="Jugador del puesto ${i+1}" autocomplete="off">
+        <span class="ctl"><input class="oin" data-regrow="${i}" data-k="d" data-ac="${regCmd()?"cmd":"deck"}" value="${esc(r.d)}" placeholder="${unit}" maxlength="80" aria-label="${unit} del puesto ${i+1}" autocomplete="off"></span>
+        <input class="oin pts" data-regrow="${i}" data-k="p" value="${esc(r.p)}" placeholder="Pts" maxlength="6" inputmode="decimal" aria-label="Puntos del puesto ${i+1}">
+        <button class="btn sm ghost" data-regact="rmrow" data-i="${i}" aria-label="Quitar fila ${i+1}">✕</button></div>`).join("")}</div>
+      <div class="btnrow" style="margin-top:12px"><button class="btn" data-regact="addrow">Agregar fila</button><button class="btn danger" data-regact="clear">${regArmed?"¿Seguro? Se borra todo":"Limpiar formulario"}</button></div></section>`; }
 function regView(){
   const f = (k,l,extra="") => `<div class="ctl"><label for="r-${k}">${l}</label><input id="r-${k}" data-reg="${k}" value="${esc(REG[k])}" ${extra}></div>`;
   const fin = ORG.filter(t=>t.fin), unit = regCmd() ? "Comandante" : "Mazo";
@@ -1018,6 +1054,8 @@ function regView(){
       <p class="sub">¿Se jugó un torneo en tu tienda? Envía los standings finales para que entre al metagame local. Solo hacen falta los puestos y el mazo de cada jugador.</p></section>
     ${fin.length?`<section><h2>Traer desde Organizar torneo</h2><div class="oform"><div class="ctl"><label for="r-imp">Torneo terminado en este dispositivo</label><select id="r-imp">${[...fin].reverse().map(t=>`<option value="${t.id}">${esc(t.nombre)} · ${fdate(t.fecha)}</option>`).join("")}</select></div>
       <button class="btn" data-regact="import">Llenar con este torneo</button></div></section>`:""}
+    <section><div class="seg regmode" role="group" aria-label="Forma de registro"><button data-regact="modo" data-m="captura" class="${regCap()?"on":""}">Con capturas</button><button data-regact="modo" data-m="manual" class="${regCap()?"":"on"}">Escribir standings</button></div>
+      <p class="note" style="margin-top:10px">${regCap()?`La forma rápida: adjuntas capturas de la tabla final y solo escribes el ${unit.toLowerCase()} de cada puesto, al menos del top 8.`:"Escribes la tabla completa a mano, puesto por puesto."}</p></section>
     <section><h2>1. Datos del torneo</h2><div class="oform">
       ${f("tienda","Tienda",'maxlength="40" placeholder="Ej. Inti Lince"')}${f("ciudad","Ciudad",'maxlength="30"')}
       <div class="ctl"><label for="r-fecha">Fecha</label><input id="r-fecha" type="date" data-reg="fecha" value="${esc(REG.fecha)}"></div>
@@ -1025,17 +1063,13 @@ function regView(){
       ${f("jugadores","Nº de jugadores",'type="number" min="2" max="512" placeholder="Total que jugó"')}
       ${f("link","Enlace a los standings",'maxlength="200" placeholder="topdeck.gg, foto, etc. (opcional)"')}
       ${f("contacto","Tu nombre o contacto",'maxlength="60" placeholder="Opcional"')}</div></section>
-    <section><h2>2. Standings finales</h2><p class="note" style="margin-bottom:10px">En orden, del primer puesto al último. Si no sabes el ${unit.toLowerCase()} de alguien, déjalo vacío.</p>
-      <div class="olist">${REG.rows.map((r,i)=>`<div class="orow regrow"><span class="num">${i+1}</span>
-        <input class="oin" data-regrow="${i}" data-k="j" value="${esc(r.j)}" placeholder="Jugador" maxlength="40" aria-label="Jugador del puesto ${i+1}" autocomplete="off">
-        <span class="ctl"><input class="oin" data-regrow="${i}" data-k="d" data-ac="${regCmd()?"cmd":"deck"}" value="${esc(r.d)}" placeholder="${unit}" maxlength="80" aria-label="${unit} del puesto ${i+1}" autocomplete="off"></span>
-        <input class="oin pts" data-regrow="${i}" data-k="p" value="${esc(r.p)}" placeholder="Pts" maxlength="6" inputmode="decimal" aria-label="Puntos del puesto ${i+1}">
-        <button class="btn sm ghost" data-regact="rmrow" data-i="${i}" aria-label="Quitar fila ${i+1}">✕</button></div>`).join("")}</div>
-      <div class="btnrow" style="margin-top:12px"><button class="btn" data-regact="addrow">Agregar fila</button><button class="btn danger" data-regact="clear">${regArmed?"¿Seguro? Se borra todo":"Limpiar formulario"}</button></div></section>
-    <section><h2>3. Enviar</h2><div class="btnrow"><button class="btn pri" data-regact="report">Generar reporte</button></div>
+    ${regCap()?regCapSections(unit):regManualSections(unit)}
+    <section><h2>${regCap()?4:3}. Enviar</h2><div class="btnrow"><button class="btn pri" data-regact="report">Generar reporte</button></div>
       ${regOut&&regOut.errs?`<div class="oerr" role="alert">${regOut.errs.map(esc).join("<br>")}</div>`:""}
+      ${regOut&&regOut.warn?`<div class="oerr owarn">${esc(regOut.warn)}</div>`:""}
       ${regOut&&regOut.text?`<pre class="oreport" id="reg-out">${esc(regOut.text)}</pre>
-        <div class="btnrow"><button class="btn pri" data-regact="copy">Copiar reporte</button>${navigator.share?`<button class="btn" data-regact="share">Compartir</button>`:""}</div>
+        <div class="btnrow"><button class="btn pri" data-regact="copy">Copiar reporte</button>${navigator.share?`<button class="btn" data-regact="share">${regCap()&&REGFILES.length?"Compartir reporte y capturas":"Compartir"}</button>`:""}</div>
+        ${regCap()?`<p class="note" style="margin-top:10px">${REGFILES.length?"Si al compartir no se adjuntan las capturas, envíalas en el mismo chat junto con el reporte.":"No olvides enviar las capturas de la tabla junto con el reporte."}</p>`:""}
         <p class="note" id="reg-msg" style="margin-top:10px" aria-live="polite">Copia o comparte este reporte con el administrador de MTG Top Perú. El torneo aparecerá en el sitio cuando sea revisado.</p>`
         :`<p class="note" style="margin-top:10px">El formulario se guarda en este dispositivo mientras lo llenas. Un torneo entra al metagame después de ser revisado.</p>`}</section>`;
 }
@@ -1043,10 +1077,13 @@ function regView(){
   app.addEventListener("input", e => { const d = e.target.dataset||{};
     if(d.reg && d.reg!=="fmt"){ REG[d.reg] = e.target.value; regSave(); }
     else if(d.regrow!=null && REG.rows[+d.regrow]){ REG.rows[+d.regrow][d.k] = e.target.value; regSave(); } });
-  app.addEventListener("change", e => { if((e.target.dataset||{}).reg==="fmt"){ REG.fmt = e.target.value; regOut = null; regSave(); route(); } });
+  app.addEventListener("change", e => { if(e.target.id==="r-files"){ [...e.target.files].filter(f=>f.type.startsWith("image/")).slice(0,6-REGFILES.length).forEach(f=>REGFILES.push({file:f, url:URL.createObjectURL(f)})); regOut = null; route(); return; }
+    if((e.target.dataset||{}).reg==="fmt"){ REG.fmt = e.target.value; regOut = null; regSave(); route(); } });
   app.addEventListener("click", e => { const b = e.target.closest("[data-regact]"); if(!b) return; const a = b.dataset.regact;
     if(a!=="clear") regArmed = false;
-    if(a==="addrow"){ REG.rows.push({j:"",d:"",p:""}); orgFocus = ""; }
+    if(a==="addrow"){ REG.rows.push({j:"",d:"",p:""}); orgFocus = ""; regOut = null; }
+    else if(a==="modo"){ REG.modo = b.dataset.m; regOut = null; while(REG.rows.length<8) REG.rows.push({j:"",d:"",p:""}); }
+    else if(a==="rmfile"){ const f = REGFILES.splice(+b.dataset.i,1)[0]; if(f) URL.revokeObjectURL(f.url); regOut = null; }
     else if(a==="rmrow"){ REG.rows.splice(+b.dataset.i,1); if(!REG.rows.length) REG.rows.push({j:"",d:"",p:""}); }
     else if(a==="clear"){ if(!regArmed){ regArmed = true; route(); return; } regArmed = false; REG = regBlank(); regOut = null; }
     else if(a==="import"){ const t = orgGet((document.getElementById("r-imp")||{}).value); if(!t) return;
@@ -1056,7 +1093,9 @@ function regView(){
     else if(a==="copy" || a==="share"){ const txt = regOut && regOut.text, msg = document.getElementById("reg-msg"); if(!txt) return;
       const ok = () => { if(msg) msg.textContent = "Reporte copiado. Pégalo en un mensaje al administrador de MTG Top Perú."; };
       const fb = () => { const ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); ok(); }catch(e){} ta.remove(); };
-      if(a==="share" && navigator.share){ navigator.share({title:"Registro de torneo", text:txt}).catch(()=>{}); return; }
+      if(a==="share" && navigator.share){ const files = regCap() ? REGFILES.map(f=>f.file) : [], d = {title:"Registro de torneo", text:txt};
+        if(files.length && navigator.canShare && navigator.canShare({files})) d.files = files;
+        navigator.share(d).catch(()=>{}); return; }
       if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok, fb); else fb(); return; }
     regSave(); route(); });
 })();
