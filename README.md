@@ -1,4 +1,4 @@
-# Meta Commander Perú
+# MTG Top Perú
 
 Metagame local de Magic: The Gathering en Perú (cEDH, Commander B2, Duel Commander, Standard y Pauper), armado con los standings finales de cada torneo.
 
