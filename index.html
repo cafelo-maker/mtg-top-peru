@@ -305,6 +305,7 @@ footer{color:var(--muted);font-size:12px;padding-block:22px;border-top:1px solid
 @media (min-width:1281px){nav a .long,nav a.solo{display:none}nav a{padding-inline:9px}.navgroup:not(.rest){padding-left:12px}nav{gap:8px}}
 .osug{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:40;background:var(--surface2);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.55);overflow:hidden;display:grid}
 .osug button{font:inherit;font-size:14px;text-align:left;padding:10px 12px;border:0;border-bottom:1px solid var(--line);background:none;color:var(--ink);cursor:pointer}
+.osug .achint{font-size:13px;line-height:1.4;padding:9px 12px;color:var(--muted);border-bottom:1px solid var(--line);background:rgba(240,185,74,.07)}.osug .achint b{color:var(--ink)}.osug .achint.warn{color:#f0b94a}
 .osug button:last-child{border-bottom:0}.osug button:hover,.osug button:focus{background:rgba(240,185,74,.14)}
 .regrow{gap:8px;padding:8px 10px}.regrow .oin{min-width:0;flex:1 1 0}.regrow .ctl{flex:1.5 1 0;min-width:0}.regrow .oin.pts{flex:0 0 64px}
 .oin{font:inherit;font-size:15px;width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);color:var(--ink);min-height:40px}
@@ -963,29 +964,66 @@ function acMerge(term, a, b){ const q = slug(term), all = [...new Set([...a, ...
   const tier = n => { const g = slug(n); return g.startsWith(q) ? 0 : g.split("-").some(w=>w.startsWith(q.split("-")[0])) ? 1 : 2; };
   return all.map((n,i)=>[tier(n),i,n]).sort((x,y)=>x[0]-y[0]||x[1]-y[1]).slice(0,8).map(x=>x[2]); }
 function acHide(){ if(AC.box) AC.box.remove(); AC.box = null; }
-function acShow(inp, names){ acHide(); if(!names.length || document.activeElement!==inp) return;
+function acShow(inp, names, hint, warn){ acHide(); if((!names.length && !hint) || document.activeElement!==inp) return;
   const box = document.createElement("div"); box.className = "osug"; box.setAttribute("role","listbox");
-  box.innerHTML = names.map(n=>`<button type="button" role="option" data-acpick="${esc(n)}">${esc(n)}</button>`).join("");
+  box.innerHTML = (hint ? `<div class="achint${warn?" warn":""}">${hint}</div>` : "") +
+    names.map(n=>`<button type="button" role="option" data-acpick="${esc(n)}">${esc(n)}</button>`).join("");
   inp.parentElement.style.position = "relative"; inp.parentElement.appendChild(box); AC.box = box; AC.input = inp; }
+/* Parejas de comandantes: Partner, Partner with, Partner—X, Friends forever, Background, Doctor's companion */
+AC.info = {}; AC.pairs = {};
+function acPairOf(c){
+  const f = c.card_faces ? c.card_faces[0] : c, txt = (f.oracle_text||c.oracle_text||""), type = (f.type_line||c.type_line||""), kw = c.keywords||[], n = c.name;
+  let m;
+  if((m = txt.match(/Partner with ([^\n(]+?)\s*(\(|\n|$)/))) return {hint:`<b>${esc(n)}</b> tiene <b>Partner with</b>: su pareja es <b>${esc(m[1].trim())}</b>.`, list:[m[1].trim()]};
+  if((m = txt.match(/Partner\s*[—-]\s*([^\n(]+?)\s*(\(|\n|$)/))) return {hint:`<b>${esc(n)}</b> tiene <b>Partner—${esc(m[1].trim())}</b>: va con otro comandante que tenga ese mismo Partner.`, q:`is:commander o:"Partner—${m[1].trim()}"`};
+  if(kw.includes("Partner")) return {hint:`<b>${esc(n)}</b> tiene <b>Partner</b>: puede ir con cualquier otro comandante con Partner. Elige el segundo:`, q:`is:commander keyword:partner -o:"partner with" -o:"partner—"`};
+  if(kw.includes("Friends forever")) return {hint:`<b>${esc(n)}</b> tiene <b>Friends forever</b>: va con otro comandante con Friends forever.`, q:`is:commander keyword:"friends forever"`};
+  if(/choose a background/i.test(txt)) return {hint:`<b>${esc(n)}</b> puede elegir un <b>Background</b> (trasfondo). Elige cuál:`, q:`t:background`};
+  if(/\bBackground\b/.test(type)) return {hint:`<b>${esc(n)}</b> es un <b>Background</b>: va con un comandante que tenga "Choose a Background".`, q:`is:commander o:"choose a background"`};
+  if(kw.includes("Doctor's companion") || /Doctor's companion/i.test(txt)) return {hint:`<b>${esc(n)}</b> tiene <b>Doctor's companion</b>: va con un <b>Time Lord Doctor</b>.`, q:`is:commander t:"time lord" t:doctor`};
+  if(/Time Lord Doctor/i.test(type)) return {hint:`<b>${esc(n)}</b> es un <b>Doctor</b>: puede ir con un comandante que tenga Doctor's companion.`, q:`is:commander keyword:"doctor's companion"`};
+  return null; }
+function acCard(name){ if(name in AC.info) return Promise.resolve(AC.info[name]);
+  return fetch("https://api.scryfall.com/cards/named?exact="+encodeURIComponent(name)).then(r=>r.ok?r.json():null)
+    .then(c => (AC.info[name] = c ? acPairOf(c) : null)).catch(()=>null); }
+function acPartners(info){ if(!info || info.list) return Promise.resolve(info ? info.list : []); if(AC.pairs[info.q]) return Promise.resolve(AC.pairs[info.q]);
+  return fetch("https://api.scryfall.com/cards/search?order=edhrec&unique=cards&q="+encodeURIComponent(info.q))
+    .then(r=>r.ok?r.json():{data:[]}).then(d => (AC.pairs[info.q] = (d.data||[]).map(c=>c.name))).catch(()=>[]); }
+const AC_HELP = `Escríbelo en inglés, como en la carta. Si el mazo usa <b>dos comandantes</b> (Partner, Background, Friends forever…), elige el primero y te sugerimos su pareja. También puedes escribir <b>Thrasios + Tymna</b>.`;
 function acInput(inp){
-  const cmd = inp.dataset.ac==="cmd", term = acTerm(inp.value).term; clearTimeout(AC.timer); const my = ++AC.seq;
-  if(term.length<2){ acHide(); return; }
+  const cmd = inp.dataset.ac==="cmd", {pre, term} = acTerm(inp.value); clearTimeout(AC.timer); const my = ++AC.seq;
+  const first = pre ? pre.replace(/\s*\+\s*$/,"").split(" + ")[0].trim() : "";
+  if(cmd && first){ /* ya hay un primer comandante: sugerir pareja válida */
+    acCard(first).then(info => { if(my!==AC.seq) return;
+      if(info===undefined || !(first in AC.info)) return acShow(inp, [], "Escribe el segundo comandante (en inglés).");
+      if(!info) return acShow(inp, [], `<b>${esc(first)}</b> no tiene Partner ni Background, así que normalmente va solo. Revisa el nombre si no es así.`, true);
+      acPartners(info).then(list => { if(my!==AC.seq) return; const q = slug(term);
+        const names = list.filter(n => n!==first && (!q || slug(n).includes(q))).slice(0,8);
+        acShow(inp, names, info.hint); }); });
+    return; }
+  if(term.length<2){ if(cmd && !term && !AC.helped) acShow(inp, [], AC_HELP); else acHide(); return; }
   const local = acLocal(term, cmd), key = term.toLowerCase(); acShow(inp, acMerge(term, local, AC.cache[key]||[]));
   if(!cmd || AC.cache[key]) return;
   AC.timer = setTimeout(() => {
     const words = key.replace(/[^a-z0-9áéíóúñü' -]/gi," ").split(/\s+/).filter(Boolean).map(w=>`name:"${w}"`).join(" ");
     if(!words) return;
     fetch("https://api.scryfall.com/cards/search?order=edhrec&unique=cards&q="+encodeURIComponent("is:commander "+words))
-      .then(r => r.ok ? r.json() : {data:[]}).then(d => { AC.cache[key] = (d.data||[]).map(c=>c.name);
+      .then(r => r.ok ? r.json() : {data:[]}).then(d => { (d.data||[]).forEach(c => { AC.info[c.name] = acPairOf(c); });
+        AC.cache[key] = (d.data||[]).map(c=>c.name);
         if(my===AC.seq) acShow(inp, acMerge(term, local, AC.cache[key])); }).catch(()=>{});
   }, 250);
 }
+/* Al elegir un comandante con pareja posible, se agrega " + " y se sugiere el segundo */
+function acPicked(inp){ if(inp.dataset.ac!=="cmd" || acTerm(inp.value).pre) return;
+  const name = inp.value.trim(); acCard(name).then(info => { if(!info || inp.value.trim()!==name || document.activeElement!==inp) return;
+    inp.value = name + " + "; inp.dispatchEvent(new Event("input",{bubbles:true})); }); }
 (() => { const app = document.getElementById("app");
   app.addEventListener("input", e => { if(e.target.dataset && e.target.dataset.ac && !AC.skip) acInput(e.target); });
   app.addEventListener("pointerdown", e => { if(e.target.closest("[data-acpick]")) e.preventDefault(); });
   app.addEventListener("click", e => { const b = e.target.closest("[data-acpick]"); if(!b || !AC.input) return;
     const inp = AC.input; inp.value = acTerm(inp.value).pre + b.dataset.acpick; acHide();
-    AC.skip = true; inp.dispatchEvent(new Event("input",{bubbles:true})); AC.skip = false; inp.focus(); });
+    AC.skip = true; inp.dispatchEvent(new Event("input",{bubbles:true})); AC.skip = false; inp.focus(); AC.helped = true; acPicked(inp); });
+  app.addEventListener("focusin", e => { const t = e.target; if(t.dataset && t.dataset.ac==="cmd" && !t.value.trim() && !AC.helped) acShow(t, [], AC_HELP); });
   app.addEventListener("focusout", e => { if(e.target.dataset && e.target.dataset.ac) setTimeout(() => { if(document.activeElement!==AC.input) acHide(); }, 180); });
   app.addEventListener("keydown", e => { if(e.key==="Escape") acHide(); });
 })();
