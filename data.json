@@ -344,6 +344,20 @@
    "colores": "RW",
    "estrategia": null,
    "carta": null
+  },
+  {
+   "nombre": "Ms. Bumbleflower",
+   "bracket": "B2",
+   "colores": "WUG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Vivi Ornitier",
+   "bracket": "B2",
+   "colores": "UR",
+   "estrategia": null,
+   "carta": null
   }
  ],
  "resultados": [
@@ -453,7 +467,7 @@
   },
   {
    "torneo": "2026-11-22-INTILINCE-B2",
-   "jugador": "Royalito",
+   "jugador": "Royalito McRoyal",
    "comandante": "Sergeant John Benton",
    "estrategia": null,
    "puesto": 1,
@@ -479,7 +493,7 @@
   },
   {
    "torneo": "2026-11-22-INTILINCE-B2",
-   "jugador": "Rick",
+   "jugador": "Rickard Ponce",
    "comandante": "Evelyn, the Covetous",
    "estrategia": null,
    "puesto": 3,
@@ -492,7 +506,7 @@
   },
   {
    "torneo": "2026-11-22-INTILINCE-B2",
-   "jugador": "Gunther",
+   "jugador": "Gunter Burghardt",
    "comandante": "Ghalta, Primal Hunger",
    "estrategia": null,
    "puesto": 4,
@@ -583,7 +597,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Perry Tony",
+   "jugador": "Tony Perry",
    "comandante": "Satoru, the Infiltrator",
    "estrategia": null,
    "puesto": 1,
@@ -596,7 +610,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Silva Rafael",
+   "jugador": "Rafael Silva",
    "comandante": "Krark, the Thumbless + Kraum, Ludevic's Opus",
    "estrategia": null,
    "puesto": 2,
@@ -609,7 +623,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Zavala José",
+   "jugador": "José Zavala",
    "comandante": "Rowan, Scion of War",
    "estrategia": null,
    "puesto": 3,
@@ -622,7 +636,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Santos Sebastián",
+   "jugador": "Sebastián Santos",
    "comandante": "Jodah, Archmage Eternal",
    "estrategia": null,
    "puesto": 4,
@@ -635,7 +649,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Acevedo Luis",
+   "jugador": "Luis Acevedo",
    "comandante": "Nissa, Leyline Tamer",
    "estrategia": null,
    "puesto": 5,
@@ -648,7 +662,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Flores Leiva Christian Sebastian",
+   "jugador": "Christian Sebastian Flores Leiva",
    "comandante": "Hearthhull, the Worldseed",
    "estrategia": null,
    "puesto": 6,
@@ -661,7 +675,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Acuache Andrés",
+   "jugador": "Andrés Acuache",
    "comandante": "Norman Osborn",
    "estrategia": null,
    "puesto": 7,
@@ -674,7 +688,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "McRoyal Royalito",
+   "jugador": "Royalito McRoyal",
    "comandante": "Sergeant John Benton",
    "estrategia": null,
    "puesto": 8,
@@ -687,7 +701,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Bernales Felipe",
+   "jugador": "Felipe Bernales",
    "comandante": "Helga, Skittish Seer",
    "estrategia": null,
    "puesto": 9,
@@ -700,7 +714,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Santos Jair",
+   "jugador": "Jair Santos",
    "comandante": "Muldrotha, the Gravetide",
    "estrategia": null,
    "puesto": 10,
@@ -713,7 +727,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Barzola Pablo",
+   "jugador": "Pablo Barzola",
    "comandante": "Jetmir, Nexus of Revels",
    "estrategia": null,
    "puesto": 11,
@@ -726,8 +740,8 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Andrade Pedro",
-   "comandante": "Desconocido",
+   "jugador": "Pedro Andrade",
+   "comandante": "Ms. Bumbleflower",
    "estrategia": null,
    "puesto": 12,
    "puntos": 8,
@@ -739,7 +753,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Calderon Martin",
+   "jugador": "Martin Calderon",
    "comandante": "Selvala, Heart of the Wilds",
    "estrategia": null,
    "puesto": 13,
@@ -752,7 +766,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "King Christian",
+   "jugador": "Christian King",
    "comandante": "Ellivere of the Wild Court",
    "estrategia": null,
    "puesto": 14,
@@ -765,7 +779,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Garcia Daniel",
+   "jugador": "Daniel Garcia",
    "comandante": "Emmara, Soul of the Accord",
    "estrategia": null,
    "puesto": 15,
@@ -791,7 +805,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Vargas Yeens",
+   "jugador": "Yeens Vargas",
    "comandante": "Nekusar, the Mindrazer",
    "estrategia": null,
    "puesto": 17,
@@ -804,7 +818,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Alosilla Cuba Raymi Jose",
+   "jugador": "Raymi Jose Alosilla Cuba",
    "comandante": "Imoti, Celebrant of Bounty",
    "estrategia": null,
    "puesto": 18,
@@ -817,7 +831,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Segura Martin",
+   "jugador": "Martin Segura",
    "comandante": "Strefan, Maurer Progenitor",
    "estrategia": null,
    "puesto": 19,
@@ -830,7 +844,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Cornejo Luis",
+   "jugador": "Luis Cornejo",
    "comandante": "Killian, Decisive Mentor",
    "estrategia": null,
    "puesto": 20,
@@ -843,7 +857,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Pizzino Enzo",
+   "jugador": "Enzo Pizzino",
    "comandante": "Bello, Bard of the Brambles",
    "estrategia": null,
    "puesto": 21,
@@ -856,7 +870,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Albino Piero",
+   "jugador": "Piero Albino",
    "comandante": "Tatyova, Benthic Druid",
    "estrategia": null,
    "puesto": 22,
@@ -869,7 +883,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Burghardt Gunter",
+   "jugador": "Gunter Burghardt",
    "comandante": "Ghalta, Primal Hunger",
    "estrategia": null,
    "puesto": 23,
@@ -882,7 +896,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Valle Omar",
+   "jugador": "Omar Valle",
    "comandante": "Duskana, the Rage Mother",
    "estrategia": null,
    "puesto": 24,
@@ -895,7 +909,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Romero Vampirito",
+   "jugador": "Vampirito Romero",
    "comandante": "Hearthhull, the Worldseed",
    "estrategia": null,
    "puesto": 25,
@@ -908,7 +922,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Ponce Rickard",
+   "jugador": "Rickard Ponce",
    "comandante": "Evelyn, the Covetous",
    "estrategia": null,
    "puesto": 26,
@@ -921,7 +935,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Murphy Seba",
+   "jugador": "Seba Murphy",
    "comandante": "Silverquill, the Disputant",
    "estrategia": null,
    "puesto": 27,
@@ -934,7 +948,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Bustinza Eduardo",
+   "jugador": "Eduardo Bustinza",
    "comandante": "Arna Kennerüd, Skycaptain",
    "estrategia": null,
    "puesto": 28,
@@ -947,7 +961,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Jimeno Renato",
+   "jugador": "Renato Jimeno",
    "comandante": "Sovereign Okinec Ahau",
    "estrategia": null,
    "puesto": 29,
@@ -961,7 +975,7 @@
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
    "jugador": "Alejandra",
-   "comandante": "Desconocido",
+   "comandante": "Vivi Ornitier",
    "estrategia": null,
    "puesto": 30,
    "puntos": 2,
@@ -973,7 +987,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Jacobini Ren",
+   "jugador": "Ren Jacobini",
    "comandante": "Squall, SeeD Mercenary",
    "estrategia": null,
    "puesto": 31,
@@ -986,7 +1000,7 @@
   },
   {
    "torneo": "2026-11-24-INTIMIRAFLORES-B2",
-   "jugador": "Coello Enrique",
+   "jugador": "Enrique Coello",
    "comandante": "Feather, the Redeemed",
    "estrategia": null,
    "puesto": 32,
