@@ -1164,7 +1164,7 @@ function route(){
   const fm = document.getElementById("f-min"); if(fm) fm.onchange = () => { minN=Number(fm.value); route(); };
   if(orgFocus){ const f = document.getElementById(orgFocus); orgFocus = ""; if(f) f.focus(); }
 }
-fetch("data.json").then(r=>r.json()).then(d=>{
+fetch("data.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{
   DB = d; enrich();
   document.getElementById("foot").textContent = `Metagame local de Magic en Perú, armado con los standings finales de cada torneo. Datos actualizados al ${fdate(d.generado)}.`;
   route(); addEventListener("hashchange", () => { route(); scrollTo(0,0); });
