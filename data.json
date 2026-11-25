@@ -3131,6 +3131,508 @@
      ]
     }
    ]
+  },
+  "2026-11-22-INTILINCE-B2|Pedro Andrade": {
+   "url": "https://moxfield.com/decks/eONXlRU9Mk6rOkCIyiXahA",
+   "fuente": "Moxfield",
+   "guardada": "2026-11-25",
+   "secciones": [
+    {
+     "t": "Comandante",
+     "c": [
+      [
+       1,
+       "Sen Triplets",
+       "3bf7f7eb-4e29-40d1-acc7-a6819f64771c"
+      ]
+     ]
+    },
+    {
+     "t": "Criaturas",
+     "c": [
+      [
+       1,
+       "Claim Jumper",
+       "11bda4c5-099f-489e-b64b-f4719241cf9d"
+      ],
+      [
+       1,
+       "Containment Priest",
+       "a24e8dba-5c86-4e32-8a52-61402f7fe9f0"
+      ],
+      [
+       1,
+       "Esper Sentinel",
+       "8b5a916f-a6f2-4e89-b38f-7e5bc0c2e032"
+      ],
+      [
+       1,
+       "Faerie Mastermind",
+       "bc9a7599-3c7d-4b83-bff3-e3d1f20f1b0f"
+      ],
+      [
+       1,
+       "Geist of Saint Thalia",
+       "9c334530-0880-46b5-a358-9603eee3cecf"
+      ],
+      [
+       1,
+       "Loran of the Third Path",
+       "647e6b32-c755-4700-b151-6a174dbb2bd0"
+      ],
+      [
+       1,
+       "Lotho, Corrupt Shirriff",
+       "692fcfe3-1057-4290-aaea-f4d50f642c05"
+      ],
+      [
+       1,
+       "Mockingbird",
+       "230b5899-460d-4506-b22d-9bb879e4437f"
+      ],
+      [
+       1,
+       "Nighthawk Scavenger",
+       "eb348f07-1d48-4877-8a56-60655d64a3f7"
+      ],
+      [
+       1,
+       "Pollywog Prodigy",
+       "94a020df-714b-4465-bfa2-ac15f27d8412"
+      ],
+      [
+       1,
+       "Scrawling Crawler",
+       "a1176dcf-40ee-4342-aa74-791b8352e99a"
+      ],
+      [
+       1,
+       "The Mindskinner",
+       "3130a342-3c98-4c69-975b-a958ccddfe37"
+      ]
+     ]
+    },
+    {
+     "t": "Instantáneos",
+     "c": [
+      [
+       1,
+       "Aetherize",
+       "55c94e96-6563-43d5-8787-17868846e010"
+      ],
+      [
+       1,
+       "Angel's Grace",
+       "de0f22af-fb85-4178-8a35-ec3ff031f4df"
+      ],
+      [
+       1,
+       "Arcane Denial",
+       "0adf3b42-f959-4622-b2d5-c70323c30a7f"
+      ],
+      [
+       1,
+       "Dark Ritual",
+       "3f0e9d0d-e1a3-4e0a-bf39-e9aaf4d36d67"
+      ],
+      [
+       1,
+       "Dawn's Truce",
+       "24cf4c50-d576-41fb-b45c-5bc25d54247b"
+      ],
+      [
+       1,
+       "Erode",
+       "32e670da-7563-4f6a-a7db-4c126a440eb8"
+      ],
+      [
+       1,
+       "Flare of Fortitude",
+       "37b41b59-0296-443b-8a62-8d5c4641ef66"
+      ],
+      [
+       1,
+       "Force of Negation",
+       "5396b405-6fa0-43d7-a8f6-f64154e95e98"
+      ],
+      [
+       1,
+       "Inkshield",
+       "3362ade8-d585-40be-8486-382cad6efaf8"
+      ],
+      [
+       1,
+       "Mana Drain",
+       "4c7f0ea5-a142-4157-b85d-ec49dd79adf6"
+      ],
+      [
+       1,
+       "Mental Misstep",
+       "09113591-df5c-403d-982e-c4e8ba14c5cd"
+      ],
+      [
+       1,
+       "Pact of Negation",
+       "1ed4c0bb-b710-44a1-b8bc-6bd11c27b8b8"
+      ],
+      [
+       1,
+       "Path to Exile",
+       "22e08a78-55b7-46b0-bd1a-a51548fc1861"
+      ],
+      [
+       1,
+       "Strix Serenade",
+       "5eccf31d-869d-4003-a92b-71b4f4b479ee"
+      ],
+      [
+       1,
+       "Swan Song",
+       "83d0b761-d694-4232-9f40-5bd8c82a05f1"
+      ],
+      [
+       1,
+       "Swords to Plowshares",
+       "cc9ece2f-7eda-4fc5-a562-3e16e71560e9"
+      ],
+      [
+       1,
+       "Tainted Strike",
+       "d0f82007-99f6-4c6c-8182-ee631c33531f"
+      ]
+     ]
+    },
+    {
+     "t": "Conjuros",
+     "c": [
+      [
+       1,
+       "Approach of the Second Sun",
+       "d363a81c-0509-47ad-bb48-8bdcbb233bfc"
+      ],
+      [
+       1,
+       "Blasphemous Edict",
+       "56a669cb-24fc-4055-9e53-70b794805f3b"
+      ],
+      [
+       1,
+       "Exsanguinate",
+       "3d9bb677-6b9a-4ccf-accc-b1a91be85b70"
+      ],
+      [
+       1,
+       "Secret Rendezvous",
+       "e198cc9f-a03c-49f2-8270-80864ce17508"
+      ],
+      [
+       1,
+       "Singularity Rupture",
+       "422d7bc1-e2a2-4cfc-a29d-9d67354cdafd"
+      ],
+      [
+       1,
+       "Space-Time Anomaly",
+       "edb8dc2a-ddce-48fa-b57e-0e57c87c6671"
+      ],
+      [
+       1,
+       "Supreme Verdict",
+       "b98b93f4-4c85-42b3-8b0f-094349f2414b"
+      ],
+      [
+       1,
+       "Tasha's Hideous Laughter",
+       "bb0e2f7f-2e28-4d32-82cb-160833bc9aba"
+      ],
+      [
+       1,
+       "Windfall",
+       "384f886f-691c-484d-90e2-02201ea488ee"
+      ],
+      [
+       1,
+       "Wrath of God",
+       "caff117f-844b-4d11-a104-930d7f238114"
+      ]
+     ]
+    },
+    {
+     "t": "Artefactos",
+     "c": [
+      [
+       1,
+       "Altar of the Brood",
+       "0d656542-f0cd-485d-9d74-05573a2d49e4"
+      ],
+      [
+       1,
+       "Arcane Signet",
+       "7b4b3e1c-1dc4-46d9-9234-f9d1d2ebb8f8"
+      ],
+      [
+       1,
+       "Archaeomancer's Map",
+       "9715fce1-307a-49d9-a34a-8bce00d904e8"
+      ],
+      [
+       1,
+       "Grafdigger's Cage",
+       "2a6240e7-d3aa-40e9-a627-58e7bf62525c"
+      ],
+      [
+       1,
+       "Mesmeric Orb",
+       "29d11b14-43a9-4d1c-ba2c-3025d51d841e"
+      ],
+      [
+       1,
+       "Misleading Signpost",
+       "c15dfe35-c570-4aaf-b82d-270c15464fe2"
+      ],
+      [
+       1,
+       "Sol Ring",
+       "219210d3-263c-41c4-9211-0e59b2d4ccf3"
+      ],
+      [
+       1,
+       "Talisman of Dominance",
+       "f6c8e0b5-218e-41dd-8b09-2d4aaec2c979"
+      ],
+      [
+       1,
+       "Talisman of Progress",
+       "e1fd69ca-46d0-43b0-b770-1d82c3d05eb8"
+      ],
+      [
+       1,
+       "Wedding Ring",
+       "3c16b2a4-2c40-4d38-bfe8-43ca127b5bdd"
+      ]
+     ]
+    },
+    {
+     "t": "Encantamientos",
+     "c": [
+      [
+       1,
+       "Authority of the Consuls",
+       "42ce2d7f-5924-47c0-b5ed-dacf9f9617a0"
+      ],
+      [
+       1,
+       "Blind Obedience",
+       "1cb0ea8e-0707-46a8-9dc6-77c17244fd7b"
+      ],
+      [
+       1,
+       "Copy Enchantment",
+       "36924d70-5ede-4eed-a7db-7bc74d3eede9"
+      ],
+      [
+       1,
+       "Ghostly Prison",
+       "eea3623d-1d39-4045-acdb-f0fb184ccbc8"
+      ],
+      [
+       1,
+       "Mirrormade",
+       "a26cbfbe-fbb8-4804-b065-ab2c42ddad9b"
+      ],
+      [
+       1,
+       "Monologue Tax",
+       "4ba2c9b9-06bc-4bf2-8df5-f0748fb2b8eb"
+      ],
+      [
+       1,
+       "Mystic Remora",
+       "ff393aab-0b02-496c-97df-0ffa0f8b1ec9"
+      ],
+      [
+       1,
+       "Phyrexian Scriptures",
+       "e0ea11e8-56a2-4358-b970-06e68eb2989e"
+      ],
+      [
+       1,
+       "Propaganda",
+       "0806d4a1-4d2f-454b-b830-5ab58e13a452"
+      ],
+      [
+       1,
+       "Rest in Peace",
+       "43eb0e85-1c26-4d2c-bdac-6e94717f0762"
+      ],
+      [
+       1,
+       "Sheltered by Ghosts",
+       "da7c29a0-5512-4188-acbc-af5f9194f264"
+      ],
+      [
+       1,
+       "Solemnity",
+       "0a71fb62-acbd-49f5-842f-0fc9fa48afea"
+      ],
+      [
+       1,
+       "Telepathy",
+       "ce03b4b4-612b-4fc9-b063-b0d367712eaf"
+      ]
+     ]
+    },
+    {
+     "t": "Tierras",
+     "c": [
+      [
+       1,
+       "Academy Ruins",
+       "128deed2-b9bc-4065-95c9-ccd7b08f1230"
+      ],
+      [
+       1,
+       "Adarkar Wastes",
+       "d501527c-1bf5-4b59-9bff-e4562181a096"
+      ],
+      [
+       1,
+       "Arid Mesa",
+       "25ac5405-df7b-4097-914a-022cb18e20d4"
+      ],
+      [
+       1,
+       "Bleachbone Verge",
+       "52dcdabd-a186-45fe-9fee-6c0f1afeaf16"
+      ],
+      [
+       1,
+       "Bojuka Bog",
+       "38834333-f9ea-43a8-b00a-17935d59eaea"
+      ],
+      [
+       1,
+       "Boseiju, Who Shelters All",
+       "45e69d82-bd5f-41bb-952e-b799da54a23e"
+      ],
+      [
+       1,
+       "Clearwater Pathway // Murkwater Pathway",
+       "3616a2f7-d852-4606-898b-76799c647b40"
+      ],
+      [
+       1,
+       "Command Tower",
+       "667b6c3b-75cc-4adf-b205-80925ca76d2a"
+      ],
+      [
+       1,
+       "Deserted Beach",
+       "56dae4c4-3e71-4a32-979b-4e26d9c9e96c"
+      ],
+      [
+       1,
+       "Exotic Orchard",
+       "e6d8d98d-29b2-4ca2-bbda-4db2e8f6ae0b"
+      ],
+      [
+       1,
+       "Flooded Strand",
+       "8f85e12c-196b-4459-b81f-0c9c854e9f57"
+      ],
+      [
+       1,
+       "Floodfarm Verge",
+       "d53ed0db-1199-44b3-8eda-8189dfcf53d1"
+      ],
+      [
+       1,
+       "Hall of Heliod's Generosity",
+       "f08dfd99-59fa-4a6c-bd69-c647f639de4d"
+      ],
+      [
+       1,
+       "Hallowed Fountain",
+       "19cba6be-7291-4788-9241-87dad3b68363"
+      ],
+      [
+       1,
+       "Hengegate Pathway // Mistgate Pathway",
+       "7ef37cb3-d803-47d7-8a01-9c803aa2eadc"
+      ],
+      [
+       3,
+       "Island",
+       "6d74e713-11f7-4341-9b22-5300a4587a51"
+      ],
+      [
+       1,
+       "Mistrise Village",
+       "d44bccbf-6fab-46e4-8ddb-6577e27ec6e8"
+      ],
+      [
+       1,
+       "Misty Rainforest",
+       "88231c0d-0cc8-44ec-bf95-81d1710ac141"
+      ],
+      [
+       1,
+       "Mystic Sanctuary",
+       "170e792c-80d5-4775-ad95-37614574ab84"
+      ],
+      [
+       2,
+       "Plains",
+       "21e41416-bc0f-4e49-9137-df8572e91ae5"
+      ],
+      [
+       1,
+       "Polluted Delta",
+       "e66d79c3-93fa-4232-959f-2bbc62954dfd"
+      ],
+      [
+       1,
+       "Port Town",
+       "2bfe2f34-6c9e-4013-9e61-6eb758083f74"
+      ],
+      [
+       1,
+       "Prairie Stream",
+       "ebe09b89-6b2d-4512-9bfd-b897810e8c40"
+      ],
+      [
+       1,
+       "Reliquary Tower",
+       "3a07cf6c-1a5d-4b47-89bc-63ba6722fa0a"
+      ],
+      [
+       1,
+       "Sea of Clouds",
+       "f74c8ecf-cc03-40b5-9fad-15a2952727f7"
+      ],
+      [
+       1,
+       "Shadowy Backstreet",
+       "69c1b656-1d67-499c-bf0f-417682a86c7d"
+      ],
+      [
+       6,
+       "Swamp",
+       "74414c62-4b68-4e1b-9241-feff3231b9ee"
+      ],
+      [
+       1,
+       "Turbulent Shore",
+       "68353281-ebcc-4dcb-853c-f4d128c992d2"
+      ],
+      [
+       1,
+       "Turbulent Wetlands",
+       "0da94a82-cd65-478d-a3f7-e54ae6ca7e9b"
+      ]
+     ]
+    }
+   ]
   }
  },
  "arte": {
