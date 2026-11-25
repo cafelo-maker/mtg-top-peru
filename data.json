@@ -10,7 +10,7 @@
   "tymna-the-weaver",
   "winota-joiner-of-forces"
  ],
- "generado": "2026-11-24",
+ "generado": "2026-11-25",
  "torneos": [
   {
    "id": "2026-11-22-INTILINCE-B5",
@@ -29,6 +29,16 @@
    "tienda": "IntiTech Lince",
    "ciudad": "Lima",
    "jugadores": 10,
+   "tipo": "Commander B2",
+   "link": null
+  },
+  {
+   "id": "2026-11-24-INTIMIRAFLORES-B2",
+   "fecha": "2026-11-24",
+   "bracket": "B2",
+   "tienda": "IntiTech Miraflores",
+   "ciudad": "Lima",
+   "jugadores": 32,
    "tipo": "Commander B2",
    "link": null
   }
@@ -157,6 +167,181 @@
    "nombre": "Valgavoth, Harrower of Souls",
    "bracket": "B2",
    "colores": "BR",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Satoru, the Infiltrator",
+   "bracket": "B2",
+   "colores": "UB",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Krark, the Thumbless + Kraum, Ludevic's Opus",
+   "bracket": "B2",
+   "colores": "UR",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Rowan, Scion of War",
+   "bracket": "B2",
+   "colores": "BR",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Jodah, Archmage Eternal",
+   "bracket": "B2",
+   "colores": "WUBRG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Nissa, Leyline Tamer",
+   "bracket": "B2",
+   "colores": "WUBR",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Hearthhull, the Worldseed",
+   "bracket": "B2",
+   "colores": "BRG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Norman Osborn",
+   "bracket": "B2",
+   "colores": "UBR",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Helga, Skittish Seer",
+   "bracket": "B2",
+   "colores": "WUG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Muldrotha, the Gravetide",
+   "bracket": "B2",
+   "colores": "UBG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Jetmir, Nexus of Revels",
+   "bracket": "B2",
+   "colores": "WRG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Selvala, Heart of the Wilds",
+   "bracket": "B2",
+   "colores": "G",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Emmara, Soul of the Accord",
+   "bracket": "B2",
+   "colores": "GW",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Ojer Axonil, Deepest Might",
+   "bracket": "B2",
+   "colores": "R",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Nekusar, the Mindrazer",
+   "bracket": "B2",
+   "colores": "UBR",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Imoti, Celebrant of Bounty",
+   "bracket": "B2",
+   "colores": "UG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Strefan, Maurer Progenitor",
+   "bracket": "B2",
+   "colores": "BR",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Killian, Decisive Mentor",
+   "bracket": "B2",
+   "colores": "WB",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Bello, Bard of the Brambles",
+   "bracket": "B2",
+   "colores": "RG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Tatyova, Benthic Druid",
+   "bracket": "B2",
+   "colores": "UG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Duskana, the Rage Mother",
+   "bracket": "B2",
+   "colores": "WRG",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Silverquill, the Disputant",
+   "bracket": "B2",
+   "colores": "WB",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Arna Kennerüd, Skycaptain",
+   "bracket": "B2",
+   "colores": "WUB",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Sovereign Okinec Ahau",
+   "bracket": "B2",
+   "colores": "GW",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Squall, SeeD Mercenary",
+   "bracket": "B2",
+   "colores": "WB",
+   "estrategia": null,
+   "carta": null
+  },
+  {
+   "nombre": "Feather, the Redeemed",
+   "bracket": "B2",
+   "colores": "RW",
    "estrategia": null,
    "carta": null
   }
@@ -395,6 +580,422 @@
    "dr": null,
    "lista": null,
    "vpo": 38.57
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Perry Tony",
+   "comandante": "Satoru, the Infiltrator",
+   "estrategia": null,
+   "puesto": 1,
+   "puntos": 14,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Silva Rafael",
+   "comandante": "Krark, the Thumbless + Kraum, Ludevic's Opus",
+   "estrategia": null,
+   "puesto": 2,
+   "puntos": 14,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Zavala José",
+   "comandante": "Rowan, Scion of War",
+   "estrategia": null,
+   "puesto": 3,
+   "puntos": 14,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Santos Sebastián",
+   "comandante": "Jodah, Archmage Eternal",
+   "estrategia": null,
+   "puesto": 4,
+   "puntos": 13,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Acevedo Luis",
+   "comandante": "Nissa, Leyline Tamer",
+   "estrategia": null,
+   "puesto": 5,
+   "puntos": 12,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Flores Leiva Christian Sebastian",
+   "comandante": "Hearthhull, the Worldseed",
+   "estrategia": null,
+   "puesto": 6,
+   "puntos": 12,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Acuache Andrés",
+   "comandante": "Norman Osborn",
+   "estrategia": null,
+   "puesto": 7,
+   "puntos": 12,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "McRoyal Royalito",
+   "comandante": "Sergeant John Benton",
+   "estrategia": null,
+   "puesto": 8,
+   "puntos": 11,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Bernales Felipe",
+   "comandante": "Helga, Skittish Seer",
+   "estrategia": null,
+   "puesto": 9,
+   "puntos": 10,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Santos Jair",
+   "comandante": "Muldrotha, the Gravetide",
+   "estrategia": null,
+   "puesto": 10,
+   "puntos": 9,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Barzola Pablo",
+   "comandante": "Jetmir, Nexus of Revels",
+   "estrategia": null,
+   "puesto": 11,
+   "puntos": 8,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Andrade Pedro",
+   "comandante": "Desconocido",
+   "estrategia": null,
+   "puesto": 12,
+   "puntos": 8,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Calderon Martin",
+   "comandante": "Selvala, Heart of the Wilds",
+   "estrategia": null,
+   "puesto": 13,
+   "puntos": 6,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "King Christian",
+   "comandante": "Ellivere of the Wild Court",
+   "estrategia": null,
+   "puesto": 14,
+   "puntos": 6,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Garcia Daniel",
+   "comandante": "Emmara, Soul of the Accord",
+   "estrategia": null,
+   "puesto": 15,
+   "puntos": 6,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Plátano Plátano",
+   "comandante": "Ojer Axonil, Deepest Might",
+   "estrategia": null,
+   "puesto": 16,
+   "puntos": 6,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Vargas Yeens",
+   "comandante": "Nekusar, the Mindrazer",
+   "estrategia": null,
+   "puesto": 17,
+   "puntos": 5,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Alosilla Cuba Raymi Jose",
+   "comandante": "Imoti, Celebrant of Bounty",
+   "estrategia": null,
+   "puesto": 18,
+   "puntos": 5,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Segura Martin",
+   "comandante": "Strefan, Maurer Progenitor",
+   "estrategia": null,
+   "puesto": 19,
+   "puntos": 5,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Cornejo Luis",
+   "comandante": "Killian, Decisive Mentor",
+   "estrategia": null,
+   "puesto": 20,
+   "puntos": 5,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Pizzino Enzo",
+   "comandante": "Bello, Bard of the Brambles",
+   "estrategia": null,
+   "puesto": 21,
+   "puntos": 4,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Albino Piero",
+   "comandante": "Tatyova, Benthic Druid",
+   "estrategia": null,
+   "puesto": 22,
+   "puntos": 4,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Burghardt Gunter",
+   "comandante": "Ghalta, Primal Hunger",
+   "estrategia": null,
+   "puesto": 23,
+   "puntos": 4,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Valle Omar",
+   "comandante": "Duskana, the Rage Mother",
+   "estrategia": null,
+   "puesto": 24,
+   "puntos": 4,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Romero Vampirito",
+   "comandante": "Hearthhull, the Worldseed",
+   "estrategia": null,
+   "puesto": 25,
+   "puntos": 4,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Ponce Rickard",
+   "comandante": "Evelyn, the Covetous",
+   "estrategia": null,
+   "puesto": 26,
+   "puntos": 4,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Murphy Seba",
+   "comandante": "Silverquill, the Disputant",
+   "estrategia": null,
+   "puesto": 27,
+   "puntos": 3,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Bustinza Eduardo",
+   "comandante": "Arna Kennerüd, Skycaptain",
+   "estrategia": null,
+   "puesto": 28,
+   "puntos": 3,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Jimeno Renato",
+   "comandante": "Sovereign Okinec Ahau",
+   "estrategia": null,
+   "puesto": 29,
+   "puntos": 3,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Alejandra",
+   "comandante": "Desconocido",
+   "estrategia": null,
+   "puesto": 30,
+   "puntos": 2,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Jacobini Ren",
+   "comandante": "Squall, SeeD Mercenary",
+   "estrategia": null,
+   "puesto": 31,
+   "puntos": 2,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
+  },
+  {
+   "torneo": "2026-11-24-INTIMIRAFLORES-B2",
+   "jugador": "Coello Enrique",
+   "comandante": "Feather, the Redeemed",
+   "estrategia": null,
+   "puesto": 32,
+   "puntos": 2,
+   "v": null,
+   "e": null,
+   "dr": null,
+   "lista": null,
+   "vpo": null
   }
  ]
 }
