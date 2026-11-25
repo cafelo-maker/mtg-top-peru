@@ -8,6 +8,7 @@
 <body>
 <title>MTG Top Perú</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://cards.scryfall.io">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: sitio oscuro de un solo tema (el arte de las cartas es el color); barra fija, columna de 1160px, mazos en tarjetas con arte */
@@ -127,6 +128,8 @@ td.w .cmd{display:inline}
 .cmdrow .pips{width:84px;flex:none}
 .th .ini{font-family:var(--display);font-weight:800;font-size:12px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 .th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.th img.cs{inset:auto;left:-9.5%;top:-25.6%;width:119%;height:auto;max-width:none;object-fit:fill}
+.thumbs.two .th img.cs{width:247%;left:-73%}
 .cmdrow{display:inline-flex;align-items:center;min-width:0}
 .flag{font-family:var(--body);font-weight:600;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-left:8px;padding:2px 6px;border:1px solid var(--line);border-radius:999px}
 /* Barras de presencia */
@@ -481,8 +484,9 @@ function thumb(name){
     const imgName = cmd ? p : card;
     if(!imgName) return `<span class="th" style="background:${bg}"><span class="ini">${ini}</span></span>`;
     const local = (DB.imagenes||[]).includes(slug(imgName));
-    const src = local ? `img/${slug(imgName)}.jpg` : scry(imgName);
-    return `<span class="th" style="background:${bg}"><span class="ini">${ini}</span><img alt="" loading="lazy" src="${src}" ${local?`data-alt="${scry(p)}"`:""} onerror="imgFail(this)"></span>`;
+    const mini = !local && DB.arte && DB.arte[imgName]; /* miniatura: la carta pequeña recortada pesa 4 veces menos que el arte */
+    const src = local ? `img/${slug(imgName)}.jpg` : mini ? "https://cards.scryfall.io/small/"+mini : scry(imgName);
+    return `<span class="th" style="background:${bg}"><span class="ini">${ini}</span><img alt="" ${mini?`class="cs"`:""} loading="lazy" decoding="async" src="${src}" ${local?`data-alt="${scry(p)}"`:""} onerror="imgFail(this)"></span>`;
   }).join("")}</span>`;
 }
 const HD = !document.querySelector('meta[name$="viewport-fit-sides"]'); /* en el sitio publicado se pide el arte grande a Scryfall */
@@ -1239,6 +1243,7 @@ function route(){
   else if(h.startsWith("organizar-")) { html = orgView(h.slice(10)); nav="organizar"; }
   else { html = views.inicio(); nav="inicio"; }
   const app = document.getElementById("app"); app.innerHTML = html;
+  if(!(navigator.connection && navigator.connection.saveData)) setTimeout(() => app.querySelectorAll('img[loading="lazy"]').forEach(i => { i.loading = "eager"; }), 350);
   document.querySelectorAll("#nav a").forEach(a => a.classList.toggle("on", a.dataset.r===nav));
   const onA = document.querySelector("#nav a.on:not(.solo)") || document.querySelector("#nav a.on");
   document.getElementById("menulbl").textContent = onA ? onA.textContent : "Menú";
