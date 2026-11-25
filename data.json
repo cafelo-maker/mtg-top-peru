@@ -3633,6 +3633,508 @@
      ]
     }
    ]
+  },
+  "2026-11-24-INTIMIRAFLORES-B2|Christian Sebastian Flores Leiva": {
+   "url": "https://moxfield.com/decks/E6I2rPO1cke9u8z60wpa9w",
+   "fuente": "Moxfield",
+   "guardada": "2026-11-25",
+   "secciones": [
+    {
+     "t": "Comandante",
+     "c": [
+      [
+       1,
+       "Hearthhull, the Worldseed",
+       "6b913e79-a9f6-44d4-bb37-c4f6f66b8151"
+      ]
+     ]
+    },
+    {
+     "t": "Criaturas",
+     "c": [
+      [
+       1,
+       "Aftermath Analyst",
+       "66f135b4-8cb3-4a4e-86ae-81a3cf4b7259"
+      ],
+      [
+       1,
+       "Ancient Greenwarden",
+       "31f9ca34-8bc0-4821-940b-912918ff2ac2"
+      ],
+      [
+       1,
+       "Azusa, Lost but Seeking",
+       "0b8aff2c-1f7b-4507-b914-53f8c4706b3d"
+      ],
+      [
+       1,
+       "Baloth Prime",
+       "2c723fc9-d5c9-4126-a9a6-f80c247a4b6b"
+      ],
+      [
+       1,
+       "Birds of Paradise",
+       "6672f025-525d-41ca-bd81-d4029e04f5f2"
+      ],
+      [
+       1,
+       "Dryad of the Ilysian Grove",
+       "fb132ba1-6736-40d0-ae5f-e21f19fa3bec"
+      ],
+      [
+       1,
+       "Evendo Brushrazer",
+       "e7a4a1da-664d-4675-8ddd-df5fc1b962bc"
+      ],
+      [
+       1,
+       "Horizon Explorer",
+       "a5873a4d-ab6e-4dd2-9380-5eaa367a8396"
+      ],
+      [
+       1,
+       "Icetill Explorer",
+       "1d2750d1-ca70-4a36-bff3-bc95faf2f58b"
+      ],
+      [
+       1,
+       "Ignoble Hierarch",
+       "fc415011-9a26-4afc-9dda-11533a50ba96"
+      ],
+      [
+       1,
+       "Koth, the Geomancer",
+       "54f64e95-5a97-4d7c-9939-7f33a3165562"
+      ],
+      [
+       1,
+       "Lotus Cobra",
+       "4db85866-5ce1-479b-8a6a-e4b86da8fbfa"
+      ],
+      [
+       1,
+       "Lumra, Bellow of the Woods",
+       "5c7a4e18-04a1-49f1-ad73-c93f9d0c9b11"
+      ],
+      [
+       1,
+       "Mayhem Devil",
+       "674f3a8a-4552-4289-b92a-06ce158f115c"
+      ],
+      [
+       1,
+       "Mole Man, Moloid Master",
+       "1b406cc5-75c9-430a-83a2-de0f2a8aeae6"
+      ],
+      [
+       1,
+       "Nissa, Resurgent Animist",
+       "f3bfeb35-470e-4e18-b15b-66a4a20d51b7"
+      ],
+      [
+       1,
+       "Ob Nixilis, the Fallen",
+       "dc9d3ada-9d0d-489a-89b7-08f53f6601e1"
+      ],
+      [
+       1,
+       "Omnath, Locus of Rage",
+       "08c14bb4-c9d9-41ce-a075-a441522a52c6"
+      ],
+      [
+       1,
+       "Oracle of Mul Daya",
+       "ab19808f-a5b8-4dfd-800e-2064cd6538c8"
+      ],
+      [
+       1,
+       "Orcish Lumberjack",
+       "21ef13e3-658c-43a3-a290-4c5dde8e8b55"
+      ],
+      [
+       1,
+       "Ramunap Excavator",
+       "8870ef0b-cb1f-463b-8509-fece4743d3d4"
+      ],
+      [
+       1,
+       "Rydia, Summoner of Mist",
+       "99450143-6ab5-463d-9e04-e8e6703a8b92"
+      ],
+      [
+       1,
+       "Scute Swarm",
+       "50a6e8fd-180c-40f8-b03b-3b2d5a2c7277"
+      ],
+      [
+       1,
+       "Six",
+       "e9e37440-ac69-46d2-beea-655a209feb6f"
+      ],
+      [
+       1,
+       "Sylvan Safekeeper",
+       "83036e21-21ea-4324-aa07-11757f80c417"
+      ],
+      [
+       1,
+       "Tannuk, Memorial Ensign",
+       "52498b7b-0389-4e7b-b29f-7ac86aab9229"
+      ],
+      [
+       1,
+       "The Gitrog Monster",
+       "40489e28-878d-44a2-847f-07beef1aa0f8"
+      ],
+      [
+       1,
+       "Tireless Provisioner",
+       "5dbc2162-238d-492b-b629-94f771230d92"
+      ],
+      [
+       1,
+       "Titania, Protector of Argoth",
+       "732c208b-cd9e-48a9-9b9d-aba63066ba53"
+      ],
+      [
+       1,
+       "Will Riker, First in the Field",
+       "9422d025-9460-44b6-8071-d896f20b87ea"
+      ]
+     ]
+    },
+    {
+     "t": "Instantáneos",
+     "c": [
+      [
+       1,
+       "Abrupt Decay",
+       "74379bab-1bf2-4dcd-b055-d2ac0bf2c390"
+      ],
+      [
+       1,
+       "Assassin's Trophy",
+       "5e530961-1cb5-4208-ac49-f0963bac0134"
+      ],
+      [
+       1,
+       "Constant Mists",
+       "97a8a5fe-0391-489b-9556-0a1bf7e1900d"
+      ],
+      [
+       1,
+       "Entish Restoration",
+       "cd4dbf80-187b-40e3-9e0b-526f78d9a34e"
+      ],
+      [
+       1,
+       "Harrow",
+       "3e76be46-cf81-4fef-bc5b-f87666cb0413"
+      ],
+      [
+       1,
+       "Heroic Intervention",
+       "12edbdcc-085f-48c8-9605-3c7e3fe63bc7"
+      ],
+      [
+       1,
+       "Infernal Grasp",
+       "060b7e5f-5b40-4efc-9fad-4cebf40b654b"
+      ],
+      [
+       1,
+       "Legolas's Quick Reflexes",
+       "851c0167-04ba-4d15-b0fa-c211bd8826f1"
+      ],
+      [
+       1,
+       "Rain of Filth",
+       "e9f1e950-473a-4153-84a9-a8f71b03df21"
+      ],
+      [
+       1,
+       "Rakdos Charm",
+       "9e4476a3-77f6-49db-bdd8-1dcf069754b0"
+      ],
+      [
+       1,
+       "Tear Asunder",
+       "cbd0abcc-176d-40b7-977b-c4b430a7de33"
+      ],
+      [
+       1,
+       "Veil of Summer",
+       "10970074-67a2-4643-af4e-521603aae5f7"
+      ]
+     ]
+    },
+    {
+     "t": "Conjuros",
+     "c": [
+      [
+       1,
+       "Cultivate",
+       "e60deb92-f7dd-4f4e-9036-e47dd586f985"
+      ],
+      [
+       1,
+       "Nature's Lore",
+       "5b42a79a-1f08-4e15-b40e-c993307ae066"
+      ],
+      [
+       1,
+       "Planar Engineering",
+       "c83b96a3-ddfd-4d11-8a85-5bf62087cbb9"
+      ],
+      [
+       1,
+       "Skyshroud Claim",
+       "b946e86c-a6fd-4377-9746-bc08b71e499a"
+      ],
+      [
+       1,
+       "Splendid Reclamation",
+       "63c7f172-0aec-4629-967c-37253aed0f0d"
+      ],
+      [
+       1,
+       "Three Visits",
+       "5bcf7495-a8af-4c7f-a27d-be27748f64e0"
+      ],
+      [
+       1,
+       "Toxic Deluge",
+       "1df2c2a6-94a9-4365-9bd5-dd5f2854c562"
+      ]
+     ]
+    },
+    {
+     "t": "Artefactos",
+     "c": [
+      [
+       1,
+       "Amulet of Vigor",
+       "997bc933-ac30-477b-a4e1-5333b796a99d"
+      ],
+      [
+       1,
+       "Conduit of Worlds",
+       "8380eb8d-d1c3-4f96-b3b9-54845188c1d1"
+      ],
+      [
+       1,
+       "Exploration Broodship",
+       "61596da3-2a0e-47d9-b707-8db4cce2479d"
+      ],
+      [
+       1,
+       "Horn of Greed",
+       "e37487e4-c553-4495-a839-6a96209eaaa1"
+      ],
+      [
+       1,
+       "Sol Ring",
+       "a739dd30-1fce-49db-99fb-15e346f4f2db"
+      ],
+      [
+       1,
+       "Zuran Orb",
+       "618c8ecc-686d-41de-b9b1-1a7ee9cc7c14"
+      ]
+     ]
+    },
+    {
+     "t": "Encantamientos",
+     "c": [
+      [
+       1,
+       "Exploration",
+       "d1cbcd04-aabf-420e-9bc8-4270f78e25d7"
+      ],
+      [
+       1,
+       "Retreat to Hagra",
+       "48505c90-ee73-40ad-b774-a6f4bfffff4b"
+      ],
+      [
+       1,
+       "Spelunking",
+       "d3be4257-2316-4a2e-b347-f71c0368a947"
+      ],
+      [
+       1,
+       "Valakut Exploration",
+       "6954cc66-ab80-4457-b0da-61d80e80e25e"
+      ],
+      [
+       1,
+       "Walk-In Closet // Forgotten Cellar",
+       "0adcd4e5-d542-4293-8774-ace2305ef820"
+      ]
+     ]
+    },
+    {
+     "t": "Tierras",
+     "c": [
+      [
+       1,
+       "Blood Crypt",
+       "1b7eb998-3ec0-4cbc-a416-5a1e3e5a7316"
+      ],
+      [
+       1,
+       "Bloodstained Mire",
+       "7f430794-0d86-4f6a-97e0-4bbb6716d613"
+      ],
+      [
+       1,
+       "Cabaretti Courtyard",
+       "c54ddd4e-f668-4ec8-b123-59afa977eba4"
+      ],
+      [
+       1,
+       "Cinder Glade",
+       "7865ae5f-cfd9-4913-bcf5-aadbd6824e65"
+      ],
+      [
+       1,
+       "Command Tower",
+       "85eb4b03-305b-45a4-82e5-5fcd586cc744"
+      ],
+      [
+       1,
+       "Crumbling Vestige",
+       "d491c13c-43e3-4ca3-b888-4edd34dfe14a"
+      ],
+      [
+       1,
+       "Crystal Vein",
+       "c7c51eae-2c45-4f12-859d-56bd83247c2e"
+      ],
+      [
+       1,
+       "Deathcap Glade",
+       "78897104-80e1-4d8a-9958-145b40f679e8"
+      ],
+      [
+       1,
+       "Echoing Deeps",
+       "c6392d30-07c4-4c63-acb4-ad12d08c080b"
+      ],
+      [
+       1,
+       "Fabled Passage",
+       "76edd22f-808e-4a7c-b941-13c0f5e30418"
+      ],
+      [
+       5,
+       "Forest",
+       "56caba21-b773-4245-b3f8-3ae62725c14f"
+      ],
+      [
+       1,
+       "Gruul Turf",
+       "75fcea4c-1fc4-4476-8b95-90134d7841e7"
+      ],
+      [
+       1,
+       "Karplusan Forest",
+       "cffc9b01-2f61-4eb1-8bfa-cbe746a7104b"
+      ],
+      [
+       1,
+       "Lotus Field",
+       "0e013033-3995-4ba8-b0c3-0614c79aaaab"
+      ],
+      [
+       3,
+       "Mountain",
+       "95083e1d-faf5-40e4-9be5-909cd01cc2b5"
+      ],
+      [
+       1,
+       "Overgrown Tomb",
+       "ad7e18e2-c033-4b6c-86e8-d0e5cc824cfd"
+      ],
+      [
+       1,
+       "Polluted Delta",
+       "6e288374-2b71-4ace-b1d2-a19fee6cb4af"
+      ],
+      [
+       1,
+       "Riveteers Overlook",
+       "3dc4e8b8-6ee6-49aa-895a-2e35af6d1dbb"
+      ],
+      [
+       1,
+       "Shifting Woodland",
+       "059164e1-894d-4586-9800-e60d6fbd6eb6"
+      ],
+      [
+       1,
+       "Smoldering Marsh",
+       "d6890462-aeb0-4356-93dc-b2eda0df0c0e"
+      ],
+      [
+       1,
+       "Stomping Ground",
+       "dcaa1ff6-304e-4660-9df3-36de8e89592e"
+      ],
+      [
+       3,
+       "Swamp",
+       "74414c62-4b68-4e1b-9241-feff3231b9ee"
+      ],
+      [
+       1,
+       "Tomb of Urami",
+       "90fedf90-825c-4814-8f0d-170f537db44c"
+      ],
+      [
+       1,
+       "Turbulent Crater",
+       "0cb04417-063e-45f7-86d3-7648111d04d7"
+      ],
+      [
+       1,
+       "Twisted Landscape",
+       "d0e3e7b3-7ba9-47a2-b46c-a40bffb445e2"
+      ],
+      [
+       1,
+       "Verdant Catacombs",
+       "94c229ea-90da-4aa0-bfda-b162fb3b5b8b"
+      ],
+      [
+       1,
+       "Vernal Fen",
+       "82253d45-587b-48a9-b6dc-e372f9adb2a6"
+      ],
+      [
+       1,
+       "Windswept Heath",
+       "e7b28650-cddc-4878-b1d1-b5a764f4df49"
+      ],
+      [
+       1,
+       "Wooded Foothills",
+       "a8503cca-7e7d-44c4-8587-81376b396398"
+      ],
+      [
+       1,
+       "Woodland Cemetery",
+       "70f2ded4-ddc1-4a16-b967-92891995b2e8"
+      ],
+      [
+       1,
+       "Yavimaya, Cradle of Growth",
+       "b0063a44-6cde-4d7e-81e1-61bae08831ee"
+      ]
+     ]
+    }
+   ]
   }
  },
  "arte": {
