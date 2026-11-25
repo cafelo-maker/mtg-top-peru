@@ -1550,6 +1550,523 @@
      ]
     }
    ]
+  },
+  "2026-11-24-INTIMIRAFLORES-B2|Luis Acevedo": {
+   "url": "https://moxfield.com/decks/CDk_CI9Q8EG9gwXRKmbFsg",
+   "fuente": "Moxfield",
+   "guardada": "2026-11-25",
+   "secciones": [
+    {
+     "t": "Comandante",
+     "c": [
+      [
+       1,
+       "Nissa, Leyline Tamer",
+       "e969d1f3-9595-498b-81cb-6cf4df2cad5d"
+      ]
+     ]
+    },
+    {
+     "t": "Criaturas",
+     "c": [
+      [
+       1,
+       "Angel of Indemnity",
+       "41163f43-7357-4bbc-a1e7-9c8070135c93"
+      ],
+      [
+       1,
+       "Archfiend of Despair",
+       "137b69ad-3296-49f1-bddf-24818a03830f"
+      ],
+      [
+       1,
+       "Archon of Cruelty",
+       "95ff951b-a098-409c-86c8-373b6c9f8331"
+      ],
+      [
+       1,
+       "Avacyn, Angel of Horror",
+       "ff65f46b-0f82-49b8-93b9-7ac0243ce941"
+      ],
+      [
+       1,
+       "Blast-Furnace Hellkite",
+       "04c349f2-69b1-48dd-a547-f2b55f542700"
+      ],
+      [
+       1,
+       "Blazing Archon",
+       "c6c387a0-2abd-42bf-bfc5-b12c3bba998d"
+      ],
+      [
+       1,
+       "Emrakul, the Exigent Doom",
+       "c3ff8dd3-88a8-49dc-a59b-e2748680623c"
+      ],
+      [
+       1,
+       "Kaervek the Merciless",
+       "444fa5a5-b5b0-4555-bd69-67c1c0cbf317"
+      ],
+      [
+       1,
+       "Ori, Plate Stacker",
+       "911bd55d-00c7-4362-ba2d-eef0a9dadb6c"
+      ],
+      [
+       1,
+       "Sheoldred, Whispering One",
+       "18206ae6-08e2-4ad2-bc0a-6626a89b9516"
+      ],
+      [
+       1,
+       "Sower of Discord",
+       "b111df04-7687-47f9-8ffc-5cf25bc3e9bf"
+      ],
+      [
+       1,
+       "Sun Titan",
+       "8a72ad43-0723-4344-9e5a-43e6313b9876"
+      ],
+      [
+       1,
+       "Valgavoth, Terror Eater",
+       "7740ff55-67bb-409e-90f7-2c2c8b8c770a"
+      ]
+     ]
+    },
+    {
+     "t": "Instantáneos",
+     "c": [
+      [
+       1,
+       "Angel's Grace",
+       "dcc07492-9eea-4aec-be42-a0adb9a5ff50"
+      ],
+      [
+       1,
+       "Ashling's Command",
+       "fe3a421d-07b6-4b94-b177-aec44c7fe689"
+      ],
+      [
+       1,
+       "Big Score",
+       "39d1578f-e2cf-4b93-8204-ed5434feb183"
+      ],
+      [
+       1,
+       "Brainsurge",
+       "2dc20172-4cf0-4ada-a4f3-4ef951cb8207"
+      ],
+      [
+       1,
+       "Despark",
+       "32b17dfc-b916-4134-ba77-501cff435e7e"
+      ],
+      [
+       1,
+       "Erode",
+       "32e670da-7563-4f6a-a7db-4c126a440eb8"
+      ],
+      [
+       1,
+       "Get Lost",
+       "522aa72b-2b8c-484c-872b-f082101cee35"
+      ],
+      [
+       1,
+       "Holy Day",
+       "aa91fd4e-4e1f-4cfa-b10f-456bd875238f"
+      ],
+      [
+       1,
+       "Inkshield",
+       "bf3af774-526e-4b64-a34f-407e6ef92d24"
+      ],
+      [
+       1,
+       "Mandate of Peace",
+       "d243055f-892e-4042-9694-13d5e99e3550"
+      ],
+      [
+       1,
+       "Olórin's Searing Light",
+       "7496ad0f-fc6d-4154-ac42-c2471e72ed88"
+      ],
+      [
+       1,
+       "Path to Exile",
+       "e9d36855-c38a-4bba-a642-cff3f81e057e"
+      ],
+      [
+       1,
+       "Sauron's Ransom",
+       "95a6d22a-8ccf-4e12-ab5c-5c5ba06809e5"
+      ],
+      [
+       1,
+       "Sudden Death",
+       "16e889c4-105b-4f4e-8a3d-ace753a24a4e"
+      ],
+      [
+       1,
+       "Swords to Plowshares",
+       "80f46b80-0728-49bf-9d54-801eaa10b9b2"
+      ]
+     ]
+    },
+    {
+     "t": "Conjuros",
+     "c": [
+      [
+       1,
+       "Blasphemous Act",
+       "fc048207-502a-478c-9195-5e20382652af"
+      ],
+      [
+       1,
+       "Day of Judgment",
+       "ef2e4c6a-fb82-4633-bc59-7c674f85ba34"
+      ],
+      [
+       1,
+       "Fumigate",
+       "085e4b57-495b-41bc-a49d-fa5f00553555"
+      ],
+      [
+       1,
+       "Morningtide's Light",
+       "181ee045-5650-479a-8c03-015b38fdcd63"
+      ],
+      [
+       1,
+       "No Witnesses",
+       "4d327d7d-1c01-4af1-8a6f-ce6cded4119d"
+      ],
+      [
+       1,
+       "Ruinous Ultimatum",
+       "930bc0f5-758a-49a7-ab23-5b74802bcddb"
+      ],
+      [
+       1,
+       "Sunfall",
+       "4df0b210-e266-43f7-acca-58a5f5f1126a"
+      ],
+      [
+       1,
+       "Taunt from the Rampart",
+       "ad79ee29-dd86-484f-bd70-8ecd9d90ef75"
+      ],
+      [
+       1,
+       "Vanquish the Horde",
+       "5bb0f6ec-6448-40bd-a819-b828b85b2118"
+      ]
+     ]
+    },
+    {
+     "t": "Artefactos",
+     "c": [
+      [
+       1,
+       "Arcane Signet",
+       "156a1ca1-e4b1-4e0c-a786-fd80fe189896"
+      ],
+      [
+       1,
+       "Archaeomancer's Map",
+       "3679b9c8-ebae-474a-b862-6397edbcc4ea"
+      ],
+      [
+       1,
+       "Azorius Signet",
+       "20c8186f-4874-4870-b99f-73d333045d9a"
+      ],
+      [
+       1,
+       "Boros Signet",
+       "e14cffbc-b644-4ad5-b62b-30a81c2968bf"
+      ],
+      [
+       1,
+       "Chromatic Lantern",
+       "e3d5ac10-57ac-4215-bcfb-32959b1240d1"
+      ],
+      [
+       1,
+       "Dimir Signet",
+       "0862060d-3198-4eeb-af8c-efeb27f42a99"
+      ],
+      [
+       1,
+       "Fellwar Stone",
+       "f13dea5a-f14a-4959-8b2c-8b764c97ecf7"
+      ],
+      [
+       1,
+       "Izzet Signet",
+       "d8a005a2-3eb8-4d8f-8608-2cbf5cf7887e"
+      ],
+      [
+       1,
+       "Rakdos Signet",
+       "7feea129-3e71-45fc-9769-e6ec80e9f3e5"
+      ],
+      [
+       1,
+       "Sol Ring",
+       "1b3a4537-1d51-47ac-a12e-6b8d68f530e6"
+      ],
+      [
+       1,
+       "Talisman of Conviction",
+       "71148fd3-0c2c-459e-b8f5-735a0a8dd87f"
+      ],
+      [
+       1,
+       "Talisman of Creativity",
+       "d4ba86c8-8052-4c9e-a0d0-ac6ad0b2679c"
+      ],
+      [
+       1,
+       "Talisman of Dominance",
+       "1ca2a0f9-b403-4d1e-961c-32b64bab81d0"
+      ],
+      [
+       1,
+       "Talisman of Indulgence",
+       "36bd614f-ab3b-4ad1-ab5c-a7ca0a641f32"
+      ],
+      [
+       1,
+       "Talisman of Progress",
+       "454ed9c8-3ec1-4b65-bf3f-29a186742aed"
+      ],
+      [
+       1,
+       "Thran Dynamo",
+       "907801dd-179c-4669-b608-d810a7f608fd"
+      ]
+     ]
+    },
+    {
+     "t": "Encantamientos",
+     "c": [
+      [
+       1,
+       "Gleaming Splendor",
+       "3b087bd4-bbb7-4963-bdb6-0a700ff19a04"
+      ],
+      [
+       1,
+       "Heartless Summoning",
+       "c50fdb09-e06c-463c-87dd-3c46f4db889a"
+      ],
+      [
+       1,
+       "Land Tax",
+       "cb8796fd-ebf4-4fe3-b785-f48c65ff8257"
+      ],
+      [
+       1,
+       "Parallax Wave",
+       "90538019-58eb-4b4f-b2a5-4650e5b6ec84"
+      ],
+      [
+       1,
+       "Spiteful Banditry",
+       "e85a82bc-49f3-4694-b688-808a541146db"
+      ]
+     ]
+    },
+    {
+     "t": "Tierras",
+     "c": [
+      [
+       1,
+       "Arid Archway",
+       "3f8c8fa2-12ab-4f6a-9f7a-2bc69e9ba024"
+      ],
+      [
+       1,
+       "Arid Mesa",
+       "81ad48fa-9464-40bf-8bf5-af31a6a38fb3"
+      ],
+      [
+       1,
+       "Battlefield Forge",
+       "57c43ae5-8427-4c10-b437-c214017637d9"
+      ],
+      [
+       1,
+       "Bloodstained Mire",
+       "579743fe-f71e-4cb2-8629-d6b02ed1591d"
+      ],
+      [
+       1,
+       "Cactus Preserve",
+       "ad9d426f-5870-42bb-a589-9218f7e35d62"
+      ],
+      [
+       1,
+       "Caves of Koilos",
+       "e8d95d7c-743e-4031-9431-da0e60969ec3"
+      ],
+      [
+       1,
+       "Command Tower",
+       "ec1f1041-f667-4b73-b1f2-e5bcae84095e"
+      ],
+      [
+       1,
+       "Contaminated Landscape",
+       "e2312c49-1627-47ad-8113-78a999a97d8d"
+      ],
+      [
+       1,
+       "Crystal Vein",
+       "c7c51eae-2c45-4f12-859d-56bd83247c2e"
+      ],
+      [
+       1,
+       "Ebon Stronghold",
+       "b0509266-2bd5-4958-a497-935e004cc20f"
+      ],
+      [
+       1,
+       "Exotic Orchard",
+       "b45cbc0e-3f5c-4f27-9463-3cffb0f63e3c"
+      ],
+      [
+       1,
+       "Fabled Passage",
+       "7c787c6b-b6c7-47a0-8f8d-761629f5568e"
+      ],
+      [
+       1,
+       "Fetid Heath",
+       "16af23b7-db97-4dd0-84c2-c0095f6dbe96"
+      ],
+      [
+       1,
+       "Flooded Strand",
+       "8f85e12c-196b-4459-b81f-0c9c854e9f57"
+      ],
+      [
+       1,
+       "Godless Shrine",
+       "8fbd1ae0-3d4c-492a-a1ea-85a95fa3d7b6"
+      ],
+      [
+       2,
+       "Island",
+       "937250fe-bcad-4ff8-9406-286a69db7e0a"
+      ],
+      [
+       2,
+       "Mountain",
+       "6af1f1db-eb91-4297-83f6-9318b87fd220"
+      ],
+      [
+       1,
+       "Mystic Gate",
+       "fa32d90e-1153-42ab-b8ff-0eb82698692c"
+      ],
+      [
+       1,
+       "Perilous Landscape",
+       "4b0bd07e-cf80-4d64-af29-f4cec6632b3e"
+      ],
+      [
+       3,
+       "Plains",
+       "a845de50-4af0-4f4a-9c2a-db587973571c"
+      ],
+      [
+       1,
+       "Reflecting Pool",
+       "cbc4281a-b70d-4f96-b309-38e986484829"
+      ],
+      [
+       1,
+       "Sacred Foundry",
+       "a7758cc6-4e18-48a5-8720-5f42b5cd9d31"
+      ],
+      [
+       1,
+       "Scalding Tarn",
+       "71e491c5-8c07-449b-b2f1-ffa052e6d311"
+      ],
+      [
+       1,
+       "Shattered Landscape",
+       "b3da28c7-6e92-439d-a163-91682d4f11dc"
+      ],
+      [
+       1,
+       "Shivan Reef",
+       "6fc5d0a1-8c29-4961-8567-d1ccc3669a32"
+      ],
+      [
+       1,
+       "Steam Vents",
+       "a83903c7-fd51-4526-aed2-359e946fea36"
+      ],
+      [
+       1,
+       "Sulfurous Springs",
+       "be340a1c-f1e7-446e-ae91-86ecb884479c"
+      ],
+      [
+       2,
+       "Swamp",
+       "f66094ef-059b-4511-aa6e-835906736de4"
+      ],
+      [
+       1,
+       "Temple of the False God",
+       "1f3b5582-4530-4f9a-b416-275dfbfa0477"
+      ],
+      [
+       1,
+       "Turbulent Crater",
+       "0cb04417-063e-45f7-86d3-7648111d04d7"
+      ],
+      [
+       1,
+       "Turbulent Shore",
+       "92039341-152a-4797-a3df-e89e8d5145d3"
+      ],
+      [
+       1,
+       "Turbulent Steppe",
+       "c0c73dd5-0a88-4a94-9c01-c1473433e46f"
+      ],
+      [
+       1,
+       "Turbulent Wetlands",
+       "8d86f7f8-492d-4e19-8b61-39084c6299ac"
+      ],
+      [
+       1,
+       "Underground River",
+       "e8b05f37-815f-4854-bf82-ca544ca67532"
+      ],
+      [
+       1,
+       "Windswept Heath",
+       "bd1d13f7-fd38-4f0b-a8e0-1eac78668117"
+      ],
+      [
+       1,
+       "Wooded Foothills",
+       "4e11ea8a-f895-438d-a3b7-f070238e4161"
+      ]
+     ]
+    }
+   ]
   }
  },
  "arte": {
