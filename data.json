@@ -2067,6 +2067,1070 @@
      ]
     }
    ]
+  },
+  "2026-11-22-INTILINCE-B2|Royalito McRoyal": {
+   "url": "https://moxfield.com/decks/HhOdhAxjnEe2Xb7JKHbgJQ",
+   "fuente": "Moxfield",
+   "guardada": "2026-11-25",
+   "secciones": [
+    {
+     "t": "Comandante",
+     "c": [
+      [
+       1,
+       "Sergeant John Benton",
+       "38c96909-1150-4126-a21d-7842670bbaf8"
+      ]
+     ]
+    },
+    {
+     "t": "Criaturas",
+     "c": [
+      [
+       1,
+       "Avacyn's Pilgrim",
+       "e9600bdc-6a1b-4f7a-aa7d-538fb89df937"
+      ],
+      [
+       1,
+       "Azusa, Lost but Seeking",
+       "bc38affd-b51d-4ea4-8198-d121c24ee5cf"
+      ],
+      [
+       1,
+       "Birds of Paradise",
+       "5a8b5ae4-e683-4ee5-8a41-10daddc2561f"
+      ],
+      [
+       1,
+       "Dryad of the Ilysian Grove",
+       "9898dd33-63fb-49d3-bea4-5346d6d56f30"
+      ],
+      [
+       1,
+       "Elvish Mystic",
+       "ed7a0227-ac70-40fb-8198-a55eacf913fa"
+      ],
+      [
+       1,
+       "Elvish Spirit Guide",
+       "2c645151-c98a-45e1-831e-72b43485f9a2"
+      ],
+      [
+       1,
+       "Fyndhorn Elves",
+       "43add588-eac2-4560-adac-b0721d021694"
+      ],
+      [
+       1,
+       "Grand Abolisher",
+       "86e30ca4-1769-4686-aa18-31610246cd80"
+      ],
+      [
+       1,
+       "Jennifer Walters // The Sensational She-Hulk",
+       "61237530-ad49-469c-a952-67c92315708e"
+      ],
+      [
+       1,
+       "Kutzil, Malamet Exemplar",
+       "c9f88a40-a6ed-4c1f-a309-011aca1acddd"
+      ],
+      [
+       1,
+       "Llanowar Elves",
+       "581b7327-3215-4a4f-b4ae-d9d4002ba882"
+      ],
+      [
+       1,
+       "Sakura-Tribe Scout",
+       "9cbdda50-8a27-4094-849d-b6f66def82ce"
+      ],
+      [
+       1,
+       "Voice of Victory",
+       "ec3de5f4-bb55-4ab9-995f-f3e0dc22c1bb"
+      ],
+      [
+       1,
+       "Witch Enchanter // Witch-Blessed Meadow",
+       "62061e7c-cf19-4f03-b8fa-2bdba62d6b0b"
+      ]
+     ]
+    },
+    {
+     "t": "Planeswalkers",
+     "c": [
+      [
+       1,
+       "Ajani, Caller of the Pride",
+       "59793f1c-8c7e-433e-9c09-40aa3ce931a1"
+      ]
+     ]
+    },
+    {
+     "t": "Instantáneos",
+     "c": [
+      [
+       1,
+       "Akroma's Will",
+       "608cdbdb-6f7e-438a-bab0-0e7782435f0f"
+      ],
+      [
+       1,
+       "Become Immense",
+       "96e32a8c-6f5b-40e3-ab24-8296275df295"
+      ],
+      [
+       1,
+       "Berserk",
+       "62bc9bff-89bd-4454-a876-53822cf48546"
+      ],
+      [
+       1,
+       "Blossoming Defense",
+       "3cce80d0-b937-4325-a603-1278c110f244"
+      ],
+      [
+       1,
+       "Bounty of the Hunt",
+       "21ed522a-cf5a-41e1-9677-1226f689ec9c"
+      ],
+      [
+       1,
+       "Collective Resistance",
+       "1fa97b3c-7780-4f53-9b74-20e7f8e41602"
+      ],
+      [
+       1,
+       "Crumb and Get It",
+       "3c7b3b25-d4b3-4451-9f5c-6eb369541175"
+      ],
+      [
+       1,
+       "Defend the Rider",
+       "59ed23a2-6153-47b2-ab73-062195cafb74"
+      ],
+      [
+       1,
+       "Destroy Evil",
+       "4f7862ef-2c8d-4d28-9e50-7cc41861f245"
+      ],
+      [
+       1,
+       "Dual-Sun Technique",
+       "f8931132-391f-4f16-b480-0a245ab2ec21"
+      ],
+      [
+       1,
+       "Embiggen",
+       "1b759c27-9fb6-4c23-adc1-f6d3f3a0eb52"
+      ],
+      [
+       1,
+       "Everybody Lives!",
+       "9dab0052-7f0c-4b56-847f-20552666a271"
+      ],
+      [
+       1,
+       "Flare of Faith",
+       "1b4354c6-ea21-46c0-93c4-744dbacbfcf4"
+      ],
+      [
+       1,
+       "Force of Vigor",
+       "c009b8b7-c057-4139-99ff-336687250622"
+      ],
+      [
+       1,
+       "Galadriel's Dismissal",
+       "2d1c66a7-a39e-4869-80c7-1cec89777e0d"
+      ],
+      [
+       1,
+       "Giant Growth",
+       "e70722d6-b4d5-45c2-9488-9a5eb0bdb9bd"
+      ],
+      [
+       1,
+       "Groundswell",
+       "a4b2146c-2fdd-4ea7-b2a2-98b8bb53c5db"
+      ],
+      [
+       1,
+       "Inner Calm, Outer Strength",
+       "40f56817-aabf-469c-a82c-37315decc73c"
+      ],
+      [
+       1,
+       "Invigorate",
+       "3781f2ee-5d45-4d0b-b0e1-78cc4f11373a"
+      ],
+      [
+       1,
+       "Kaya's Onslaught",
+       "f28e151f-b61b-486f-b7f8-7abde207c442"
+      ],
+      [
+       1,
+       "Legolas's Quick Reflexes",
+       "851c0167-04ba-4d15-b0fa-c211bd8826f1"
+      ],
+      [
+       1,
+       "Loran's Escape",
+       "3765610d-a0c1-4de9-a81b-ffa3eb06454b"
+      ],
+      [
+       1,
+       "Might of Oaks",
+       "73957035-c02f-4de6-9258-ef339565bd1d"
+      ],
+      [
+       1,
+       "Might of Old Krosa",
+       "142600e0-9646-4327-aaa4-bc3294cf9b99"
+      ],
+      [
+       1,
+       "Might of the Nephilim",
+       "ca5c4a29-0650-4b9e-af6b-39bee19167ad"
+      ],
+      [
+       1,
+       "Mutagenic Growth",
+       "af2d23da-70a1-49ba-91bf-c110cc4bbedc"
+      ],
+      [
+       1,
+       "Noxious Revival",
+       "4db5b4cd-3809-4dfe-8b9a-2a25b02e814c"
+      ],
+      [
+       1,
+       "Obscuring Haze",
+       "c1ae35e6-5401-481a-8104-24f53e3d160f"
+      ],
+      [
+       1,
+       "Overprotect",
+       "079e979f-b618-4625-989c-e0ea5b61ed8a"
+      ],
+      [
+       1,
+       "Pair o' Dice Lost",
+       "567665f3-4227-4f3c-bfbe-4e9576f32b50"
+      ],
+      [
+       1,
+       "Ram Through",
+       "ac0b24e7-14e7-45ee-b5d8-bdb8674b669c"
+      ],
+      [
+       1,
+       "Rustler Rampage",
+       "33ed7ca3-894b-45f4-a15f-51b6bcd3f474"
+      ],
+      [
+       1,
+       "Scent of Ivy",
+       "a56b4894-b959-4d00-b631-95d26eb85a4e"
+      ],
+      [
+       1,
+       "Selesnya Charm",
+       "a9848eab-1d3a-4ab0-adf6-c20858aa3afb"
+      ],
+      [
+       1,
+       "Tifa's Limit Break",
+       "24d6eab7-22bd-494f-8cbe-204446f24be9"
+      ],
+      [
+       1,
+       "Titanic Growth",
+       "b0d513a9-c292-46a3-be06-d29d7090dc92"
+      ],
+      [
+       1,
+       "Tyvar's Stand",
+       "c7b362a5-382a-4016-b4f2-aa7b683354c4"
+      ],
+      [
+       1,
+       "Vigorbloom Charm",
+       "2b198e10-b507-4314-a29c-a219f06e48b7"
+      ],
+      [
+       1,
+       "Vines of Vastwood",
+       "6203e3d4-8998-41d6-9f7e-b68af0f1f8b5"
+      ],
+      [
+       1,
+       "Wax // Wane",
+       "f93b22de-93f3-4f05-8960-fa6a539ea882"
+      ]
+     ]
+    },
+    {
+     "t": "Conjuros",
+     "c": [
+      [
+       1,
+       "Bridgeworks Battle // Tanglespan Bridgeworks",
+       "ebef3db0-2b58-4581-a79c-fbca9a059e63"
+      ],
+      [
+       1,
+       "Exorcise",
+       "f49006f2-a097-417d-8eb0-b8016ff2e0d5"
+      ],
+      [
+       1,
+       "Nostalgic Dreams",
+       "70f1e794-a32e-4f91-acbb-7e60dad4cf53"
+      ],
+      [
+       1,
+       "Phytoburst",
+       "7507afc4-f504-4eb2-a86d-f99bc2860838"
+      ],
+      [
+       1,
+       "Summer Bloom",
+       "7383f71d-3f51-4632-9ea0-27d47fa2fa50"
+      ]
+     ]
+    },
+    {
+     "t": "Artefactos",
+     "c": [
+      [
+       1,
+       "Sol Ring",
+       "1b3a4537-1d51-47ac-a12e-6b8d68f530e6"
+      ],
+      [
+       1,
+       "Spellbook",
+       "1adade15-5675-495b-a536-e531c4306d3e"
+      ]
+     ]
+    },
+    {
+     "t": "Encantamientos",
+     "c": [
+      [
+       1,
+       "Duelist's Heritage",
+       "fefef556-dd3c-49b9-a6f5-8b86af64416e"
+      ],
+      [
+       1,
+       "Exploration",
+       "188bd186-18f8-4e61-8f85-9487126a1c4d"
+      ],
+      [
+       1,
+       "Graduation Day",
+       "db1cea01-123e-4b23-8b98-f94cabce3912"
+      ],
+      [
+       1,
+       "Twinblade Blessing",
+       "ecf01cbe-9fcb-4f35-bc6b-2280620b06ff"
+      ],
+      [
+       1,
+       "Utopia Sprawl",
+       "44d14297-f84b-40bd-bd0a-b67d13787ca0"
+      ],
+      [
+       1,
+       "Wild Defiance",
+       "7eaa6be7-2c6f-4442-85d1-ae31ad87fd98"
+      ],
+      [
+       1,
+       "Wild Growth",
+       "4aea57a2-2753-4014-9724-2701455a6be8"
+      ]
+     ]
+    },
+    {
+     "t": "Tierras",
+     "c": [
+      [
+       1,
+       "Boseiju, Who Endures",
+       "dda82840-1f3f-4be7-9bc7-66ff551ef5c0"
+      ],
+      [
+       1,
+       "Bountiful Promenade",
+       "f0b11ba3-68ba-4067-af40-2a55e31b395e"
+      ],
+      [
+       1,
+       "Brushland",
+       "c2bc3f62-1e3a-4ec3-a83b-f6547d7c7b0d"
+      ],
+      [
+       1,
+       "Canopy Vista",
+       "5d33aeaa-df27-4c41-9926-79e9dc6a9c69"
+      ],
+      [
+       1,
+       "Centaur Garden",
+       "ca041d5e-c65f-4e7e-ae4f-9c748a069aa3"
+      ],
+      [
+       1,
+       "Command Tower",
+       "ffcf7acb-23e4-4658-a5fd-0ae585602dca"
+      ],
+      [
+       1,
+       "Eiganjo, Seat of the Empire",
+       "c375a022-5b57-496d-a802-e4ea8376e9e4"
+      ],
+      [
+       3,
+       "Forest",
+       "7df94d2c-7c1f-4461-8f70-c2bd4ebb95be"
+      ],
+      [
+       1,
+       "Hickory Woodlot",
+       "af7aafb7-6870-4d09-a191-70786766c459"
+      ],
+      [
+       1,
+       "Homeward Path",
+       "1026e3bd-8906-40d2-bba9-e454fcb783c8"
+      ],
+      [
+       1,
+       "Horizon Canopy",
+       "3cf2baad-0160-419d-bba5-f4f35596aa61"
+      ],
+      [
+       1,
+       "Hushwood Verge",
+       "ec288d76-c1f5-471b-8a53-504f88469c1b"
+      ],
+      [
+       1,
+       "Inkmoth Nexus",
+       "ec50c1c3-885e-47d3-ada7-cc0edbf09df1"
+      ],
+      [
+       1,
+       "Overgrown Farmland",
+       "84a76e0f-49fc-4087-8859-98f4a4deacdf"
+      ],
+      [
+       2,
+       "Plains",
+       "a4446149-341b-449b-86e2-2b6b47b7a75e"
+      ],
+      [
+       1,
+       "Razorverge Thicket",
+       "345e053a-3178-485c-8602-1624bbf2f064"
+      ],
+      [
+       1,
+       "Reflecting Pool",
+       "cbc4281a-b70d-4f96-b309-38e986484829"
+      ],
+      [
+       1,
+       "Reliquary Tower",
+       "63aa9614-7440-4aab-bdfe-2ffdd026968c"
+      ],
+      [
+       1,
+       "Remote Farm",
+       "115cab84-60d7-4bf2-9beb-b4ed7b5ceaf4"
+      ],
+      [
+       1,
+       "Strip Mine",
+       "a5899b46-226b-4be6-8e80-d2396f54210d"
+      ],
+      [
+       1,
+       "Sungrass Prairie",
+       "d373d63c-6de6-4ec6-91bf-4f681fefec65"
+      ],
+      [
+       1,
+       "Sunpetal Grove",
+       "a6ee978a-1cde-4661-bfe0-4c0d24211fa1"
+      ],
+      [
+       1,
+       "Talon Gates of Madara",
+       "c565f8fe-acf7-40dd-8100-8f692d1e232c"
+      ],
+      [
+       1,
+       "Temple Garden",
+       "b9b0589d-f327-46a7-8bac-06b7654c547a"
+      ],
+      [
+       1,
+       "Windswept Heath",
+       "bd1d13f7-fd38-4f0b-a8e0-1eac78668117"
+      ],
+      [
+       1,
+       "Wooded Bastion",
+       "4040f465-9220-4e5d-98ff-7a13cec2dba2"
+      ],
+      [
+       1,
+       "Yavimaya, Cradle of Growth",
+       "b0063a44-6cde-4d7e-81e1-61bae08831ee"
+      ]
+     ]
+    }
+   ]
+  },
+  "2026-11-24-INTIMIRAFLORES-B2|Royalito McRoyal": {
+   "url": "https://moxfield.com/decks/HhOdhAxjnEe2Xb7JKHbgJQ",
+   "fuente": "Moxfield",
+   "guardada": "2026-11-25",
+   "secciones": [
+    {
+     "t": "Comandante",
+     "c": [
+      [
+       1,
+       "Sergeant John Benton",
+       "38c96909-1150-4126-a21d-7842670bbaf8"
+      ]
+     ]
+    },
+    {
+     "t": "Criaturas",
+     "c": [
+      [
+       1,
+       "Avacyn's Pilgrim",
+       "e9600bdc-6a1b-4f7a-aa7d-538fb89df937"
+      ],
+      [
+       1,
+       "Azusa, Lost but Seeking",
+       "bc38affd-b51d-4ea4-8198-d121c24ee5cf"
+      ],
+      [
+       1,
+       "Birds of Paradise",
+       "5a8b5ae4-e683-4ee5-8a41-10daddc2561f"
+      ],
+      [
+       1,
+       "Dryad of the Ilysian Grove",
+       "9898dd33-63fb-49d3-bea4-5346d6d56f30"
+      ],
+      [
+       1,
+       "Elvish Mystic",
+       "ed7a0227-ac70-40fb-8198-a55eacf913fa"
+      ],
+      [
+       1,
+       "Elvish Spirit Guide",
+       "2c645151-c98a-45e1-831e-72b43485f9a2"
+      ],
+      [
+       1,
+       "Fyndhorn Elves",
+       "43add588-eac2-4560-adac-b0721d021694"
+      ],
+      [
+       1,
+       "Grand Abolisher",
+       "86e30ca4-1769-4686-aa18-31610246cd80"
+      ],
+      [
+       1,
+       "Jennifer Walters // The Sensational She-Hulk",
+       "61237530-ad49-469c-a952-67c92315708e"
+      ],
+      [
+       1,
+       "Kutzil, Malamet Exemplar",
+       "c9f88a40-a6ed-4c1f-a309-011aca1acddd"
+      ],
+      [
+       1,
+       "Llanowar Elves",
+       "581b7327-3215-4a4f-b4ae-d9d4002ba882"
+      ],
+      [
+       1,
+       "Sakura-Tribe Scout",
+       "9cbdda50-8a27-4094-849d-b6f66def82ce"
+      ],
+      [
+       1,
+       "Voice of Victory",
+       "ec3de5f4-bb55-4ab9-995f-f3e0dc22c1bb"
+      ],
+      [
+       1,
+       "Witch Enchanter // Witch-Blessed Meadow",
+       "62061e7c-cf19-4f03-b8fa-2bdba62d6b0b"
+      ]
+     ]
+    },
+    {
+     "t": "Planeswalkers",
+     "c": [
+      [
+       1,
+       "Ajani, Caller of the Pride",
+       "59793f1c-8c7e-433e-9c09-40aa3ce931a1"
+      ]
+     ]
+    },
+    {
+     "t": "Instantáneos",
+     "c": [
+      [
+       1,
+       "Akroma's Will",
+       "608cdbdb-6f7e-438a-bab0-0e7782435f0f"
+      ],
+      [
+       1,
+       "Become Immense",
+       "96e32a8c-6f5b-40e3-ab24-8296275df295"
+      ],
+      [
+       1,
+       "Berserk",
+       "62bc9bff-89bd-4454-a876-53822cf48546"
+      ],
+      [
+       1,
+       "Blossoming Defense",
+       "3cce80d0-b937-4325-a603-1278c110f244"
+      ],
+      [
+       1,
+       "Bounty of the Hunt",
+       "21ed522a-cf5a-41e1-9677-1226f689ec9c"
+      ],
+      [
+       1,
+       "Collective Resistance",
+       "1fa97b3c-7780-4f53-9b74-20e7f8e41602"
+      ],
+      [
+       1,
+       "Crumb and Get It",
+       "3c7b3b25-d4b3-4451-9f5c-6eb369541175"
+      ],
+      [
+       1,
+       "Defend the Rider",
+       "59ed23a2-6153-47b2-ab73-062195cafb74"
+      ],
+      [
+       1,
+       "Destroy Evil",
+       "4f7862ef-2c8d-4d28-9e50-7cc41861f245"
+      ],
+      [
+       1,
+       "Dual-Sun Technique",
+       "f8931132-391f-4f16-b480-0a245ab2ec21"
+      ],
+      [
+       1,
+       "Embiggen",
+       "1b759c27-9fb6-4c23-adc1-f6d3f3a0eb52"
+      ],
+      [
+       1,
+       "Everybody Lives!",
+       "9dab0052-7f0c-4b56-847f-20552666a271"
+      ],
+      [
+       1,
+       "Flare of Faith",
+       "1b4354c6-ea21-46c0-93c4-744dbacbfcf4"
+      ],
+      [
+       1,
+       "Force of Vigor",
+       "c009b8b7-c057-4139-99ff-336687250622"
+      ],
+      [
+       1,
+       "Galadriel's Dismissal",
+       "2d1c66a7-a39e-4869-80c7-1cec89777e0d"
+      ],
+      [
+       1,
+       "Giant Growth",
+       "e70722d6-b4d5-45c2-9488-9a5eb0bdb9bd"
+      ],
+      [
+       1,
+       "Groundswell",
+       "a4b2146c-2fdd-4ea7-b2a2-98b8bb53c5db"
+      ],
+      [
+       1,
+       "Inner Calm, Outer Strength",
+       "40f56817-aabf-469c-a82c-37315decc73c"
+      ],
+      [
+       1,
+       "Invigorate",
+       "3781f2ee-5d45-4d0b-b0e1-78cc4f11373a"
+      ],
+      [
+       1,
+       "Kaya's Onslaught",
+       "f28e151f-b61b-486f-b7f8-7abde207c442"
+      ],
+      [
+       1,
+       "Legolas's Quick Reflexes",
+       "851c0167-04ba-4d15-b0fa-c211bd8826f1"
+      ],
+      [
+       1,
+       "Loran's Escape",
+       "3765610d-a0c1-4de9-a81b-ffa3eb06454b"
+      ],
+      [
+       1,
+       "Might of Oaks",
+       "73957035-c02f-4de6-9258-ef339565bd1d"
+      ],
+      [
+       1,
+       "Might of Old Krosa",
+       "142600e0-9646-4327-aaa4-bc3294cf9b99"
+      ],
+      [
+       1,
+       "Might of the Nephilim",
+       "ca5c4a29-0650-4b9e-af6b-39bee19167ad"
+      ],
+      [
+       1,
+       "Mutagenic Growth",
+       "af2d23da-70a1-49ba-91bf-c110cc4bbedc"
+      ],
+      [
+       1,
+       "Noxious Revival",
+       "4db5b4cd-3809-4dfe-8b9a-2a25b02e814c"
+      ],
+      [
+       1,
+       "Obscuring Haze",
+       "c1ae35e6-5401-481a-8104-24f53e3d160f"
+      ],
+      [
+       1,
+       "Overprotect",
+       "079e979f-b618-4625-989c-e0ea5b61ed8a"
+      ],
+      [
+       1,
+       "Pair o' Dice Lost",
+       "567665f3-4227-4f3c-bfbe-4e9576f32b50"
+      ],
+      [
+       1,
+       "Ram Through",
+       "ac0b24e7-14e7-45ee-b5d8-bdb8674b669c"
+      ],
+      [
+       1,
+       "Rustler Rampage",
+       "33ed7ca3-894b-45f4-a15f-51b6bcd3f474"
+      ],
+      [
+       1,
+       "Scent of Ivy",
+       "a56b4894-b959-4d00-b631-95d26eb85a4e"
+      ],
+      [
+       1,
+       "Selesnya Charm",
+       "a9848eab-1d3a-4ab0-adf6-c20858aa3afb"
+      ],
+      [
+       1,
+       "Tifa's Limit Break",
+       "24d6eab7-22bd-494f-8cbe-204446f24be9"
+      ],
+      [
+       1,
+       "Titanic Growth",
+       "b0d513a9-c292-46a3-be06-d29d7090dc92"
+      ],
+      [
+       1,
+       "Tyvar's Stand",
+       "c7b362a5-382a-4016-b4f2-aa7b683354c4"
+      ],
+      [
+       1,
+       "Vigorbloom Charm",
+       "2b198e10-b507-4314-a29c-a219f06e48b7"
+      ],
+      [
+       1,
+       "Vines of Vastwood",
+       "6203e3d4-8998-41d6-9f7e-b68af0f1f8b5"
+      ],
+      [
+       1,
+       "Wax // Wane",
+       "f93b22de-93f3-4f05-8960-fa6a539ea882"
+      ]
+     ]
+    },
+    {
+     "t": "Conjuros",
+     "c": [
+      [
+       1,
+       "Bridgeworks Battle // Tanglespan Bridgeworks",
+       "ebef3db0-2b58-4581-a79c-fbca9a059e63"
+      ],
+      [
+       1,
+       "Exorcise",
+       "f49006f2-a097-417d-8eb0-b8016ff2e0d5"
+      ],
+      [
+       1,
+       "Nostalgic Dreams",
+       "70f1e794-a32e-4f91-acbb-7e60dad4cf53"
+      ],
+      [
+       1,
+       "Phytoburst",
+       "7507afc4-f504-4eb2-a86d-f99bc2860838"
+      ],
+      [
+       1,
+       "Summer Bloom",
+       "7383f71d-3f51-4632-9ea0-27d47fa2fa50"
+      ]
+     ]
+    },
+    {
+     "t": "Artefactos",
+     "c": [
+      [
+       1,
+       "Sol Ring",
+       "1b3a4537-1d51-47ac-a12e-6b8d68f530e6"
+      ],
+      [
+       1,
+       "Spellbook",
+       "1adade15-5675-495b-a536-e531c4306d3e"
+      ]
+     ]
+    },
+    {
+     "t": "Encantamientos",
+     "c": [
+      [
+       1,
+       "Duelist's Heritage",
+       "fefef556-dd3c-49b9-a6f5-8b86af64416e"
+      ],
+      [
+       1,
+       "Exploration",
+       "188bd186-18f8-4e61-8f85-9487126a1c4d"
+      ],
+      [
+       1,
+       "Graduation Day",
+       "db1cea01-123e-4b23-8b98-f94cabce3912"
+      ],
+      [
+       1,
+       "Twinblade Blessing",
+       "ecf01cbe-9fcb-4f35-bc6b-2280620b06ff"
+      ],
+      [
+       1,
+       "Utopia Sprawl",
+       "44d14297-f84b-40bd-bd0a-b67d13787ca0"
+      ],
+      [
+       1,
+       "Wild Defiance",
+       "7eaa6be7-2c6f-4442-85d1-ae31ad87fd98"
+      ],
+      [
+       1,
+       "Wild Growth",
+       "4aea57a2-2753-4014-9724-2701455a6be8"
+      ]
+     ]
+    },
+    {
+     "t": "Tierras",
+     "c": [
+      [
+       1,
+       "Boseiju, Who Endures",
+       "dda82840-1f3f-4be7-9bc7-66ff551ef5c0"
+      ],
+      [
+       1,
+       "Bountiful Promenade",
+       "f0b11ba3-68ba-4067-af40-2a55e31b395e"
+      ],
+      [
+       1,
+       "Brushland",
+       "c2bc3f62-1e3a-4ec3-a83b-f6547d7c7b0d"
+      ],
+      [
+       1,
+       "Canopy Vista",
+       "5d33aeaa-df27-4c41-9926-79e9dc6a9c69"
+      ],
+      [
+       1,
+       "Centaur Garden",
+       "ca041d5e-c65f-4e7e-ae4f-9c748a069aa3"
+      ],
+      [
+       1,
+       "Command Tower",
+       "ffcf7acb-23e4-4658-a5fd-0ae585602dca"
+      ],
+      [
+       1,
+       "Eiganjo, Seat of the Empire",
+       "c375a022-5b57-496d-a802-e4ea8376e9e4"
+      ],
+      [
+       3,
+       "Forest",
+       "7df94d2c-7c1f-4461-8f70-c2bd4ebb95be"
+      ],
+      [
+       1,
+       "Hickory Woodlot",
+       "af7aafb7-6870-4d09-a191-70786766c459"
+      ],
+      [
+       1,
+       "Homeward Path",
+       "1026e3bd-8906-40d2-bba9-e454fcb783c8"
+      ],
+      [
+       1,
+       "Horizon Canopy",
+       "3cf2baad-0160-419d-bba5-f4f35596aa61"
+      ],
+      [
+       1,
+       "Hushwood Verge",
+       "ec288d76-c1f5-471b-8a53-504f88469c1b"
+      ],
+      [
+       1,
+       "Inkmoth Nexus",
+       "ec50c1c3-885e-47d3-ada7-cc0edbf09df1"
+      ],
+      [
+       1,
+       "Overgrown Farmland",
+       "84a76e0f-49fc-4087-8859-98f4a4deacdf"
+      ],
+      [
+       2,
+       "Plains",
+       "a4446149-341b-449b-86e2-2b6b47b7a75e"
+      ],
+      [
+       1,
+       "Razorverge Thicket",
+       "345e053a-3178-485c-8602-1624bbf2f064"
+      ],
+      [
+       1,
+       "Reflecting Pool",
+       "cbc4281a-b70d-4f96-b309-38e986484829"
+      ],
+      [
+       1,
+       "Reliquary Tower",
+       "63aa9614-7440-4aab-bdfe-2ffdd026968c"
+      ],
+      [
+       1,
+       "Remote Farm",
+       "115cab84-60d7-4bf2-9beb-b4ed7b5ceaf4"
+      ],
+      [
+       1,
+       "Strip Mine",
+       "a5899b46-226b-4be6-8e80-d2396f54210d"
+      ],
+      [
+       1,
+       "Sungrass Prairie",
+       "d373d63c-6de6-4ec6-91bf-4f681fefec65"
+      ],
+      [
+       1,
+       "Sunpetal Grove",
+       "a6ee978a-1cde-4661-bfe0-4c0d24211fa1"
+      ],
+      [
+       1,
+       "Talon Gates of Madara",
+       "c565f8fe-acf7-40dd-8100-8f692d1e232c"
+      ],
+      [
+       1,
+       "Temple Garden",
+       "b9b0589d-f327-46a7-8bac-06b7654c547a"
+      ],
+      [
+       1,
+       "Windswept Heath",
+       "bd1d13f7-fd38-4f0b-a8e0-1eac78668117"
+      ],
+      [
+       1,
+       "Wooded Bastion",
+       "4040f465-9220-4e5d-98ff-7a13cec2dba2"
+      ],
+      [
+       1,
+       "Yavimaya, Cradle of Growth",
+       "b0063a44-6cde-4d7e-81e1-61bae08831ee"
+      ]
+     ]
+    }
+   ]
   }
  },
  "arte": {
