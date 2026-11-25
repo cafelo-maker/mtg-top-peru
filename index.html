@@ -215,6 +215,11 @@ a.rcard:hover{color:var(--ink);border-color:var(--accent)}
 .tcard{position:relative;display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:var(--ink);min-width:0}
 .tcard:hover{color:var(--ink);border-color:var(--accent)}
 .tcard .code{align-self:flex-start;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;padding:2px 6px;border-radius:3px;background:var(--surface2);color:var(--muted)}
+.fc-B5{--fc:#f0b94a}.fc-B2{--fc:#45c9b3}.fc-DC{--fc:#b497f5}.fc-STD{--fc:#62aef7}.fc-MOD{--fc:#f5825f}.fc-PAU{--fc:#9bd45f}
+.tcard .code[class*="fc-"]{color:var(--fc);background:color-mix(in srgb,var(--fc) 14%,var(--surface2));box-shadow:inset 2px 0 0 var(--fc);padding-left:8px}
+.tcard[class*="fc-"]{border-top-color:color-mix(in srgb,var(--fc) 55%,var(--line))}
+.fmt.has .code[class*="fc-"]{color:var(--fc)}
+.fmt.none .code[class*="fc-"]{color:color-mix(in srgb,var(--fc) 60%,var(--muted))}
 .tcard b{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.01em;line-height:1.1}
 .tcard .win{display:flex;align-items:center;gap:8px;font-size:13.5px;padding-top:8px;border-top:1px solid var(--line);min-width:0}
 .tcard .win .thumbs{margin-right:0}
@@ -594,7 +599,7 @@ function winnerOf(t){ return DB.resultados.find(r=>r.torneo===t.id && Number(r.p
 function tourCards(ts, strip){
   if(!ts.length) return `<div class="empty">Aún no hay torneos registrados.</div>`;
   return `<div class="rgrid${strip?" tstrip":""}">${ts.map(t=>{ const w = winnerOf(t);
-    return `<a class="tcard" href="#torneo-${slug(t.id)}"><span class="code">${esc(fmtName(t.bracket))}</span><b>${esc(t.tienda)}</b>
+    return `<a class="tcard fc-${esc(t.bracket)}" href="#torneo-${slug(t.id)}"><span class="code fc-${esc(t.bracket)}">${esc(fmtName(t.bracket))}</span><b>${esc(t.tienda)}</b>
       <span class="meta" style="color:var(--muted);font-size:13px">${fdate(t.fecha)} · ${t.jugadores??"–"} jugadores${t.ciudad?` · ${esc(t.ciudad)}`:""}</span>
       ${w?`<span class="win">${thumb(w.comandante)}<span style="min-width:0"><span style="color:var(--muted)">Ganó ${esc(w.jugador)}</span><br>${esc(w.comandante)}</span></span>`:""}</a>`; }).join("")}</div>`;
 }
@@ -610,7 +615,7 @@ const views = {
     const mos = pool.length ? Array.from({length:60},(_,i)=>pool[i%pool.length]) : [];
     const tiles = Object.entries(BR).map(([k,b])=>{
       const st = stats(b.code,"todo"), topRow = st.rows[0], part = topRow && artParts(topRow.name)[0];
-      return `<a class="fmt ${st.torneos.length?"has":"none"}" href="#${k}">${st.torneos.length&&part?bigImg(part,"bgart"):""}<span class="code">${b.code}</span>
+      return `<a class="fmt ${st.torneos.length?"has":"none"}" href="#${k}">${st.torneos.length&&part?bigImg(part,"bgart"):""}<span class="code fc-${b.code}">${b.code}</span>
         <b>${b.name}</b><span>${st.torneos.length?`${st.torneos.length} ${st.torneos.length===1?"torneo":"torneos"} · ${st.entries} mazos`:"Sin torneos aún"}</span></a>`;
     }).join("");
     const lrs = lt ? DB.resultados.filter(r=>r.torneo===lt.id).sort((a,b)=>Number(a.puesto)-Number(b.puesto)) : [];
@@ -621,7 +626,7 @@ const views = {
       <section><h2>Formatos</h2><div class="formats">${tiles}</div></section>
       ${lt?`<section><div class="secthead"><h2>Último torneo</h2><a class="kicker" href="#torneo-${slug(lt.id)}">${tName(lt)} · ${fdate(lt.fecha)} · ${esc(fmtName(lt.bracket))} →</a></div>${podium(lrs)}</section>`:""}
       <section><div class="secthead"><h2>Últimos torneos</h2><a class="kicker" href="#torneos">Ver todos →</a></div>${tourCards(last.slice(0,6))}</section>
-      <section><div class="secthead"><h2>Próximos torneos</h2></div>${(DB.proximos||[]).length?`<div class="rgrid">${DB.proximos.map(t=>`<div class="tcard"><span class="code">${esc(fmtName(t.bracket))}</span><b>${esc(t.tienda)}</b>
+      <section><div class="secthead"><h2>Próximos torneos</h2></div>${(DB.proximos||[]).length?`<div class="rgrid">${DB.proximos.map(t=>`<div class="tcard fc-${esc(t.bracket)}"><span class="code fc-${esc(t.bracket)}">${esc(fmtName(t.bracket))}</span><b>${esc(t.tienda)}</b>
         <span class="meta" style="color:var(--muted);font-size:13px">${fdate(t.fecha)}${t.hora?` · ${esc(t.hora)}`:""}${t.ciudad?` · ${esc(t.ciudad)}`:""}</span>${t.nota?`<span style="font-size:13.5px">${esc(t.nota)}</span>`:""}</div>`).join("")}</div>`
         :`<div class="empty">Aún no hay torneos anunciados. Cuando una tienda anuncie uno, aparecerá aquí.</div>`}</section>`;
   },
