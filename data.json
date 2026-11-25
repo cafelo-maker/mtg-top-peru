@@ -4135,6 +4135,478 @@
      ]
     }
    ]
+  },
+  "2026-11-24-INTIMIRAFLORES-B2|Rickard Ponce": {
+   "url": "https://moxfield.com/decks/mZmCbGx-lUSi42PMiCK3tw",
+   "fuente": "Moxfield",
+   "guardada": "2026-11-25",
+   "secciones": [
+    {
+     "t": "Comandante",
+     "c": [
+      [
+       1,
+       "Evelyn, the Covetous",
+       "1cef767a-6fbb-4ca7-8cff-e9121ac131ac"
+      ]
+     ]
+    },
+    {
+     "t": "Criaturas",
+     "c": [
+      [
+       1,
+       "Boggart Trawler // Boggart Bog",
+       "d0d484a6-5610-4f1d-95ec-eda273c255e4"
+      ],
+      [
+       1,
+       "Chameleon, Master of Disguise",
+       "dcc50ba7-c4be-4c20-a1fc-466194aab7c2"
+      ],
+      [
+       1,
+       "Colossal Clone Master",
+       "1eadfff4-1e89-4ff2-a91c-d45389b80d69"
+      ],
+      [
+       1,
+       "Doomsday Excruciator",
+       "8435979f-4e16-4fe9-902e-b9c824c05212"
+      ],
+      [
+       1,
+       "Hydroelectric Specimen // Hydroelectric Laboratory",
+       "8689ecd7-e9a6-458b-99d2-6dbaca527f00"
+      ],
+      [
+       1,
+       "Pinnacle Monk // Mystic Peak",
+       "24d4f26e-7f96-4b38-867e-4fac819b2679"
+      ],
+      [
+       1,
+       "Samut, Tyrant of Naktamun",
+       "6d7d8fa7-ce69-4a8c-9af0-55571393a244"
+      ],
+      [
+       1,
+       "Shaun, Father of Synths",
+       "68af449f-3c30-43ea-be60-d85061d7adbd"
+      ],
+      [
+       1,
+       "Spark Double",
+       "c41b9ba2-0006-4d8e-b600-efe81ff5e0cc"
+      ],
+      [
+       1,
+       "Starfield Vocalist",
+       "b5a654ab-1f9d-456d-8b1b-59ea0e152b0b"
+      ],
+      [
+       1,
+       "Wiccan, Rising Magician",
+       "5d27ddec-716d-47e5-ac48-365e91b88ff1"
+      ]
+     ]
+    },
+    {
+     "t": "Instantáneos",
+     "c": [
+      [
+       1,
+       "Aetherize",
+       "55c94e96-6563-43d5-8787-17868846e010"
+      ],
+      [
+       1,
+       "Aetherspouts",
+       "46f1b48f-6528-46bd-a384-2358af25e500"
+      ],
+      [
+       1,
+       "Borne Upon a Wind",
+       "a9379675-1a32-4e2b-8aaf-5f908c595f31"
+      ],
+      [
+       1,
+       "Brainstorm",
+       "1ede3080-8c47-48a0-b757-92c3fa91fac0"
+      ],
+      [
+       1,
+       "Cabal Ritual",
+       "b6f93fe0-76f7-4db7-9315-adc26252c059"
+      ],
+      [
+       1,
+       "Counterspell",
+       "e1e48b21-1a4f-4708-a4b4-e2e296df924c"
+      ],
+      [
+       1,
+       "Dark Ritual",
+       "4ebcd681-1871-4914-bcd7-6bd95829f6e0"
+      ],
+      [
+       1,
+       "Essence Flux",
+       "c94b37df-aaa5-4981-be3b-c934a7971123"
+      ],
+      [
+       1,
+       "Hide on the Ceiling",
+       "7977e448-01fa-4fa5-a275-0d6a1357b35c"
+      ],
+      [
+       1,
+       "Memory Lapse",
+       "6c8b5df3-6153-470e-be9c-f38d3cf66081"
+      ],
+      [
+       1,
+       "Negate",
+       "ff3b0dba-0207-4249-bdab-e807c76ce39e"
+      ],
+      [
+       1,
+       "Quicken",
+       "8210edc0-05af-4a22-abc1-3f317a1bed99"
+      ],
+      [
+       1,
+       "Saw in Half",
+       "90f8de01-c1bd-4533-9e98-61e7d25dcf88"
+      ],
+      [
+       1,
+       "Siren's Ruse",
+       "8f389872-d1f4-4828-a527-e820a6f2ac21"
+      ],
+      [
+       1,
+       "Teferi's Time Twist",
+       "c878bdc0-d697-4a2f-bba5-758b27f4247a"
+      ],
+      [
+       1,
+       "Undying Malice",
+       "97b3cf11-e352-4ee1-8c03-13898f576ef9"
+      ]
+     ]
+    },
+    {
+     "t": "Conjuros",
+     "c": [
+      [
+       1,
+       "Black Sun's Zenith",
+       "eda98f51-a918-4ef7-a123-7d4200c79620"
+      ],
+      [
+       1,
+       "Blasphemous Act",
+       "7d4b1d44-126e-4987-9a9f-f0f9627a09cb"
+      ],
+      [
+       1,
+       "Crux of Fate",
+       "2fe9df6d-c5e0-4378-a4a5-744773811a5c"
+      ],
+      [
+       1,
+       "Devastating Onslaught",
+       "f7b4f951-9e9a-4a31-b127-0c1557498653"
+      ],
+      [
+       1,
+       "Ember Island Production",
+       "0f79a7fc-36b1-4397-8e67-6638379d3a38"
+      ],
+      [
+       1,
+       "Irenicus's Vile Duplication",
+       "2418e448-039a-4786-9dec-fcd9e17520a4"
+      ],
+      [
+       1,
+       "Languish",
+       "9b53ce1b-9353-42ad-89a0-36e907ba576a"
+      ],
+      [
+       1,
+       "Multiversal Recruitment",
+       "9ecb06fa-2d75-4670-96e3-cd5d5e150528"
+      ],
+      [
+       1,
+       "Overwrite the Multiverse",
+       "c4554f5b-791b-48f6-bf54-ad28699e1beb"
+      ],
+      [
+       1,
+       "Quantum Misalignment",
+       "ceba3080-4e10-46b3-887c-e2d45581962b"
+      ],
+      [
+       1,
+       "Rite of Replication",
+       "41f77ce9-cc82-4cfd-8f45-bceb68380f82"
+      ],
+      [
+       1,
+       "Toxic Deluge",
+       "4ab57e89-a420-4a3a-b2ba-34bb427e40d4"
+      ],
+      [
+       1,
+       "Twinflame",
+       "85c863ef-b266-410d-87b3-ced791f99966"
+      ],
+      [
+       1,
+       "Villainous Wrath",
+       "d78e36fd-5817-4c4a-8880-dabe6dd4ba81"
+      ],
+      [
+       1,
+       "Zero Point Ballad",
+       "59cf9f4d-54cd-4cda-9726-65e16100ab46"
+      ]
+     ]
+    },
+    {
+     "t": "Artefactos",
+     "c": [
+      [
+       1,
+       "Arcane Signet",
+       "1bbc3ce9-f3df-41b4-b238-37319546c595"
+      ],
+      [
+       1,
+       "Bender's Waterskin",
+       "6d4a1712-d19e-4475-9614-a0b1af4da610"
+      ],
+      [
+       1,
+       "Charcoal Diamond",
+       "e27c2ed7-574f-44d2-adc2-27866049c4b5"
+      ],
+      [
+       1,
+       "Dimir Signet",
+       "47c621c7-6673-4a86-8f09-339d45fd5958"
+      ],
+      [
+       1,
+       "Fellwar Stone",
+       "385b9f5e-81dd-49f6-a644-59d53245e3dc"
+      ],
+      [
+       1,
+       "Fire Diamond",
+       "5df5e4e9-b52a-454f-b28d-c12430a952bd"
+      ],
+      [
+       1,
+       "Helm of Awakening",
+       "e9e4ff9c-6244-43e1-b569-32a270c4e014"
+      ],
+      [
+       1,
+       "Izzet Signet",
+       "d5e141ad-5cb8-416b-9acf-bce1baeb6b6b"
+      ],
+      [
+       1,
+       "Mind Stone",
+       "6ac8db7a-009a-4141-bba7-b5fdfaf8d245"
+      ],
+      [
+       1,
+       "Panharmonicon",
+       "9d7903ff-359b-49f5-8782-c9dd789c2da6"
+      ],
+      [
+       1,
+       "Rakdos Signet",
+       "b75d1464-8c8b-4a1a-90c5-3ff21e8d1a5b"
+      ],
+      [
+       1,
+       "Sky Diamond",
+       "d47abfb2-9bcf-485c-9bd4-2c09b714eb32"
+      ],
+      [
+       1,
+       "Sol Ring",
+       "a739dd30-1fce-49db-99fb-15e346f4f2db"
+      ],
+      [
+       1,
+       "Talisman of Creativity",
+       "d4ba86c8-8052-4c9e-a0d0-ac6ad0b2679c"
+      ],
+      [
+       1,
+       "Talisman of Dominance",
+       "637ebd2d-89cb-464d-bba5-e7da37776454"
+      ],
+      [
+       1,
+       "Talisman of Indulgence",
+       "113410ff-d25e-4f25-a6c2-236bcf4c8486"
+      ],
+      [
+       1,
+       "Victory Chimes",
+       "9cb27fb1-41b1-49b8-bb3b-2c8a011ae7a9"
+      ]
+     ]
+    },
+    {
+     "t": "Encantamientos",
+     "c": [
+      [
+       1,
+       "Charred Foyer // Warped Space",
+       "53f6f7ac-d8ae-4029-9193-1d301e7fdacb"
+      ],
+      [
+       1,
+       "Leyline of Anticipation",
+       "d789703e-81ae-48a7-8831-201ccdec5eba"
+      ],
+      [
+       1,
+       "Propaganda",
+       "efc52d02-7d22-4ff6-b104-a6fe704e8ef2"
+      ],
+      [
+       1,
+       "Spiteful Banditry",
+       "e85a82bc-49f3-4694-b688-808a541146db"
+      ],
+      [
+       1,
+       "The Apprentice's Folly",
+       "c7d4e178-88c0-4c6e-9a58-95aa11acaf0e"
+      ]
+     ]
+    },
+    {
+     "t": "Tierras",
+     "c": [
+      [
+       1,
+       "Abstergo Entertainment",
+       "4d197866-7633-493c-80dd-ec3a09165934"
+      ],
+      [
+       1,
+       "Accursed Duneyard",
+       "bd9e6ba8-1c5e-4416-8bff-90db3b3b1f41"
+      ],
+      [
+       1,
+       "Cascade Bluffs",
+       "3aa15173-06c7-4d25-97c8-523d23eaf973"
+      ],
+      [
+       1,
+       "Command Tower",
+       "5fc770b6-03ac-45c3-a2ca-bd508096384e"
+      ],
+      [
+       1,
+       "Darkwater Catacombs",
+       "04360f65-bfed-4e3f-8733-11ad586d3c5f"
+      ],
+      [
+       1,
+       "Dimir Aqueduct",
+       "703b68dd-9a83-4e6e-9e34-53eb80311425"
+      ],
+      [
+       1,
+       "Emergence Zone",
+       "ab95f6e7-b806-47fe-a071-6c38b3176d94"
+      ],
+      [
+       1,
+       "Exotic Orchard",
+       "e86174cd-0291-4fca-8e22-2d2b6f921460"
+      ],
+      [
+       1,
+       "Ferrous Lake",
+       "0406ff96-419b-44bc-b836-a39eaa55ae78"
+      ],
+      [
+       1,
+       "Geier Reach Sanitarium",
+       "6f5b3931-580a-4471-9b5d-25bcf5803a73"
+      ],
+      [
+       9,
+       "Island",
+       "e24d0c78-4df5-4cc9-8b9e-65b969c5babd"
+      ],
+      [
+       1,
+       "Izzet Boilerworks",
+       "61ba2759-a3d8-45f8-b31e-d8789bde0f4f"
+      ],
+      [
+       3,
+       "Mountain",
+       "38c1e97b-4d7a-4a76-8999-5c76b4bae9cb"
+      ],
+      [
+       1,
+       "Phyrexian Tower",
+       "c1649447-4442-44ce-90f6-a328c123623b"
+      ],
+      [
+       1,
+       "Rakdos Carnarium",
+       "560d2f1a-2872-43e4-86e2-5321117e4565"
+      ],
+      [
+       1,
+       "Shivan Reef",
+       "2c6275ea-0565-436b-ab9a-ac17c465e14b"
+      ],
+      [
+       1,
+       "Spymaster's Vault",
+       "3d5fbb30-abfc-4e79-8ce5-bbb04a241c9f"
+      ],
+      [
+       1,
+       "Sulfurous Springs",
+       "be340a1c-f1e7-446e-ae91-86ecb884479c"
+      ],
+      [
+       5,
+       "Swamp",
+       "a20e773f-9220-4212-b39a-eaccb1c265c6"
+      ],
+      [
+       1,
+       "Temple of the False God",
+       "973c2d21-f81a-432e-a4a4-53a764e1a6ff"
+      ],
+      [
+       1,
+       "Underground River",
+       "e0747d8a-c878-496f-bdb0-0dddae536e7c"
+      ]
+     ]
+    }
+   ]
   }
  },
  "arte": {
