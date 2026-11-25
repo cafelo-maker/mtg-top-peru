@@ -440,7 +440,7 @@ function cmdLink(name){
   return `<a class="cmd" href="#cmd-${slug(name)}">${pips(name)}${esc(name)}</a>`;
 }
 const MANA = {W:"#e9dfb4",U:"#2f6fb3",B:"#3a3740",R:"#c8452b",G:"#2f7d4a"};
-function scry(p){ return "https://api.scryfall.com/cards/named?exact="+encodeURIComponent(p)+"&format=image&version=art_crop"; }
+function scry(p){ const a = DB && DB.arte && DB.arte[p]; return a ? "https://cards.scryfall.io/art_crop/"+a : "https://api.scryfall.com/cards/named?exact="+encodeURIComponent(p)+"&format=image&version=art_crop"; }
 function imgFail(el){ if(el.dataset.f!=="1" && el.dataset.alt){ el.dataset.f="1"; el.src=el.dataset.alt; } else el.remove(); }
 function thumb(name){
   if(!name || name==="Desconocido") return `<span class="thumbs"><span class="th" style="background:var(--line)"><span class="ini" style="color:var(--muted);text-shadow:none">?</span></span></span>`;
