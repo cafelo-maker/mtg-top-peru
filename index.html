@@ -519,7 +519,7 @@ const listaHref = r => listaOf(r) ? "#lista-"+slug(r.torneo)+"--"+slug(r.jugador
 const LICON = `<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M3 2h10a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm2 3v1.5h6V5H5zm0 3v1.5h6V8H5zm0 3v1.5h4V11H5z"/></svg>`;
 function listaChip(r){ const h = listaHref(r); return h ? `<span class="lchip" role="link" tabindex="0" data-go="${esc(h)}" title="Ver la lista del mazo">${LICON}Lista</span>` : ""; }
 const cardImg = (id, size) => `https://cards.scryfall.io/${size}/front/${id[0]}/${id[1]}/${id}.jpg`;
-let deckMode = "texto"; try{ deckMode = localStorage.getItem("vistaLista") || "texto"; }catch(e){}
+let deckMode = "imagenes"; try{ deckMode = localStorage.getItem("vistaLista") || "imagenes"; }catch(e){}
 const scryLink = n => "https://scryfall.com/search?q="+encodeURIComponent('!"'+n+'"');
 function deckText(L){ return `<div class="deckcols">${L.secciones.map(s=>`<div class="decksec"><h3>${esc(s.t)}<span>${s.c.reduce((x,c)=>x+Number(c[0]),0)}</span></h3><ul>${s.c.map(c=>`<li><i>${esc(c[0])}</i><a href="${scryLink(c[1])}" target="_blank" rel="noopener" ${c[2]?`data-card="${esc(c[2])}"`:""} data-name="${esc(c[1])}">${esc(c[1])}</a></li>`).join("")}</ul></div>`).join("")}</div>`; }
 function deckImgs(L){ return L.secciones.map(s=>`<div class="decksec wide"><h3>${esc(s.t)}<span>${s.c.reduce((x,c)=>x+Number(c[0]),0)}</span></h3><div class="deckgrid">${s.c.map(c=>c[2]
@@ -731,7 +731,7 @@ const views = {
     return `<section class="banner">${cardArt(r.comandante)}<div><div class="kicker" style="color:#c9cdda">Decklist · ${esc(fmtName(r.bracket))}</div><h1>${esc(r.comandante)}</h1>${pips(r.comandante)}
         <div class="chips"><span>Puesto <b>${esc(r.puesto)} / ${r.t.jugadores??"–"}</b></span><span><b>${total}</b> cartas</span></div></div></section>
       <section><div class="deckmeta"><span>Jugador <a href="#jugador-${slug(r.jugador)}">${esc(r.jugador)}</a></span><span>Torneo <a href="#torneo-${slug(r.torneo)}">${tName(r.t)}</a></span><span>${fdate(r.fecha)}</span><span>Mazo <a href="#cmd-${slug(r.comandante)}">ver estadísticas</a></span></div>
-        <div class="btnrow" style="margin:16px 0 26px">${L.url?`<a class="btn sm" href="${esc(L.url)}" target="_blank" rel="noopener">Abrir en ${esc(L.fuente||"la fuente")}</a>`:""}<button class="btn sm ghost" id="copylista">Copiar lista</button>${L.secciones.some(s=>s.c.some(c=>c[2]))?`<div class="seg" style="margin-left:auto"><button data-deckmode="texto" class="${deckMode!=="imagenes"?"on":""}">Texto</button><button data-deckmode="imagenes" class="${deckMode==="imagenes"?"on":""}">Imágenes</button></div>`:""}</div>
+        <div class="btnrow" style="margin:16px 0 26px">${L.url?`<a class="btn sm" href="${esc(L.url)}" target="_blank" rel="noopener">Abrir en ${esc(L.fuente||"la fuente")}</a>`:""}<button class="btn sm ghost" id="copylista">Copiar lista</button>${L.secciones.some(s=>s.c.some(c=>c[2]))?`<div class="seg" style="margin-left:auto"><button data-deckmode="imagenes" class="${deckMode==="imagenes"?"on":""}">Imágenes</button><button data-deckmode="texto" class="${deckMode!=="imagenes"?"on":""}">Texto</button></div>`:""}</div>
         ${deckMode==="imagenes"?deckImgs(L):deckText(L)}
         <p class="note" style="color:var(--muted);font-size:13px">Lista tal como la compartió el jugador para este torneo.</p></section>`;
   },
