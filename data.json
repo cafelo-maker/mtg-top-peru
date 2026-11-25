@@ -1,5 +1,393 @@
 {
- "listas": {},
+ "listas": {
+  "2026-11-24-INTIMIRAFLORES-B2|Felipe Bernales": {
+   "url": "https://moxfield.com/decks/dAD9vWyHSkOGigXHWmzpbA",
+   "fuente": "Moxfield",
+   "secciones": [
+    {
+     "t": "Comandante",
+     "c": [
+      [
+       1,
+       "Helga, Skittish Seer"
+      ]
+     ]
+    },
+    {
+     "t": "Criaturas",
+     "c": [
+      [
+       1,
+       "Appa, Steadfast Guardian"
+      ],
+      [
+       1,
+       "Avacyn's Pilgrim"
+      ],
+      [
+       1,
+       "Bane of Progress"
+      ],
+      [
+       1,
+       "Birds of Paradise"
+      ],
+      [
+       1,
+       "Bloom Tender"
+      ],
+      [
+       1,
+       "Bronzebeak Foragers"
+      ],
+      [
+       1,
+       "Chakram Retriever"
+      ],
+      [
+       1,
+       "Chameleon, Master of Disguise"
+      ],
+      [
+       1,
+       "Chulane, Teller of Tales"
+      ],
+      [
+       1,
+       "Clever Impersonator"
+      ],
+      [
+       1,
+       "Craterhoof Behemoth"
+      ],
+      [
+       1,
+       "Delighted Halfling"
+      ],
+      [
+       1,
+       "Elesh Norn, Grand Cenobite"
+      ],
+      [
+       1,
+       "Elvish Mystic"
+      ],
+      [
+       1,
+       "Flickering Hound"
+      ],
+      [
+       1,
+       "Forgotten Ancient"
+      ],
+      [
+       1,
+       "Giant-Sized Flying Ant"
+      ],
+      [
+       1,
+       "Glen Elendra Archmage"
+      ],
+      [
+       1,
+       "High Fae Trickster"
+      ],
+      [
+       1,
+       "Hullbreaker Horror"
+      ],
+      [
+       1,
+       "Hydroid Krasis"
+      ],
+      [
+       1,
+       "Inga and Esika"
+      ],
+      [
+       1,
+       "Kalonian Hydra"
+      ],
+      [
+       1,
+       "Koma, Cosmos Serpent"
+      ],
+      [
+       1,
+       "Llanowar Elves"
+      ],
+      [
+       1,
+       "Mockingbird"
+      ],
+      [
+       1,
+       "Mulldrifter"
+      ],
+      [
+       1,
+       "Murkfiend Liege"
+      ],
+      [
+       1,
+       "Mystic Snake"
+      ],
+      [
+       1,
+       "Noble Hierarch"
+      ],
+      [
+       1,
+       "Nulldrifter"
+      ],
+      [
+       1,
+       "Overcharged Amalgam"
+      ],
+      [
+       1,
+       "Peregrine Drake"
+      ],
+      [
+       1,
+       "Phyrexian Metamorph"
+      ],
+      [
+       1,
+       "Radagast of Rhosgobel"
+      ],
+      [
+       1,
+       "Radagast the Brown"
+      ],
+      [
+       1,
+       "Restoration Angel"
+      ],
+      [
+       1,
+       "Riptide Gearhulk"
+      ],
+      [
+       1,
+       "Shalai, Voice of Plenty"
+      ],
+      [
+       1,
+       "Sigarda, Font of Blessings"
+      ],
+      [
+       1,
+       "Slippery Bogbonder"
+      ],
+      [
+       1,
+       "Spark Double"
+      ],
+      [
+       1,
+       "Stunt Double"
+      ],
+      [
+       1,
+       "Subtlety"
+      ],
+      [
+       1,
+       "Teferi, Mage of Zhalfir"
+      ],
+      [
+       1,
+       "Venser, Shaper Savant"
+      ],
+      [
+       1,
+       "Walking Ballista"
+      ],
+      [
+       1,
+       "Wandering Archaic // Explore the Vastlands"
+      ],
+      [
+       1,
+       "Wistfulness"
+      ],
+      [
+       1,
+       "Witch Enchanter // Witch-Blessed Meadow"
+      ]
+     ]
+    },
+    {
+     "t": "Instantáneos",
+     "c": [
+      [
+       1,
+       "An Offer You Can't Refuse"
+      ],
+      [
+       1,
+       "Clever Concealment"
+      ],
+      [
+       1,
+       "Dovin's Veto"
+      ],
+      [
+       1,
+       "Heroic Intervention"
+      ],
+      [
+       1,
+       "Legolas's Quick Reflexes"
+      ],
+      [
+       1,
+       "Magic Damper"
+      ],
+      [
+       1,
+       "Mental Misstep"
+      ],
+      [
+       1,
+       "Path to Exile"
+      ],
+      [
+       1,
+       "Strix Serenade"
+      ],
+      [
+       1,
+       "Stubborn Denial"
+      ],
+      [
+       1,
+       "Swan Song"
+      ]
+     ]
+    },
+    {
+     "t": "Encantamientos",
+     "c": [
+      [
+       1,
+       "Deafening Silence"
+      ],
+      [
+       1,
+       "Nature's Chosen"
+      ],
+      [
+       1,
+       "Utopia Sprawl"
+      ]
+     ]
+    },
+    {
+     "t": "Tierras",
+     "c": [
+      [
+       1,
+       "Adarkar Wastes"
+      ],
+      [
+       1,
+       "Barkchannel Pathway // Tidechannel Pathway"
+      ],
+      [
+       1,
+       "Botanical Sanctum"
+      ],
+      [
+       1,
+       "Bountiful Promenade"
+      ],
+      [
+       1,
+       "Branchloft Pathway // Boulderloft Pathway"
+      ],
+      [
+       1,
+       "Breeding Pool"
+      ],
+      [
+       1,
+       "Command Tower"
+      ],
+      [
+       1,
+       "Deserted Beach"
+      ],
+      [
+       1,
+       "Dreamroot Cascade"
+      ],
+      [
+       1,
+       "Exotic Orchard"
+      ],
+      [
+       1,
+       "Flooded Strand"
+      ],
+      [
+       8,
+       "Forest"
+      ],
+      [
+       1,
+       "Glacial Fortress"
+      ],
+      [
+       1,
+       "Hallowed Fountain"
+      ],
+      [
+       1,
+       "Hinterland Harbor"
+      ],
+      [
+       4,
+       "Island"
+      ],
+      [
+       1,
+       "Overgrown Farmland"
+      ],
+      [
+       2,
+       "Plains"
+      ],
+      [
+       1,
+       "Razorverge Thicket"
+      ],
+      [
+       1,
+       "Rejuvenating Springs"
+      ],
+      [
+       1,
+       "Seachrome Coast"
+      ],
+      [
+       1,
+       "Temple Garden"
+      ],
+      [
+       1,
+       "Windswept Heath"
+      ],
+      [
+       1,
+       "Yavimaya Coast"
+      ]
+     ]
+    }
+   ]
+  }
+ },
  "arte": {
   "Abomination of Llanowar": "front/4/b/4b68bc46-5591-44dd-becc-eca154066925.jpg",
   "Arna Kennerüd, Skycaptain": "front/1/9/19266b5a-ff78-436c-b0f1-457e80bb647e.jpg",
