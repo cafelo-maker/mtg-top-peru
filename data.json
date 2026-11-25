@@ -1003,6 +1003,553 @@
      ]
     }
    ]
+  },
+  "2026-11-22-INTILINCE-B5|Necro": {
+   "url": "https://moxfield.com/decks/VBfFmpIVEkS0yPw4bXcxtw",
+   "fuente": "Moxfield",
+   "guardada": "2026-11-25",
+   "secciones": [
+    {
+     "t": "Comandante",
+     "c": [
+      [
+       1,
+       "Thrasios, Triton Hero",
+       "845bf543-0367-4d2c-81ba-e424bfbfb7de"
+      ],
+      [
+       1,
+       "Tymna the Weaver",
+       "cec4983f-c2ec-4bf5-9f14-e75f0a2788a6"
+      ]
+     ]
+    },
+    {
+     "t": "Criaturas",
+     "c": [
+      [
+       1,
+       "Archivist of Oghma",
+       "a5100d6c-ca6e-40e5-8c55-50e74237ced4"
+      ],
+      [
+       1,
+       "Birds of Paradise",
+       "a97a0e2b-1ff1-494a-8bc9-9741d6bb5590"
+      ],
+      [
+       1,
+       "Bloom Tender",
+       "35dbe45e-16df-4ebb-a76a-df24124de23b"
+      ],
+      [
+       1,
+       "Deathrite Shaman",
+       "9793f0a1-ab76-46e2-add2-200c2a9693b4"
+      ],
+      [
+       1,
+       "Delighted Halfling",
+       "cd87f082-1596-43fd-b971-720090ac6733"
+      ],
+      [
+       1,
+       "Devoted Druid",
+       "1eb51419-726e-4b59-af0e-d1f07ae8ea5f"
+      ],
+      [
+       1,
+       "Displacer Kitten",
+       "c7a401b8-29fb-46ef-a663-427f66724d5c"
+      ],
+      [
+       1,
+       "Drannith Magistrate",
+       "adaf8f6a-9559-4b47-8e67-2c4c3d6d8c60"
+      ],
+      [
+       1,
+       "Elvish Spirit Guide",
+       "024110ee-5520-49f8-afab-54dcce87c650"
+      ],
+      [
+       1,
+       "Esper Sentinel",
+       "676758ee-dac8-4c97-8a62-fff25bcbb6df"
+      ],
+      [
+       1,
+       "Eternal Witness",
+       "cf722227-5b90-47e3-9f56-5ba43114c14e"
+      ],
+      [
+       1,
+       "Grand Abolisher",
+       "b3d28118-eddb-4ee3-a425-eadb1a1649a8"
+      ],
+      [
+       1,
+       "Lotho, Corrupt Shirriff",
+       "692fcfe3-1057-4290-aaea-f4d50f642c05"
+      ],
+      [
+       1,
+       "Noble Hierarch",
+       "8008977f-b164-4ab7-a38a-25b382c6a16f"
+      ],
+      [
+       1,
+       "Opposition Agent",
+       "d7b0a0d5-a9fe-49ea-9250-8825b36accc0"
+      ],
+      [
+       1,
+       "Orcish Bowmasters",
+       "de2de055-5246-408b-80fe-cd01688c145e"
+      ],
+      [
+       1,
+       "Phyrexian Metamorph",
+       "e7501a66-76f8-4f1d-8b4c-2a82b5f930c4"
+      ],
+      [
+       1,
+       "Samut, Tyrant of Naktamun",
+       "7081f960-3476-4acd-8272-600c1e50b560"
+      ],
+      [
+       1,
+       "Snapcaster Mage",
+       "e8c8039f-dad5-4ca9-a2ab-e4189a36fbdd"
+      ],
+      [
+       1,
+       "Spellseeker",
+       "c2519c60-d0af-4df7-aa41-2624ce8af668"
+      ],
+      [
+       1,
+       "Thassa's Oracle",
+       "cb3b9de4-0d31-431f-b060-69a33e9d9c85"
+      ],
+      [
+       1,
+       "Valley Floodcaller",
+       "1c744764-3b54-49a0-aa68-1fb22d8162a9"
+      ],
+      [
+       1,
+       "Voice of Victory",
+       "73f24785-c7b3-46ab-833e-666af3d86c63"
+      ],
+      [
+       1,
+       "Volatile Stormdrake",
+       "fb819762-02e8-4d32-8245-c44b809c34bb"
+      ],
+      [
+       1,
+       "Wan Shi Tong, Librarian",
+       "d4bf05c4-a924-4006-835e-42f8468ba869"
+      ]
+     ]
+    },
+    {
+     "t": "Planeswalkers",
+     "c": [
+      [
+       1,
+       "Teferi, Time Raveler",
+       "5a47d968-bba0-4277-b5d7-eb9e1acd7953"
+      ]
+     ]
+    },
+    {
+     "t": "Instantáneos",
+     "c": [
+      [
+       1,
+       "Abrupt Decay",
+       "84f71a16-915d-4b8e-8c39-cc46bcaa9de9"
+      ],
+      [
+       1,
+       "Assassin's Trophy",
+       "d00efb55-a859-408c-b727-6914584c06d2"
+      ],
+      [
+       1,
+       "Banishing Knack",
+       "371a769a-ddae-47f6-b2c2-957de5c18417"
+      ],
+      [
+       1,
+       "Cyclonic Rift",
+       "2064a0d6-3739-4466-9657-be694c0eb6e1"
+      ],
+      [
+       1,
+       "Dark Ritual",
+       "b734cb11-2024-411f-9885-dafda14bb431"
+      ],
+      [
+       1,
+       "Delay",
+       "2d256283-be94-4a34-805e-fc17503c7fbd"
+      ],
+      [
+       1,
+       "Demonic Consultation",
+       "91bdfd40-dbc7-42a8-a122-5834193b8f5e"
+      ],
+      [
+       1,
+       "Eladamri's Call",
+       "b90a8649-4303-4915-bb8b-f7bc76712afb"
+      ],
+      [
+       1,
+       "Enlightened Tutor",
+       "f690bd2a-e565-4316-8312-3d0386c8ba36"
+      ],
+      [
+       1,
+       "Fierce Guardianship",
+       "c103c4d8-5a3c-443b-9caf-f41f8b61e73f"
+      ],
+      [
+       1,
+       "Flare of Denial",
+       "746533fe-7fe2-4985-8655-9aca4b08b419"
+      ],
+      [
+       1,
+       "Flusterstorm",
+       "ba8fa9db-f24f-46d4-add1-71b7f77636e2"
+      ],
+      [
+       1,
+       "Force of Negation",
+       "5396b405-6fa0-43d7-a8f6-f64154e95e98"
+      ],
+      [
+       1,
+       "Force of Will",
+       "6e7b0e29-09d9-4b3e-ab94-f1f4a61d9159"
+      ],
+      [
+       1,
+       "Intuition",
+       "c99f6785-e5a1-4fdc-9fb5-e1a372e7e848"
+      ],
+      [
+       1,
+       "Mana Drain",
+       "456a2f03-8304-4512-804c-76653e30f436"
+      ],
+      [
+       1,
+       "Misdirection",
+       "581ad59c-29e9-4498-a6fd-33bf21e8e7c4"
+      ],
+      [
+       1,
+       "Mystical Tutor",
+       "000a5154-90ba-459e-b122-d6893dfdb56f"
+      ],
+      [
+       1,
+       "Noxious Revival",
+       "7b8c04ad-9c81-48f6-85cc-ae30a80a7989"
+      ],
+      [
+       1,
+       "Pact of Negation",
+       "09535dd7-5d14-426e-8bbb-efdfe9b7543d"
+      ],
+      [
+       1,
+       "Permission Denied",
+       "c3e8dd5a-d52d-481d-b48c-1392462beb33"
+      ],
+      [
+       1,
+       "Retraction Helix",
+       "4fe8c0b9-fdf4-4fc0-aa7c-774546cdd792"
+      ],
+      [
+       1,
+       "Silence",
+       "1085dab2-a672-4133-ba35-acd56b15af1e"
+      ],
+      [
+       1,
+       "Sink into Stupor // Soporific Springs",
+       "5358b87a-1a29-426d-b165-40c97da2c14d"
+      ],
+      [
+       1,
+       "Swan Song",
+       "b2d1219f-fadb-4427-8627-e5aef3589600"
+      ],
+      [
+       1,
+       "Tainted Pact",
+       "9b8f466f-83ec-4d72-90de-0e30069f7ecd"
+      ],
+      [
+       1,
+       "Tale's End",
+       "1421115b-9a98-4ab2-bcb2-7d8899ce12db"
+      ],
+      [
+       1,
+       "Vampiric Tutor",
+       "3c04bbbe-cae0-4ac5-8bd3-ecc95a2b6bd8"
+      ]
+     ]
+    },
+    {
+     "t": "Conjuros",
+     "c": [
+      [
+       1,
+       "Agadeem's Awakening // Agadeem, the Undercrypt",
+       "499c2b20-e83e-40ff-919e-1d134ad50c0a"
+      ],
+      [
+       1,
+       "Demonic Tutor",
+       "9ee20fb3-fc63-42aa-8b52-2adf7c8b2463"
+      ],
+      [
+       1,
+       "Eldritch Evolution",
+       "f743b688-25e8-421e-97b5-d294dda34817"
+      ],
+      [
+       1,
+       "Imperial Seal",
+       "0163dd21-9f9f-4656-b0b2-7774be0b6ada"
+      ],
+      [
+       1,
+       "Reanimate",
+       "3e560cb9-3036-46a2-a5c7-edb04d0095b7"
+      ]
+     ]
+    },
+    {
+     "t": "Artefactos",
+     "c": [
+      [
+       1,
+       "Chrome Mox",
+       "e0d88029-2569-461b-a57d-1af10673f4cf"
+      ],
+      [
+       1,
+       "Lotus Petal",
+       "6c877da3-68fa-41d0-8a24-8c79fcd8ecc1"
+      ],
+      [
+       1,
+       "Mana Vault",
+       "a941b1f6-9f18-4c9e-993f-bf8f52bd6f53"
+      ],
+      [
+       1,
+       "Mox Amber",
+       "08c63a42-7969-4e07-ad98-c312156ad0d2"
+      ],
+      [
+       1,
+       "Mox Diamond",
+       "28028830-83ed-45e2-b495-3b9ad9d3e988"
+      ],
+      [
+       1,
+       "Sol Ring",
+       "772edef7-2f17-4244-b1bb-4e7a53c253e1"
+      ],
+      [
+       1,
+       "The One Ring",
+       "126ea71a-9a64-4d1e-a8ca-1efce3b8346f"
+      ],
+      [
+       1,
+       "Wishclaw Talisman",
+       "9ebcb070-953c-4b47-ad8a-ef207c65053f"
+      ]
+     ]
+    },
+    {
+     "t": "Encantamientos",
+     "c": [
+      [
+       1,
+       "Black Market Connections",
+       "86c3514a-5e57-44b5-867d-cbfb66a90dfb"
+      ],
+      [
+       1,
+       "Mystic Remora",
+       "bf76c6a4-d6e8-4d50-b65f-020252f7b659"
+      ],
+      [
+       1,
+       "Rhystic Study",
+       "e6a06aad-6073-465b-89d0-8c4ae4307aff"
+      ],
+      [
+       1,
+       "Swift Reconfiguration",
+       "0bd0b431-534d-4ab7-93ed-b9a25259e88e"
+      ],
+      [
+       1,
+       "Sylvan Library",
+       "49129453-1fe8-47de-b6aa-5b92d3d74c99"
+      ]
+     ]
+    },
+    {
+     "t": "Tierras",
+     "c": [
+      [
+       1,
+       "Ancient Tomb",
+       "2c8b3180-6e29-484a-95f1-3e75af2766d3"
+      ],
+      [
+       1,
+       "Boseiju, Who Endures",
+       "0055ea30-20fb-4324-a632-8fed87628f05"
+      ],
+      [
+       1,
+       "Breeding Pool",
+       "cebd6adc-cfb1-4cbb-abf5-9f2913c81898"
+      ],
+      [
+       1,
+       "Cavern of Souls",
+       "69d55219-32b0-4281-a020-52107db6d16a"
+      ],
+      [
+       1,
+       "City of Brass",
+       "869ec7dc-dbf5-4ed4-a368-328da384ecae"
+      ],
+      [
+       1,
+       "Command Tower",
+       "b37309cf-8b80-402b-9d29-fe5de56ced38"
+      ],
+      [
+       1,
+       "Flooded Strand",
+       "7996ab8e-5fa4-4d39-8c7b-12e4258bf8a9"
+      ],
+      [
+       1,
+       "Gaea's Cradle",
+       "25b0b816-0583-44aa-9dc5-f3ff48993a51"
+      ],
+      [
+       1,
+       "Hallowed Fountain",
+       "184aa475-ef9f-4510-b724-3fdcfa99f2c2"
+      ],
+      [
+       1,
+       "Mana Confluence",
+       "fa4b80b1-fc8d-4da6-964a-3b85451c3049"
+      ],
+      [
+       1,
+       "Marsh Flats",
+       "2cae1d08-5bda-4eeb-8134-bdb62ad6f44e"
+      ],
+      [
+       1,
+       "Misty Rainforest",
+       "894105c4-d3ce-4d38-855b-24aa47b112c1"
+      ],
+      [
+       1,
+       "Otawara, Soaring City",
+       "9e99599e-c594-42c6-b9e3-4dbb8e982f88"
+      ],
+      [
+       1,
+       "Overgrown Tomb",
+       "9a9c01c5-6bca-47ff-91a9-c20f301b2a96"
+      ],
+      [
+       1,
+       "Phyrexian Tower",
+       "3097b876-ffb4-4388-beb1-d25d887593b9"
+      ],
+      [
+       1,
+       "Polluted Delta",
+       "98c221d8-fbe4-4901-9f7b-1d04e08b261e"
+      ],
+      [
+       1,
+       "Reflecting Pool",
+       "90600867-9b2b-4174-8fb5-3f58469e8733"
+      ],
+      [
+       1,
+       "Shifting Woodland",
+       "890e97b5-6750-4fae-8481-1244e311da7e"
+      ],
+      [
+       1,
+       "Talon Gates of Madara",
+       "3e2c6447-e599-4b89-8a34-e46aa306a3f7"
+      ],
+      [
+       1,
+       "Temple Garden",
+       "ec75b840-420d-4512-a74a-d70f19be0085"
+      ],
+      [
+       1,
+       "Urza's Saga",
+       "c1e0f201-42cb-46a1-901a-65bb4fc18f6c"
+      ],
+      [
+       1,
+       "Verdant Catacombs",
+       "ed36429e-ec50-4bdf-9d07-03b4e4861661"
+      ],
+      [
+       1,
+       "Volrath's Stronghold",
+       "43bf015b-152e-4d67-b773-e75fb2487a32"
+      ],
+      [
+       1,
+       "Watery Grave",
+       "8dcc3080-966d-497e-82c9-a7311630abd2"
+      ],
+      [
+       1,
+       "Windswept Heath",
+       "26343f80-4d60-407a-a44a-ee6295d2e5ec"
+      ],
+      [
+       1,
+       "Yavimaya, Cradle of Growth",
+       "f442758d-4fee-43fa-a2cb-d09c326da149"
+      ]
+     ]
+    }
+   ]
   }
  },
  "arte": {
