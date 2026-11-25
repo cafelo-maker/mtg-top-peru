@@ -664,14 +664,14 @@ const views = {
     const lrs = lt ? DB.resultados.filter(r=>r.torneo===lt.id).sort((a,b)=>Number(a.puesto)-Number(b.puesto)) : [];
     return `<section class="hero"><div class="mosaic" aria-hidden="true">${mos.map(p=>bigImg(p)).join("")}</div>
       <div class="hero-in"><div class="kicker">Metagame local · Lima, Perú</div><h1>Qué se juega y qué gana en las mesas de Lima</h1>
-      <p class="sub">Tier list por formato, armada con los standings finales de cada torneo de las tiendas locales.</p>
+      <p class="sub">Tier list por formato, armada por la comunidad con los standings finales de cada torneo local.</p>
       <div class="stats"><div class="stat"><b>${nT}</b><span>Torneos</span></div><div class="stat"><b>${nR}</b><span>Entradas</span></div><div class="stat"><b>${nC}</b><span>Mazos distintos</span></div></div></div></section>
       <section><h2>Formatos</h2><div class="formats">${tiles}</div></section>
       ${lt?`<section><div class="secthead"><h2>Último torneo</h2><a class="kicker" href="#torneo-${slug(lt.id)}">${tName(lt)} · ${fdate(lt.fecha)} · ${esc(fmtName(lt.bracket))} →</a></div>${podium(lrs)}</section>`:""}
       <section><div class="secthead"><h2>Últimos torneos</h2><a class="kicker" href="#torneos">Ver todos →</a></div>${tourCards(last.slice(0,6))}</section>
       <section><div class="secthead"><h2>Próximos torneos</h2></div>${(DB.proximos||[]).length?`<div class="rgrid">${DB.proximos.map(t=>`<div class="tcard fc-${esc(t.bracket)}"><span class="code fc-${esc(t.bracket)}">${esc(fmtName(t.bracket))}</span><b>${esc(t.tienda)}</b>
         <span class="meta" style="color:var(--muted);font-size:13px">${fdate(t.fecha)}${t.hora?` · ${esc(t.hora)}`:""}${t.ciudad?` · ${esc(t.ciudad)}`:""}</span>${t.nota?`<span style="font-size:13.5px">${esc(t.nota)}</span>`:""}</div>`).join("")}</div>`
-        :`<div class="empty">Aún no hay torneos anunciados. Cuando una tienda anuncie uno, aparecerá aquí.</div>`}</section>`;
+        :`<div class="empty">Aún no hay torneos anunciados. Cuando se anuncie uno, aparecerá aquí.</div>`}</section>`;
   },
   bracket(key){
     const b = BR[key], s = stats(b.code, period);
@@ -939,7 +939,7 @@ function orgRound(t, ri, locked){
 function orgList(){
   const opt = Object.values(BR).map(b=>`<option value="${b.code}">${b.name}</option>`).join("");
   const today = new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
-  return `<section class="pagehead"><div class="kicker">Herramienta para tiendas y organizadores</div><h1>Organizar torneo</h1>
+  return `<section class="pagehead"><div class="kicker">Herramienta para quien organice un torneo</div><h1>Organizar torneo</h1>
       <p class="sub">Arma las rondas, registra resultados y obtén los standings finales. Formatos 1 contra 1 con emparejamiento suizo, y Commander en mesas de 4.</p></section>
     <section><h2>Nuevo torneo</h2><div class="oform">
       <div class="ctl"><label for="o-nombre">Nombre</label><input id="o-nombre" maxlength="60" placeholder="Ej. Torneo semanal"></div>
@@ -1135,7 +1135,7 @@ const regSave = () => { try{ localStorage.setItem(REG_KEY, JSON.stringify(REG));
 const regCmd = () => (BYCODE[REG.fmt]||{cmd:true}).cmd;
 function regReport(){
   const cap = regCap(), rows = REG.rows.filter(r => cap ? r.d.trim() : r.j.trim()), errs = [];
-  if(!REG.tienda.trim()) errs.push("Falta el nombre de la tienda.");
+  if(!REG.tienda.trim()) errs.push("Falta la tienda o el lugar donde se jugó.");
   if(!REG.fecha) errs.push("Falta la fecha.");
   if(!cap && rows.length<2) errs.push("Escribe al menos 2 jugadores en los standings.");
   if(cap && !Number(REG.jugadores)) errs.push("Indica cuántos jugadores tuvo el torneo.");
@@ -1174,14 +1174,14 @@ function regManualSections(unit){ return `    <section><h2>2. Standings finales<
 function regView(){
   const f = (k,l,extra="") => `<div class="ctl"><label for="r-${k}">${l}</label><input id="r-${k}" data-reg="${k}" value="${esc(REG[k])}" ${extra}></div>`;
   const fin = ORG.filter(t=>t.fin), unit = regCmd() ? "Comandante" : "Mazo";
-  return `<section class="pagehead"><div class="kicker">Para tiendas y organizadores</div><h1>Registrar torneo</h1>
-      <p class="sub">¿Se jugó un torneo en tu tienda? Envía los standings finales para que entre al metagame local. Solo hacen falta los puestos y el mazo de cada jugador.</p></section>
+  return `<section class="pagehead"><div class="kicker">Hecho por la comunidad</div><h1>Registrar torneo</h1>
+      <p class="sub">MTG Top Perú se arma con lo que comparte la comunidad. Si jugaste, organizaste o viste un torneo, cualquiera puede enviarlo: jugadores, organizadores o tiendas. Solo hacen falta los puestos finales y el mazo de cada jugador.</p></section>
     ${fin.length?`<section><h2>Traer desde Organizar torneo</h2><div class="oform"><div class="ctl"><label for="r-imp">Torneo terminado en este dispositivo</label><select id="r-imp">${[...fin].reverse().map(t=>`<option value="${t.id}">${esc(t.nombre)} · ${fdate(t.fecha)}</option>`).join("")}</select></div>
       <button class="btn" data-regact="import">Llenar con este torneo</button></div></section>`:""}
     <section><div class="seg regmode" role="group" aria-label="Forma de registro"><button data-regact="modo" data-m="captura" class="${regCap()?"on":""}">Con capturas</button><button data-regact="modo" data-m="manual" class="${regCap()?"":"on"}">Escribir standings</button></div>
       <p class="note" style="margin-top:10px">${regCap()?`La forma rápida: adjuntas capturas de la tabla final y solo escribes el ${unit.toLowerCase()} de cada puesto, al menos del top 8.`:"Escribes la tabla completa a mano, puesto por puesto."}</p></section>
     <section><h2>1. Datos del torneo</h2><div class="oform">
-      ${f("tienda","Tienda",'maxlength="40" placeholder="Ej. Inti Lince"')}${f("ciudad","Ciudad",'maxlength="30"')}
+      ${f("tienda","Tienda o lugar",'maxlength="40" placeholder="Ej. IntiTech Lince"')}${f("ciudad","Ciudad",'maxlength="30"')}
       <div class="ctl"><label for="r-fecha">Fecha</label><input id="r-fecha" type="date" data-reg="fecha" value="${esc(REG.fecha)}"></div>
       <div class="ctl"><label for="r-fmt">Formato</label><select id="r-fmt" data-reg="fmt">${Object.values(BR).map(b=>`<option value="${b.code}" ${REG.fmt===b.code?"selected":""}>${b.name}</option>`).join("")}</select></div>
       ${f("jugadores","Nº de jugadores",'type="number" min="2" max="512" placeholder="Total que jugó"')}
