@@ -349,6 +349,17 @@ a.btn.wa{background:#25d366;border-color:#25d366;color:#06240f}
 .decksec li{display:flex;gap:8px;min-width:0}
 .decksec li i{font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums;min-width:1.2em;text-align:right}
 .decksec li a{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.deckgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;margin:0 0 26px}
+.cimg{position:relative;display:block;padding:0;border:0;background:var(--surface2);border-radius:4.75% / 3.5%;aspect-ratio:488/680;overflow:hidden;cursor:zoom-in;color:var(--muted);font:inherit;font-size:12px}
+.cimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cimg .nm{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px}
+.cimg .q{position:absolute;top:6px;right:6px;z-index:1;background:#14110a;color:#fff;font-weight:700;font-size:12px;padding:2px 7px;border-radius:999px;border:1px solid var(--accent)}
+.decksec.wide h3{margin-bottom:10px}
+#cardpop{position:fixed;z-index:60;width:244px;pointer-events:none;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.6);display:none}
+#cardview{position:fixed;inset:0;z-index:70;background:rgba(6,7,10,.86);display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:20px}
+#cardview.on{display:flex}
+#cardview img{max-width:min(92vw,400px);max-height:76vh;border-radius:4.75% / 3.5%;box-shadow:0 16px 60px rgba(0,0,0,.7)}
+@media (max-width:560px){.deckgrid{grid-template-columns:repeat(3,1fr);gap:7px}}
 .btn.pri{background:var(--accent);border-color:var(--accent);color:#14110a}
 .btn.ghost{background:none}
 .btn.danger{color:#ff8b7a;border-color:#6b2e27;background:none}
@@ -507,6 +518,13 @@ const listaOf = r => (DB.listas||{})[r.torneo+"|"+r.jugador];
 const listaHref = r => listaOf(r) ? "#lista-"+slug(r.torneo)+"--"+slug(r.jugador) : (r.lista||"");
 const LICON = `<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M3 2h10a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm2 3v1.5h6V5H5zm0 3v1.5h6V8H5zm0 3v1.5h4V11H5z"/></svg>`;
 function listaChip(r){ const h = listaHref(r); return h ? `<span class="lchip" role="link" tabindex="0" data-go="${esc(h)}" title="Ver la lista del mazo">${LICON}Lista</span>` : ""; }
+const cardImg = (id, size) => `https://cards.scryfall.io/${size}/front/${id[0]}/${id[1]}/${id}.jpg`;
+let deckMode = "texto"; try{ deckMode = localStorage.getItem("vistaLista") || "texto"; }catch(e){}
+const scryLink = n => "https://scryfall.com/search?q="+encodeURIComponent('!"'+n+'"');
+function deckText(L){ return `<div class="deckcols">${L.secciones.map(s=>`<div class="decksec"><h3>${esc(s.t)}<span>${s.c.reduce((x,c)=>x+Number(c[0]),0)}</span></h3><ul>${s.c.map(c=>`<li><i>${esc(c[0])}</i><a href="${scryLink(c[1])}" target="_blank" rel="noopener" ${c[2]?`data-card="${esc(c[2])}"`:""} data-name="${esc(c[1])}">${esc(c[1])}</a></li>`).join("")}</ul></div>`).join("")}</div>`; }
+function deckImgs(L){ return L.secciones.map(s=>`<div class="decksec wide"><h3>${esc(s.t)}<span>${s.c.reduce((x,c)=>x+Number(c[0]),0)}</span></h3><div class="deckgrid">${s.c.map(c=>c[2]
+  ? `<button class="cimg" data-card="${esc(c[2])}" data-name="${esc(c[1])}" title="${esc(c[1])}"><span class="nm">${esc(c[1])}</span><img alt="${esc(c[1])}" loading="lazy" src="${cardImg(c[2],"small")}" onerror="this.remove()">${Number(c[0])>1?`<span class="q">x${esc(c[0])}</span>`:""}</button>`
+  : `<a class="cimg" href="${scryLink(c[1])}" target="_blank" rel="noopener"><span class="nm">${esc(c[1])}</span>${Number(c[0])>1?`<span class="q">x${esc(c[0])}</span>`:""}</a>`).join("")}</div></div>`).join(""); }
 function standCards(rs, hasPts){
   return `<div class="cgrid">${rs.map(r=>`<a class="ccard scard" href="#jugador-${slug(r.jugador)}">${cardArt(r.comandante)}${rankBadge(r.puesto)}
     <span class="ctop"><span><span class="who">${esc(r.jugador)}</span><span class="deckname">${esc(r.comandante||"Desconocido")}</span>${r.comandante&&r.comandante!=="Desconocido"?pips(r.comandante):""}</span></span>
@@ -713,8 +731,8 @@ const views = {
     return `<section class="banner">${cardArt(r.comandante)}<div><div class="kicker" style="color:#c9cdda">Decklist · ${esc(fmtName(r.bracket))}</div><h1>${esc(r.comandante)}</h1>${pips(r.comandante)}
         <div class="chips"><span>Puesto <b>${esc(r.puesto)} / ${r.t.jugadores??"–"}</b></span><span><b>${total}</b> cartas</span></div></div></section>
       <section><div class="deckmeta"><span>Jugador <a href="#jugador-${slug(r.jugador)}">${esc(r.jugador)}</a></span><span>Torneo <a href="#torneo-${slug(r.torneo)}">${tName(r.t)}</a></span><span>${fdate(r.fecha)}</span><span>Mazo <a href="#cmd-${slug(r.comandante)}">ver estadísticas</a></span></div>
-        <div class="btnrow" style="margin:16px 0 26px">${L.url?`<a class="btn sm" href="${esc(L.url)}" target="_blank" rel="noopener">Abrir en ${esc(L.fuente||"la fuente")}</a>`:""}<button class="btn sm ghost" id="copylista">Copiar lista</button></div>
-        <div class="deckcols">${L.secciones.map(s=>`<div class="decksec"><h3>${esc(s.t)}<span>${s.c.reduce((x,c)=>x+Number(c[0]),0)}</span></h3><ul>${s.c.map(c=>`<li><i>${esc(c[0])}</i><a href="https://scryfall.com/search?q=${encodeURIComponent('!"'+c[1]+'"')}" target="_blank" rel="noopener">${esc(c[1])}</a></li>`).join("")}</ul></div>`).join("")}</div>
+        <div class="btnrow" style="margin:16px 0 26px">${L.url?`<a class="btn sm" href="${esc(L.url)}" target="_blank" rel="noopener">Abrir en ${esc(L.fuente||"la fuente")}</a>`:""}<button class="btn sm ghost" id="copylista">Copiar lista</button>${L.secciones.some(s=>s.c.some(c=>c[2]))?`<div class="seg" style="margin-left:auto"><button data-deckmode="texto" class="${deckMode!=="imagenes"?"on":""}">Texto</button><button data-deckmode="imagenes" class="${deckMode==="imagenes"?"on":""}">Imágenes</button></div>`:""}</div>
+        ${deckMode==="imagenes"?deckImgs(L):deckText(L)}
         <p class="note" style="color:var(--muted);font-size:13px">Lista tal como la compartió el jugador para este torneo.</p></section>`;
   },
   torneos(){
@@ -732,6 +750,27 @@ document.addEventListener("click", e => { const b = e.target.closest && e.target
   const txt = L.secciones.map(s=>s.c.map(c=>c[0]+" "+c[1]).join("\n")).join("\n");
   (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>{ b.textContent="Copiada"; setTimeout(()=>b.textContent="Copiar lista",1500); }).catch(()=>{});
 });
+document.addEventListener("click", e => { const b = e.target.closest && e.target.closest("[data-deckmode]"); if(!b) return;
+  deckMode = b.dataset.deckmode; try{ localStorage.setItem("vistaLista", deckMode); }catch(x){} route(); });
+function cardView(id, name){
+  let v = document.getElementById("cardview");
+  if(!v){ v = document.createElement("div"); v.id = "cardview"; document.body.appendChild(v); v.addEventListener("click", e => { if(!e.target.closest("a")) v.classList.remove("on"); }); }
+  v.innerHTML = `<img alt="${esc(name)}" src="${cardImg(id,"normal")}"><div class="btnrow"><a class="btn sm" href="${scryLink(name)}" target="_blank" rel="noopener">Ver en Scryfall</a><button class="btn sm ghost">Cerrar</button></div>`;
+  v.classList.add("on"); hidePop();
+}
+function hidePop(){ const p = document.getElementById("cardpop"); if(p) p.style.display = "none"; }
+document.addEventListener("click", e => { const c = e.target.closest && e.target.closest("[data-card]"); if(!c) return; e.preventDefault(); cardView(c.dataset.card, c.dataset.name||""); });
+document.addEventListener("keydown", e => { if(e.key==="Escape"){ const v = document.getElementById("cardview"); if(v) v.classList.remove("on"); } });
+window.addEventListener("hashchange", () => { const v = document.getElementById("cardview"); if(v) v.classList.remove("on"); hidePop(); });
+if(window.matchMedia && matchMedia("(hover:hover) and (pointer:fine)").matches){
+  document.addEventListener("mousemove", e => { const a = e.target.closest && e.target.closest(".decksec li a[data-card]");
+    if(!a) return hidePop();
+    let p = document.getElementById("cardpop"); if(!p){ p = document.createElement("img"); p.id = "cardpop"; p.alt = ""; document.body.appendChild(p); }
+    const src = cardImg(a.dataset.card,"normal"); if(p.dataset.src!==src){ p.dataset.src = src; p.src = src; }
+    const w = 244, h = 340; let x = e.clientX+18, y = e.clientY-h/2;
+    if(x+w > innerWidth-8) x = e.clientX-w-18; y = Math.max(8, Math.min(y, innerHeight-h-8));
+    p.style.left = x+"px"; p.style.top = y+"px"; p.style.display = "block"; });
+}
 function notFound(){ return `<div class="empty">No encontramos esa página. <a href="#inicio">Volver al inicio</a></div>`; }
 
 /* ===== Organizar torneo (se guarda en el navegador del organizador) ===== */
