@@ -466,7 +466,9 @@ function cmdLink(name){
 }
 const MANA = {W:"#e9dfb4",U:"#2f6fb3",B:"#3a3740",R:"#c8452b",G:"#2f7d4a"};
 function scry(p){ const a = DB && DB.arte && DB.arte[p]; return a ? "https://cards.scryfall.io/art_crop/"+a : "https://api.scryfall.com/cards/named?exact="+encodeURIComponent(p)+"&format=image&version=art_crop"; }
-function imgFail(el){ if(el.dataset.f!=="1" && el.dataset.alt){ el.dataset.f="1"; el.src=el.dataset.alt; } else el.remove(); }
+function imgRetry(el){ const n = +(el.dataset.r||0); if(n>=2 || !/cards\.scryfall\.io/.test(el.src)) return false;
+  el.dataset.r = n+1; const u = el.src.split("?")[0]; setTimeout(()=>{ el.src = u+"?r="+(n+1); }, 900*(n+1)); return true; }
+function imgFail(el){ if(imgRetry(el)) return; if(el.dataset.f!=="1" && el.dataset.alt){ el.dataset.f="1"; el.src=el.dataset.alt; } else el.remove(); }
 function thumb(name){
   if(!name || name==="Desconocido") return `<span class="thumbs"><span class="th" style="background:var(--line)"><span class="ini" style="color:var(--muted);text-shadow:none">?</span></span></span>`;
   const cmd = isCmdName(name), card = (DB.cmdIndex[name]||{}).carta;
@@ -523,7 +525,7 @@ let deckMode = "imagenes"; try{ deckMode = localStorage.getItem("vistaLista") ||
 const scryLink = n => "https://scryfall.com/search?q="+encodeURIComponent('!"'+n+'"');
 function deckText(L){ return `<div class="deckcols">${L.secciones.map(s=>`<div class="decksec"><h3>${esc(s.t)}<span>${s.c.reduce((x,c)=>x+Number(c[0]),0)}</span></h3><ul>${s.c.map(c=>`<li><i>${esc(c[0])}</i><a href="${scryLink(c[1])}" target="_blank" rel="noopener" ${c[2]?`data-card="${esc(c[2])}"`:""} data-name="${esc(c[1])}">${esc(c[1])}</a></li>`).join("")}</ul></div>`).join("")}</div>`; }
 function deckImgs(L){ return L.secciones.map(s=>`<div class="decksec wide"><h3>${esc(s.t)}<span>${s.c.reduce((x,c)=>x+Number(c[0]),0)}</span></h3><div class="deckgrid">${s.c.map(c=>c[2]
-  ? `<button class="cimg" data-card="${esc(c[2])}" data-name="${esc(c[1])}" title="${esc(c[1])}"><span class="nm">${esc(c[1])}</span><img alt="${esc(c[1])}" loading="lazy" src="${cardImg(c[2],"small")}" onerror="this.remove()">${Number(c[0])>1?`<span class="q">x${esc(c[0])}</span>`:""}</button>`
+  ? `<button class="cimg" data-card="${esc(c[2])}" data-name="${esc(c[1])}" title="${esc(c[1])}"><span class="nm">${esc(c[1])}</span><img alt="${esc(c[1])}" loading="lazy" src="${cardImg(c[2],"small")}" onerror="if(!imgRetry(this))this.remove()">${Number(c[0])>1?`<span class="q">x${esc(c[0])}</span>`:""}</button>`
   : `<a class="cimg" href="${scryLink(c[1])}" target="_blank" rel="noopener"><span class="nm">${esc(c[1])}</span>${Number(c[0])>1?`<span class="q">x${esc(c[0])}</span>`:""}</a>`).join("")}</div></div>`).join(""); }
 function standCards(rs, hasPts){
   return `<div class="cgrid">${rs.map(r=>`<a class="ccard scard" href="#jugador-${slug(r.jugador)}">${cardArt(r.comandante)}${rankBadge(r.puesto)}
